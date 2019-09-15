@@ -1,0 +1,35 @@
+@import '../../../../base';
+.set_name{
+    width: 140px;
+}
+.set_value{
+    width: 160px;
+    line-height: 35px;
+}
+.set_explain{
+    padding-left: 30%;
+}
+:host ::ng-deep .drop_font_style{
+    line-height: 35px!important;
+    height: 35px!important;
+    font-size: 12px!important;
+    font-weight: normal!important;
+}
+.ant-input-wrapper{
+    width: 150px!important;
+}
+.ant-form-item{
+    margin-bottom: 0!important;
+}
+:host ::ng-deep .ant-dropdown-button.ant-btn-group > .ant-btn:last-child:not(:first-child){
+    height: 35px;
+}
+:host ::ng-deep .ant-btn-group > .ant-btn:first-child:not(:last-child){
+    height: 35px;
+}
+.ant-form-item-label{
+    text-align: left;
+}
+.error_red{
+    color: $color_red;
+}

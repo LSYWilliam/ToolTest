@@ -1,0 +1,77 @@
+{
+    "code": 0,
+    "msg": "操作成功",
+    "result": [
+        {
+            "industryCode": "1200",
+            "parentIndustryCode": "0",
+            "industryName": "河北省技术",
+            "industrySqlName": "河北省技术",
+            "industrySort": 12,
+            "industryStatus": 0
+        },
+        {
+            "industryCode": "1400",
+            "parentIndustryCode": "0",
+            "industryName": "浙江省通讯",
+            "industrySqlName": "浙江省通讯",
+            "industrySort": 14,
+            "industryStatus": 0
+        },
+        {
+            "industryCode": "1500",
+            "parentIndustryCode": "0",
+            "industryName": "江苏省计算机",
+            "industrySqlName": "江苏省计算机",
+            "industrySort": 15,
+            "industryStatus": 0
+        },
+        {
+            "industryCode": "1800",
+            "parentIndustryCode": "0",
+            "industryName": "青海省旅游",
+            "industrySqlName": "青海省旅游",
+            "industrySort": 18,
+            "industryStatus": 0
+        },
+        {
+            "industryCode": "1900",
+            "parentIndustryCode": "0",
+            "industryName": "江西省化工",
+            "industrySqlName": "江西省化工",
+            "industrySort": 19,
+            "industryStatus": 0
+        },
+        {
+            "industryCode": "2000",
+            "parentIndustryCode": "0",
+            "industryName": "海南省农业",
+            "industrySqlName": "海南省农业",
+            "industrySort": 20,
+            "industryStatus": 0
+        },
+        {
+            "industryCode": "2100",
+            "parentIndustryCode": "0",
+            "industryName": "西藏省科技",
+            "industrySqlName": "西藏省科技",
+            "industrySort": 21,
+            "industryStatus": 0
+        },
+                {
+                    "industryCode": "2100",
+                    "parentIndustryCode": "0",
+                    "industryName": "旅游",
+                    "industrySqlName": "西藏省科技",
+                    "industrySort": 21,
+                    "industryStatus": 0
+                },        {
+                              "industryCode": "2100",
+                              "parentIndustryCode": "0",
+                              "industryName": "计算机",
+                              "industrySqlName": "西藏省科技",
+                              "industrySort": 21,
+                              "industryStatus": 0
+                          }
+    ]
+}

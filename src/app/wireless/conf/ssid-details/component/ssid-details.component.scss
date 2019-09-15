@@ -1,0 +1,22 @@
+@import "../../../../../base";
+:host ::ng-deep .drop_font_style{
+    @include title-style(40px,18px,bold);
+}
+.ssid_bg{
+    background: rgb(247,247,247);
+}
+.breadCrumbs{
+    font-size: 14px;
+    margin: 0px 0px 20px;
+}
+.selectValue{
+    font-weight: bold;
+    font-size: 16px;
+    padding-right: 10px;
+}
+.oblique_line{
+    padding: 0px 10px;
+}
+.sid{
+    font-weight: bold;
+}

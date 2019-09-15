@@ -1,0 +1,158 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold padding_right_10">员工姓名</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="empName"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入员工姓名'"
+                [nzSize]="'large'">
+            </nz-input>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row
+         *ngIf="getFormControl('empName')&&getFormControl('empName').dirty&&getFormControl('empName').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">2-32位至少字母或中文，不支持数字!</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold padding_right_10">员工工号</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="jobNumber"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入员工工号'"
+                [nzSize]="'large'">
+            </nz-input>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row
+         *ngIf="getFormControl('jobNumber')&&getFormControl('jobNumber').dirty&&getFormControl('jobNumber').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">2-32位至少字母或数字，不支持中文!</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold padding_right_10">性别</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-radio-group
+                formControlName="empSex">
+                <label nz-radio [nzValue]="'man'">
+                    <span>男</span>
+                </label>
+                <label nz-radio [nzValue]="'woman'">
+                    <span>女</span>
+                </label>
+            </nz-radio-group>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row
+         *ngIf="getFormControl('empSex')&&getFormControl('empSex').dirty&&getFormControl('empSex').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请选择性别!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold padding_right_10">电话</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="empMobile"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入手机号码'"
+                [nzSize]="'large'">
+            </nz-input>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row
+         *ngIf="getFormControl('empMobile')&&getFormControl('empMobile').dirty&&getFormControl('empMobile').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">不符合11位手机号码格式！</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold padding_right_10">邮箱</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="empEmail"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入邮箱'"
+                [nzSize]="'large'">
+            </nz-input>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row
+         *ngIf="getFormControl('empEmail')&&getFormControl('empEmail').dirty&&getFormControl('empEmail').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入正确email地址，不超过64个字符!</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold padding_right_10">职务</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="empPosition"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入职务'"
+                [nzSize]="'large'">
+            </nz-input>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row
+         *ngIf="getFormControl('empPosition')&&getFormControl('empPosition').dirty&&getFormControl('empPosition').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">2-32位至少字母、中文或数字!</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold padding_right_10">所属部门</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-select
+                formControlName="deptIdList"
+                [nzMode]="'multiple'"
+                [nzPlaceHolder]="'请选择部门'"
+                [nzNotFoundContent]="'无法找到'"
+                [nzSize]="'large'"
+            >
+                <!--[(ngModel)]="deptIdList"-->
+                <nz-option
+                    *ngFor="let option of dropDownList"
+                    [nzLabel]="option.name"
+                    [nzValue]="option.id">
+                </nz-option>
+            </nz-select>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row
+         *ngIf="getFormControl('deptIdList')&&getFormControl('deptIdList').dirty&&getFormControl('deptIdList').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请选择部门!</div>
+    </div>
+    <div class="customize-footer">
+        <button
+            nz-button
+            [nzType]="'primary'"
+            [nzSize]="'large'"
+            (click)="submitForm($event,validateForm.value)">
+            保存
+        </button>
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="resetForm($event)">
+            取消
+        </button>
+    </div>
+</form>

@@ -1,0 +1,8 @@
+<nz-dropdown-button [nzDisabled]="status">
+    <span class="drop_font_style">{{defaultValue}}</span>
+    <ul nz-menu class="drop_con" [style.height.px]="(dropHeight&&dropHeight<175)?dropHeight:175">
+        <li *ngFor="let item of value" nz-menu-item (click)="selectDropDown(item)">
+            {{item.name}}
+        </li>
+    </ul>
+</nz-dropdown-button>

@@ -1,0 +1,38 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>考勤应用</nz-breadcrumb-item>
+    <nz-breadcrumb-item>访客管理</nz-breadcrumb-item>
+    <nz-breadcrumb-item>访客登记</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div nz-row class="header">
+    <span class="card_title_18_bold">访客信息列表</span>
+    <a (click)="addButton()" class="card_title_12 padding_left_10">添加</a>
+    <a (click)="editButton()" class="card_title_12 padding_left_10 ">编辑</a>
+    <a (click)="deleteButton()" class="card_title_12 padding_left_10">删除</a>
+</div>
+<div class="card_title_12">
+    <span class="padding_right_10">来访时间</span>
+    <nz-datepicker style="width: 10%;"
+                   [nzMode]="'day'"
+                   (ngModelChange)="_startValueChange($event)"
+                   [ngModel]="_startDate"
+                   [nzDisabledDate]="_disabledStartDate" nzShowTime
+                   [nzFormat]="'YYYY-MM-DD'"
+                   [nzPlaceHolder]="'起始时间'">
+    </nz-datepicker>
+    <span class="padding_right_10 padding_left_10">-</span>
+    <nz-datepicker style="width: 10%;"
+                   [nzMode]="'day'"
+                   (ngModelChange)="_endValueChange($event)"
+                   [ngModel]="_endDate"
+                   [nzDisabledDate]="_disabledEndDate"
+                   [nzShowTime]="_endTime"
+                   [nzFormat]="'YYYY-MM-DD'"
+                   [nzPlaceHolder]="'结束时间'"></nz-datepicker>
+    <a (click)="search()" class="padding_left_10">搜索</a>
+</div>
+<app-zorro-table
+    [headerData]="tableInput"
+    [srcRequestArgs]="srcRequestArgs"
+    [metaData]="metaData"
+    (selectedData)="getDataSelectedFromZorroTable($event)">
+</app-zorro-table>

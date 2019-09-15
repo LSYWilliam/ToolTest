@@ -1,0 +1,39 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>考勤应用</nz-breadcrumb-item>
+    <nz-breadcrumb-item>系统管理</nz-breadcrumb-item>
+    <nz-breadcrumb-item>部门基本信息管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<nz-layout>
+        <nz-sider>
+            <div nz-col>
+                <div nz-row class="dept_header">
+                    <span class="card_title_18_bold">组织结构</span>
+                    <a (click)="addButton()" class="card_title_12 padding_left_10">添加</a>
+                    <a *ngIf="editEnable" (click)="deleteButton()" class="card_title_12 padding_left_10">删除</a>
+                    <span *ngIf="!editEnable" class="unDeletable card_title_12 padding_left_10 ">删除</span>
+                    <a *ngIf="editEnable" (click)="editButton()" class="card_title_12 padding_left_10 ">编辑</a>
+                    <span *ngIf="!editEnable" class="unEditable card_title_12 padding_left_10 ">编辑</span>
+                </div>
+                <app-search-drop-tree
+                    [dataMenu]="dataMenu"
+                    (selectedItem)="menuClick($event)"
+                    [inData]="deptListData"
+                    (id)="searchClick($event)">
+                </app-search-drop-tree>
+            </div>
+        </nz-sider>
+        <div class="line_style"></div>
+        <nz-content class="net_right_con">
+            <div nz-row class="header">
+                <span class="card_title_18_bold">部门信息表</span>
+            </div>
+            <app-zorro-table
+                [headerData]="tableInput"
+                [srcRequestArgs]="srcRequestArgs"
+                [dataProcess]="process"
+                [metaData]="metaData">
+            </app-zorro-table>
+        </nz-content>
+
+</nz-layout>

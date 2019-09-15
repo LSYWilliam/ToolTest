@@ -1,0 +1,35 @@
+{
+    "code": 0,
+    "msg": "操作成功",
+    "result": [
+        {
+            "collectId":1,
+            "collectTitle": "标题1",
+            "collectContentUrl": "http://www.baidu.com",
+            "collectType": "招标公告",
+            "collectRegion": "浙江省温州市",
+            "collectCreateTime": "2017-12-22",
+            "collectStatus":0
+        },
+        {
+            "collectId":2,
+            "collectTitle": "标题2",
+            "collectContentUrl": "http://www.taobao.com",
+            "collectType": "招标公告",
+            "collectRegion": "浙江省杭州市",
+            "collectCreateTime": "2017-12-22",
+            "collectStatus":0
+        },
+        {
+            "collectId":3,
+            "collectTitle": "标题3",
+            "collectContentUrl": "https://translate.google.cn",
+            "collectType": "招标公告",
+            "collectRegion": "浙江省绍兴市",
+            "collectCreateTime": "2017-12-22",
+            "collectStatus":1
+        }
+    ]
+}
+
+

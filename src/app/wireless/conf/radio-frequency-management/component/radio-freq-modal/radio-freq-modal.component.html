@@ -1,0 +1,155 @@
+<div style="width: 60%; margin: 0 auto">
+    <div nz-row class="card_title_14_bold">2.4GHz</div>
+    <div nz-row>
+        <div class="frame_name card_title_14 float_left">信道</div>
+        <div class="frame_value float_left">
+            <app-dropdown
+                [dropDowns]= "radioModalModel.config2gChannel"
+                [inDefault]="inValue.channel2"
+                (selectID)="getSelect($event,'channel2')"
+                [status]="inValue.config2gState">
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div class="frame_name card_title_14 float_left">功率</div>
+        <div class="frame_value float_left">
+            <app-dropdown
+                [dropDowns]= "radioModalModel.config2gPowerDbm"
+                [inDefault]="inValue.power2"
+                (selectID)="getSelect($event,'power2')"
+                [status]="inValue.config2gState">
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div class="frame_name card_title_14 float_left">2G空间流</div>
+        <div class="frame_value float_left">
+            <!--<app-dropdown-->
+                <!--[dropDowns]= "radioModalModel.spatitalFlow2"-->
+                <!--[inDefault]="inValue.config2SpatitalFlow"-->
+                <!--(selectID)="getSelect($event,'config2g11nChannelWidth')"-->
+                <!--[status]="inValue.config2gState">-->
+            <!--</app-dropdown>-->
+            <app-dropdown
+                [dropDowns]= "radioModalModel.config2g11nSpace"
+                [inDefault]="inValue.config2g11nSpaceDesc"
+                (selectID)="getSelect($event,'config2g11nSpace')"
+                [status]="inValue.config2gState">
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div class="frame_name card_title_14 float_left">频宽</div>
+        <div class="frame_value float_left">
+            <app-dropdown
+                [dropDowns]= "radioModalModel.config2g11nChannelWidth"
+                [inDefault]="inValue.config2g11nChannelWidthDesc"
+                (selectID)="getSelect($event,'config2g11nChannelWidth')"
+                [status]="inValue.config2gState">
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div nz-row class="card_title_14_bold">5GHz</div>
+
+    <div nz-row>
+        <div class="frame_name card_title_14 float_left">信道</div>
+        <div class="frame_value float_left">
+            <app-dropdown
+                [dropDowns]= "radioModalModel.config5gChannel"
+                [inDefault]="inValue.channel5"
+                (selectID)="getSelect($event,'channel5')"
+                [status]="inValue.config5gState">
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div class="frame_name card_title_14 float_left">功率</div>
+        <div class="frame_value float_left">
+            <app-dropdown
+                [dropDowns]= "radioModalModel.config5gPowerDbm"
+                [inDefault]="inValue.power5"
+                (selectID)="getSelect($event,'power5')"
+                [status]="inValue.config5gState">
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div class="frame_name card_title_14 float_left">5G空间流</div>
+        <div class="frame_value float_left">
+            <!--<app-dropdown-->
+                <!--[dropDowns]= "radioModalModel.spatitalFlow5"-->
+                <!--[inDefault]="inValue.config5SpatitalFlow"-->
+                <!--(selectID)="getSelect($event,'config5g11nChannelWidth')"-->
+                <!--[status]="inValue.config5gState">-->
+            <!--</app-dropdown>-->
+            <app-dropdown
+                [dropDowns]= "radioModalModel.config5g11nSpace"
+                [inDefault]="inValue.config5g11nSpaceDesc"
+                (selectID)="getSelect($event,'config5g11nSpace')"
+                [status]="inValue.config5gState">
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div class="frame_name card_title_14 float_left">频宽</div>
+        <div class="frame_value float_left">
+            <app-dropdown
+                [dropDowns]= "radioModalModel.config5g11nChannelWidth"
+                [inDefault]="inValue.config5g11nChannelWidthDesc"
+                (selectID)="getSelect($event,'config5g11nChannelWidth')">
+            </app-dropdown>
+        </div>
+    </div>
+
+
+
+    <!--<div nz-row>-->
+        <!--<div class="frame_name card_title_14_bold float_left">场强阈值</div>-->
+        <!--<div class="frame_value float_left">-->
+            <!--<app-dropdown-->
+                <!--[dropDowns]= "radioModalModel.rssiThreshold"-->
+                <!--[inDefault]="inValue.rssiThreshold"-->
+                <!--(selectID)="getSelect($event,'rssiThreshold')">-->
+            <!--</app-dropdown>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div nz-row>-->
+        <!--<div class="frame_name card_title_14_bold float_left">速率阈值</div>-->
+        <!--<div class="frame_value float_left">-->
+            <!--<app-dropdown-->
+                <!--[dropDowns]= "radioModalModel.apRateThreshold"-->
+                <!--[inDefault]="inValue.apRateThreshold"-->
+                <!--(selectID)="getSelect($event,'apRateThreshold')">-->
+            <!--</app-dropdown>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="customize-footer">
+        <button
+            nz-button
+            [nzType]="'primary'"
+            [nzSize]="'large'"
+            (click)="handleOk()">
+            保存
+        </button>
+
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="handleCancel($event)">
+            取消
+        </button>
+    </div>
+
+
+</div>

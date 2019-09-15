@@ -1,0 +1,36 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>我的设备</nz-breadcrumb-item>
+    <nz-breadcrumb-item>我的AP</nz-breadcrumb-item>
+    <nz-breadcrumb-item>射频管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<nz-spin [nzSize]="'large'" [nzTip]="'正在保存数据，请稍后。。。'" [nzSpinning]="spinStatus">
+    <div nz-row>
+        <app-dropdown [dropDowns]= "radioFrequencyModel.dropDowns" (selectID)="getDropDown($event)"></app-dropdown>
+    </div>
+
+    <!--<div nz-row>-->
+        <!--<div nz-row>-->
+            <!--<span class="card_title_18_bold">全网射频管理</span>-->
+            <!--<a (click)="saveGlobalData()" class="padding_left_10">保存</a>-->
+        <!--</div>-->
+        <!--<app-overall-radio-conf [inData]="radioFrequencyModel.globalConf" (outData)="getGlobalConf($event)"></app-overall-radio-conf>-->
+    <!--</div>-->
+
+    <div nz-row>
+        <!--<div nz-row class="card_title_18_bold"> AP射频管理 </div>-->
+        <div nz-row class="header">
+            <span class="card_title_18_bold">AP射频管理</span>
+            <!--<a (click)="addButton()" class="card_title_12 padding_left_10 ">新增</a>-->
+            <a (click)="editButton()" class="card_title_12 padding_left_10 ">编辑</a>
+        </div>
+        <div nz-row [ngStyle]="{'height': windowHeight+'px'}">
+            <app-table
+                [tableInput]='staticDataModel.tableInput'
+                [rowData]='radioFrequencyModel.tableData'
+                (selectAllEvent)="selectAllItems($event)"
+                (rowDoubleClickEvent)='cellClickEvent($event)'
+            ></app-table>
+        </div>
+    </div>
+</nz-spin>

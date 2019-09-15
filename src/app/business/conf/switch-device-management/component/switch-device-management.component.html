@@ -1,0 +1,38 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>企业中心</nz-breadcrumb-item>
+    <nz-breadcrumb-item>交换机设备管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div nz-row>
+    <app-dropdown
+        [dropDowns]= "businessList"
+        (selectID)="getDropDownBusiId($event)"
+        [inDefault]="defaultBusiName"
+        *ngIf="businessList"
+    >
+    </app-dropdown>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="12" >
+        <a #change (click)="create()" class="card_title_12">新增</a>
+        <a #update (click)="edit()" class="card_title_12 padding_left_10">编辑</a>
+        <a (click)="delete()" class="card_title_12 padding_left_10">删除</a>
+    </div>
+    <div nz-col [nzSpan]="12" class="text_right card_title_12">
+        共有
+        <span class="card_title_14_sum">{{deviceSum|number :'1.0-1'||0}} </span>
+        台设备
+        <span>
+            <span class="card_title_14_sum">{{deviceSum|number:'1.0-1'||0}}</span>
+            已申购
+        </span>
+    </div>
+</div>
+<div nz-row [ngStyle]="{'height': windowHeight+'px'}">
+    <app-table
+        [tableInput]="staticDataModel.tableInput"
+        [rowData]="rowData"
+        (selectAllEvent)="selectRow($event)"
+    >
+
+    </app-table>
+</div>

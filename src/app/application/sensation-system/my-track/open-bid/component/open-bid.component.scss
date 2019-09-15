@@ -1,0 +1,11 @@
+@import '../../../../../../base.scss';
+:host ::ng-deep .drop_font_style{
+    @include title-style(40px,18px,bold);
+}
+
+.ant-table-wrapper{
+    display: block;height: 500px;
+}
+:host ::ng-deep .ant-input{
+    width: 200px!important;
+}

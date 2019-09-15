@@ -1,0 +1,20 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>无线商情</nz-breadcrumb-item>
+    <nz-breadcrumb-item>政府政策信息</nz-breadcrumb-item>
+    <nz-breadcrumb-item>管理我的嗅探</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div nz-row>
+    <span class="card_title_18_bold">管理我的嗅探</span>
+    <a  (click)="createTopic()" class="card_title_12 padding_left_10">新建</a>
+    <a  (click)="editTopic()" class="card_title_12 padding_left_10">编辑</a>
+    <a (click)="deleteTopic()" class="card_title_12 padding_left_10">删除</a>
+</div>
+
+<div nz-row style="width: 100%; height: 600px;">
+    <app-table
+        [tableInput]="staticDataModel.myThemeTableInput"
+        [rowData]="topicData"
+
+    ></app-table>
+</div>

@@ -1,0 +1,130 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold padding_right_10">MAC地址</div>
+        <div nz-col [nzSpan]="16" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="macAddr"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入如下格式的MAC地址：A0:A0:A0:A0:A0:A0'"
+                [nzSize]="'large'">
+            </nz-input>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row *ngIf="getFormControl('macAddr')&&getFormControl('macAddr').dirty&&getFormControl('macAddr').invalid">
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="16" class="card_title_12 error_red">请输入正确的mac地址!</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold padding_right_10">设备资产编号</div>
+        <div nz-col [nzSpan]="16" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="equipmentNumber"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入设备编号'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row *ngIf="getFormControl('equipmentNumber')&&getFormControl('equipmentNumber').dirty&&getFormControl('equipmentNumber').invalid">
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="16" class="card_title_12 error_red">请输入正确的设备编号!</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold padding_right_10">设备类型</div>
+        <div nz-col [nzSpan]="16" nz-form-control class="card_title_14">
+            <!--<app-dropdown-->
+                <!--[dropDowns]= "equipmentTypeDropDownList"-->
+                <!--(selectID)= "getEquipmentTypeDropDown($event)"-->
+                <!--[inDefault]= "equipmentType">-->
+            <!--</app-dropdown>-->
+            <nz-radio-group
+                formControlName="equipmentType">
+                <label nz-radio [nzValue]="equipmentTypeDropDownList[0].id">
+                    <span>{{equipmentTypeDropDownList[0].name}}</span>
+                </label>
+                <label nz-radio [nzValue]="equipmentTypeDropDownList[1].id">
+                    <span>{{equipmentTypeDropDownList[1].name}}</span>
+                </label>
+            </nz-radio-group>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('equipmentType')&&getFormControl('equipmentType').dirty&&getFormControl('equipmentType').invalid">
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="16" class="card_title_12 error_red">请选择正确的设备类型!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold padding_right_10">归属部门</div>
+        <div nz-col [nzSpan]="16" nz-form-control class="card_title_14">
+            <nz-select
+                formControlName="deptId"
+                style="width: 155px;"
+                nzAllowClear
+                [nzPlaceHolder]="'请选择归属部门'"
+                [(ngModel)]="deptId"
+                nzShowSearch
+                (ngModelChange) = "onSearchDeptName($event)">
+                <!--[ngModelOptions]="{standalone: true}"-->
+                <nz-option
+                    *ngFor="let option of deptDropDownList"
+                    [nzLabel]="option.name"
+                    [nzValue]="option.id">
+                </nz-option>
+            </nz-select>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('deptId')&&getFormControl('deptId').dirty&&getFormControl('deptId').invalid">
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="16" class="card_title_12 error_red">请选择归属部门!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold padding_right_10">归属员工</div>
+        <div nz-col [nzSpan]="16" nz-form-control class="card_title_14">
+            <div nz-row class="margin_top_10 card_title_12">
+                <nz-select
+                    formControlName="empId"
+                    style="width: 155px;"
+                    nzAllowClear
+                    [nzPlaceHolder]="'请选择归属员工'"
+                    [(ngModel)]="empId"
+                    nzShowSearch
+                    (ngModelChange) = "onSearchEmpName($event)"
+                    [nzDisabled]="deptFlag">
+                    <!--[ngModelOptions]="{standalone: true}"-->
+                    <nz-option
+                        *ngFor="let option of empDropDownList"
+                        [nzLabel]="option.empName"
+                        [nzValue]="option.id">
+                    </nz-option>
+                </nz-select>
+            </div>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('empId')&&getFormControl('empId').dirty&&getFormControl('empId').invalid">
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="16" class="card_title_12 error_red">请选择归属员工!</div>
+    </div>
+    <div class="customize-footer">
+        <button
+            nz-button
+            [nzType]="'primary'"
+            [nzSize]="'large'"
+            (click)="submitForm($event,validateForm.value)">
+            保存
+        </button>
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="resetForm($event)">
+            取消
+        </button>
+    </div>
+</form>

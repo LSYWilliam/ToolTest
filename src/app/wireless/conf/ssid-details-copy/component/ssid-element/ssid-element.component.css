@@ -1,0 +1,42 @@
+@import "../../../../../../base.scss";
+:host ::ng-deep .drop_font_style{
+    line-height: 35px!important;
+    font-size: 14px!important;
+    font-weight: bold!important;
+}
+
+.ssid_bg{
+    background: rgb(247,247,247);
+}
+a{
+    text-decoration: underline;
+}
+.hide{
+    display: none;
+}
+:host ::ng-deep .ant-btn {
+    border: none!important;
+    padding: 0;
+}
+:host ::ng-deep .ant-dropdown-button.ant-btn-group > .ant-btn:last-child:not(:first-child){
+    height: 35px;
+}
+:host ::ng-deep .ant-btn-group > .ant-btn:first-child:not(:last-child){
+    height: 35px;
+}
+.font_cut{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:100%;
+}
+
+.unEditable{
+    color:rgb(191, 191, 191);
+}
+
+.ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

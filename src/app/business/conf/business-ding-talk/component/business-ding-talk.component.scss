@@ -1,0 +1,72 @@
+@import "../../../../../base";
+
+
+.modal_con{
+    width: 430px;
+    margin: 0 auto;
+}
+
+.ant-form-item-label{
+    text-align: left;
+    padding-right: 10px;
+}
+.ant-form-item{
+    margin-bottom: 0;
+}
+.error_red{
+    color: $color_red;
+}
+
+.form{
+    width: 400px;
+    height: 400px;
+}
+
+.position{
+    position: absolute;
+    left: 440px;
+    top: 2px;
+}
+
+.red{
+    color:red;
+}
+
+:host ::ng-deep .vertical-center-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:host ::ng-deep .vertical-center-modal .ant-modal {
+    top: 0;
+}
+
+.success{
+    background-image:url('../../../../../assets/img/success.svg');
+    background-size:85px 85px;
+    background-repeat:no-repeat;
+    background-position: bottom center;
+    height: 130px;
+}
+
+.label{
+    color:#000000;
+    font-weight:bold;
+    text-align: center;
+    padding-top: 20px;
+    font-size:1.25em;
+    font-family: '微软雅黑';
+}
+
+.body{
+    font-size: 18px;
+    font-weight: bold;
+}
+.customize-footer{
+    width: 250px;
+}
+.height_150{
+    line-height: 150px;
+    padding-top: 0;
+}

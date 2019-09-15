@@ -1,0 +1,15 @@
+@import "../../../../../base";
+.icon-systemCircleClose{
+    font-size: 1.5em;
+    line-height: 35px;
+}
+:host ::ng-deep .ant-rate{
+    margin-top: -10px!important;
+}
+.icon-systemCircleClose:hover{
+    color: rgb(194,51,51);
+}
+
+.attention{
+    text-decoration: underline;
+}

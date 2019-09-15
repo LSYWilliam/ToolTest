@@ -1,0 +1,63 @@
+@import "../../../../../base";
+
+.net_attention{
+    &_web{
+        width: 98%;
+        height: 155px;
+        margin: 10px auto;
+        padding-left: 20px;
+        position: relative;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        border:1px solid #d9d9d9;
+    }
+    &_error{
+        width: 98%;
+        height: 155px;
+        margin: 10px auto;
+        position: relative;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        border:1px solid #d9d9d9;
+    }
+}
+.net_attention_web:hover{
+  border-color: rgb(16,142,233);
+}
+.net_icon{
+  font-size: 6em;
+}
+.firmware_icon{
+  font-size: 9em;
+}
+.card_title_color{
+  color: $color_red;
+}
+.text_overflow{
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow: hidden;
+}
+
+
+.colse{
+  width: 30px;
+  position: absolute;
+  cursor: pointer;
+    top:2px;
+    right:-10px;
+    z-index: 999;
+}
+.colse:hover{
+    color:rgb(16,142,233) ;
+}
+
+
+
+
+
+
+
+
+
+
+
+

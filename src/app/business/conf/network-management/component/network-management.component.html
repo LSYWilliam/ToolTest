@@ -1,0 +1,148 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>我的网络</nz-breadcrumb-item>
+    <nz-breadcrumb-item>网络管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<nz-layout>
+
+    <nz-sider>
+        <div nz-row class="header">
+            <span class="card_title_18_bold">网络</span>
+            <a (click)="netWorkEvent(true)" class="card_title_12 padding_right_10 padding_left_10">新增</a>
+            <a (click)="netWorkEvent(false)" class="card_title_12">删除</a>
+        </div>
+        <app-search-list
+                [inData]="networkList"
+                [addData]="addData"
+                [delData]="delData"
+                (id)="getNetID($event)">
+        </app-search-list>
+    </nz-sider>
+
+    <div class="line_style"></div>
+
+    <nz-content class="net_right_con">
+        <nz-spin [nzSize]="'large'" [nzTip]="'配置生成中，请稍后.....'" [nzSpinning]="contentStatus">
+            <div nz-row>
+                <span class="card_title_18_bold">网络配置</span>
+                <a (click)="saveGlobalPageData()" class="card_title_12 padding_left_10">保存</a>
+            </div>
+
+            <!-- 基础信息 -->
+            <app-fold [foldTitle]="'基础信息'" [isClosed]="true">
+                <div nz-row>
+                    <div nz-col [nzSpan]="4" class="card_title_14 padding_left_50">网络名称</div>
+                    <div nz-col [nzSpan]="20" class="card_title_12">
+                        <nz-input [(ngModel)]="networkManagerModel.netInfo.netName" [nzReadonly] = 'true'></nz-input>
+                    </div>
+                </div>
+                <div nz-row>
+                    <div nz-col [nzSpan]="4" class="card_title_14 padding_left_50">网络类型</div>
+                    <div nz-col [nzSpan]="20" class="card_title_12">
+                        <app-dropdown
+                                [dropDowns]= "staticData.netTypeDropDown"
+                                [inDefault]="staticData.typeDefaultData"
+                                (selectID)="selectNetType($event)">
+                        </app-dropdown>
+                    </div>
+                </div>
+                <div nz-row>
+                    <div nz-col [nzSpan]="4" class="card_title_14 padding_left_50">网络地址</div>
+                    <div nz-col [nzSpan]="20" class="card_title_12">
+                        <app-three-link-list  [threeLinkData]="threeLinkData " (outData)="outData($event)"
+                                              [provinceLink]="networkManagerModel.netInfo.province"
+                                              [cityLink]="networkManagerModel.netInfo.city"
+                                              [areaLink]="networkManagerModel.netInfo.county"></app-three-link-list>
+                    </div>
+                </div>
+
+                <div nz-form-item nz-row style="margin-bottom: 20px;">
+                    <div nz-form-label nz-col [nzSpan]="4" class="card_title_14 padding_left_5">
+                    </div>
+
+                    <div nz-form-control nz-col [nzSpan]="20" class="card_title_12">
+                        <nz-input
+                                style="width: 300px;"
+                                [(ngModel)] = "networkManagerModel.netInfo.detailAddress"
+                                [nzType]="'textarea'"
+                                [nzPlaceHolder]="'请输入详细地址'"
+                                [nzSize]="'large'">
+                        </nz-input>
+                    </div>
+                </div>
+            </app-fold>
+
+            <!--网络设备-->
+            <app-fold [foldTitle]="'网络设备'" [isClosed]="true">
+                <div *ngIf="hasAPDevice">AP设备：
+                    <app-transfer [leftTableInput]="staticTableDataModel.leftTableInput"
+                                  [rowDataLeft]="leftTable"
+                                  [rowDataRight]="rightTable"
+                                  [idName]="'apId'"
+                                  (outData)="deviceEvent($event)" >
+                    </app-transfer>
+                </div>
+                <div *ngIf="hasSwitchDevice">交换机设备：
+                    <app-transfer [leftTableInput]="staticTableDataModel.downTableInput"
+                                  [rowDataLeft]="downLeftTable"
+                                  [rowDataRight]="downRightTable"
+                                  [idName]="'switchId'"
+                                  (outData)="switchDeviceEvent($event)" >
+                    </app-transfer>
+                </div>
+
+            </app-fold>
+
+            <!--网络配置-->
+            <app-fold #network [foldTitle]="'网络配置'" [isClosed]="true" (cloneNetID)="cloneNetWork($event)">
+                <div nz-row class="card_title_14_bold ssid_title padding_left_10">SSID</div>
+                <div nz-row>
+                    <div nz-col [nzSpan]="1"></div>
+                    <div nz-col [nzSpan]="23">
+                        <ul>
+                            <li *ngFor="let item of ssidDetailsModel;let idx = index;">
+                                <div nz-row>
+                                    <div nz-col [nzSpan]="20" class="card_title_14_bold margin_left_20">{{item.ssidInfo.ssidName}}</div>
+                                    <div nz-col [nzSpan]="4" class="card_title_14_bold text_right">
+                                        <nz-switch [(ngModel)]="item.ssidStatus" (ngModelChange)="getIsOpenOrClose($event, idx)"></nz-switch>
+                                    </div>
+                                </div>
+                                <app-ssid-item-list *ngIf="item.ssidStatus"
+                                                    [inData]="item.ssidInfo"
+                                                    (outData)="setSsidInfo($event,idx)"
+                                                    (outValidateFlag)="outValidateFlag($event)">
+                                </app-ssid-item-list>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <!--<div nz-row class="card_title_14_bold ssid_title padding_left_10">无线电配置</div>-->
+                <!--<div nz-row>-->
+                    <!--<div nz-col [nzSpan]="1"></div>-->
+                    <!--<div nz-col [nzSpan]="23">-->
+                        <!--&lt;!&ndash;(outData)="getGlobalConf($event)"&ndash;&gt;-->
+                        <!--<app-overall-radio-conf-->
+                                <!--[inData]="this.radioFrequencyModel.globalConf"-->
+                                <!--(outData)="setRadio($event)">-->
+                        <!--</app-overall-radio-conf>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div nz-row class="card_title_14_bold ssid_title padding_left_10">探针配置</div>-->
+                <!--<div nz-row>-->
+                    <!--<div nz-col [nzSpan]="1"></div>-->
+                    <!--<div nz-col [nzSpan]="23">-->
+                        <!--<div nz-row>-->
+                            <!--<app-overall-probe-conf-->
+                                    <!--[inData]="probeConf"-->
+                                    <!--(outData)="setProbe($event)">-->
+                            <!--</app-overall-probe-conf>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </app-fold>
+        </nz-spin>
+    </nz-content>
+</nz-layout>

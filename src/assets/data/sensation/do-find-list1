@@ -1,0 +1,17 @@
+{
+    "code": 0,
+    "msg": "操作成功:操作成功",
+    "result": {
+            "teCrawlerRegion": [["浙江"],["江苏","南京"]],
+            "teNoMatchWord": "",
+            "webSiteInfo": "www.sian.com.cn,www.baidu.com,www.spring.com.org",
+            "refBusiness": "123",
+            "teMailStatus": "1",
+            "teMatchWord": "中国,校长",
+            "teId": 16,
+            "teName": "22王响平主题演示主1题",
+            "teMailReceiver": "wwp@163.com,kk@163.com",
+            "teCrawlerIndustry": "计算机,旅游",
+            "teCreateTime": 1527037589000
+        }
+}

@@ -1,0 +1,13 @@
+:host ::ng-deep .anticon{
+    display: block;
+}
+:host ::ng-deep .anticon-left-square:before{
+    content: "\e6ca";
+    font-size: 30px;
+    color: #d6d6d6;
+}
+:host ::ng-deep .anticon-right-square:before{
+    content: "\e6cb";
+    font-size: 30px;
+    color: #d6d6d6;
+}

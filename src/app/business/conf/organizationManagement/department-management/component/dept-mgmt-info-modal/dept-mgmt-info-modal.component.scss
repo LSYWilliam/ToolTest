@@ -1,0 +1,24 @@
+@import "../../../../../../../base";
+.modal_con{
+    width: 300px;
+    margin: 0 auto;
+}
+
+.ant-form-item-label{
+    text-align: left;
+}
+.ant-form-item{
+    margin-bottom: 10px;
+}
+.error_red{
+    color: $color_red;
+}
+.position{
+    position: absolute;
+    left: 210px;
+    top: 2px;
+}
+
+.red{
+    color:red;
+}

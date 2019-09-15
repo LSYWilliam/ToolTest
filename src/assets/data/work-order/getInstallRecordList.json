@@ -1,0 +1,66 @@
+{
+    "code": 0,
+    "msg": "操作成功",
+    "result": [
+        {
+            "id": 1,
+            "workNum": 1,
+            "enterprise": "全维",
+            "operatingTime": "2018-10-31 14:00:00",
+            "deviceType": "AP",
+            "deviceModel": "uuuu",
+            "deviceSn": "xxxxxx",
+            "installer": "安装人",
+            "operationType": "xxx",
+            "replaceDeviceSerialSn": "vvv"
+        },
+        {
+            "id": 2,
+            "workNum": 2,
+            "enterprise": "全维",
+            "operatingTime": "2018/10/31 14:00",
+            "deviceType": "AP",
+            "deviceModel": "uuuu",
+            "deviceSn": "xxxxxx",
+            "installer": "安装人",
+            "operationType": "xxx",
+            "replaceDeviceSerialSn": "vvv"
+        },
+        {
+            "id": 3,
+            "workNum": 3,
+            "enterprise": "全维",
+            "operatingTime": "2018/10/31 14:00",
+            "deviceType": "AP",
+            "deviceModel": "uuuu",
+            "deviceSn": "xxxxxx",
+            "installer": "安装人",
+            "operationType": "xxx",
+            "replaceDeviceSerialSn": "vvv"
+        },
+        {
+            "id": 4,
+            "workNum": 4,
+            "enterprise": "全维",
+            "operatingTime": "2018/10/31 14:00",
+            "deviceType": "AP",
+            "deviceModel": "uuuu",
+            "deviceSn": "xxxxxx",
+            "installer": "安装人",
+            "operationType": "xxx",
+            "replaceDeviceSerialSn": "vvv"
+        },
+        {
+            "id": 5,
+            "workNum": 5,
+            "enterprise": "全维",
+            "operatingTime": "2018/10/31 14:00",
+            "deviceType": "AP",
+            "deviceModel": "uuuu",
+            "deviceSn": "xxxxxx",
+            "installer": "安装人",
+            "operationType": "xxx",
+            "replaceDeviceSerialSn": "vvv"
+        }
+    ]
+}

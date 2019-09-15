@@ -1,0 +1,11 @@
+{
+    "code":0,
+    "msg":"操作成功",
+    "result":[
+        {
+            "apId":1213,"apName":"AP1","apSn":"ZHOO0001","adapterIp":"192.168.1.66","adapterName":"适配器1","belong":"开发云"
+        },{
+            "apId":1214,"apName":"AP2","apSn":"ZHOO0002","adapterIp":"192.168.1.42","adapterName":"适配器2","belong":"实验云"
+        }
+    ]
+}

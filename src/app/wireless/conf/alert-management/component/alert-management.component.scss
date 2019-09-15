@@ -1,0 +1,16 @@
+@import '../../../../../base';
+.pointer:hover{
+    cursor: pointer;
+}
+:host ::ng-deep .drop_font_style{
+    @include title-style(40px,18px,bold);
+}
+:host ::ng-deep .ag-body{
+    top:35px!important;
+}
+:host ::ng-deep .ag-header{
+    height: 35px!important;
+}
+:host ::ng-deep .ag-header-row{
+    height: 35px!important;
+}

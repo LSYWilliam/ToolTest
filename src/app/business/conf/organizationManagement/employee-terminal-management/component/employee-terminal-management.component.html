@@ -1,0 +1,35 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'start'">
+    <div nz-col [nzSpan]="24" class="card_title_18_bold">
+        员工终端管理
+    </div>
+    <div nz-col [nzSpan]="24" class="border">
+        <app-emp-terminal-mgmt-search
+            [empName]="empName"
+            [mac]="mac"
+            [number]="number"
+            (output)="search($event)">
+        </app-emp-terminal-mgmt-search>
+    </div>
+</div>
+<div nz-row class="margin_top_10">
+    <div nz-col [nzSpan]="21" class="card_title_18_bold">
+        终端列表（{{empTerminalMgmtDataModel.list.length}}）
+    </div>
+    <div nz-col [nzSpan]="3" class="card_title_18 text_right">
+        <a (click)="addButton()">新增</a>
+        <a (click)="editButton()" class="padding_left_10">编辑</a>
+        <a (click)="delButton()" class="padding_left_10">删除</a>
+    </div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="24" [ngStyle]="{'height': '600px'}">
+        <app-table
+            [tableInput]="empTerminalMgmtHeadDataModel.tableInput"
+            [rowData]="empTerminalMgmtDataModel.list"
+            (selectAllEvent)="selectAllItems($event)"
+            (cellClickEvent)="cellClickEvent($event)"
+            (rowDoubleClickEvent)="doubleClick($event)"
+            (getDowLength)="getDowLength($event)">
+        </app-table>
+    </div>
+</div>

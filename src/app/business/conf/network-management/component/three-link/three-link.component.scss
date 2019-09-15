@@ -1,0 +1,12 @@
+@import '../../../../../../base';
+:host ::ng-deep .ant-btn {
+    border: none!important;
+    padding: 0;
+}
+.drop_con{
+    height: 175px;
+    overflow-y: auto;
+}
+:host ::ng-deep .ant-select{
+  border: 1px solid #FFFFFF!important;
+}

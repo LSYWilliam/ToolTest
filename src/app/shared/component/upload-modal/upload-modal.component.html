@@ -1,0 +1,37 @@
+<div class="card_title_18_bold">{{info}}</div>
+
+<div class="margin_top_10">
+    <nz-upload
+        class="card_title_14_bold"
+        [nzAction]="uploadUrl"
+        [nzHeaders]="header"
+        [nzPreview]="progess"
+        [nzSize]="fileSize"
+        [nzMultiple]="isMulImport"
+        (nzChange)="changeCallBack($event)">
+        <button nz-button>批量导入</button>
+    </nz-upload>
+</div>
+
+<!--文件大小-->
+<span *ngIf="fileSize" class="card_title_12">文件大小:{{fileSize}}字节</span>
+
+<!--进度条展示-->
+<nz-progress *ngIf="progess"  [ngModel]="progess"></nz-progress>
+
+<!--<div class="customize-footer">-->
+    <!--<button-->
+        <!--nz-button-->
+        <!--[nzType]="'primary'"-->
+        <!--[nzSize]="'large'"-->
+        <!--(click)="handleOk()">-->
+        <!--确认-->
+    <!--</button>-->
+    <!--<button-->
+        <!--nz-button-->
+        <!--[nzType]="'default'"-->
+        <!--[nzSize]="'large'"-->
+        <!--(click)="handleCancel($event)">-->
+        <!--取消-->
+    <!--</button>-->
+<!--</div>-->

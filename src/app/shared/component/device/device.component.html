@@ -1,0 +1,46 @@
+<div nz-row>
+    <div nz-col [nzSpan]="12" class="card_title_12">
+        <a (click)="insertDevice()" class="padding_right_10">新增</a>
+        <a (click)="editDevice()" class="padding_right_10">编辑</a>
+        <a  (click)='deleteDevice()' class="padding_right_10">删除</a>
+
+        <!--批量导入测试 开始-->
+        <a class="padding_right_10" (click)="uploadComponent()">批量导入</a>
+        <!--批量导入测试 结束-->
+        <a class="padding_right_10" (click)="templateDownload()">下载模板</a>
+
+    </div>
+
+    <div nz-col [nzSpan]="12" class="text_right card_title_12">
+        共有
+        <span class="card_title_14_sum">{{allDeviceSum|number :'1.0-1'}} </span>
+        台设备
+        <span *ngIf="type == true">
+            <span class="card_title_14_sum">{{useDeviceSum|number:'1.0-1'}}</span>
+            已申购
+        </span>
+    </div>
+</div>
+
+<!--<div nz-row [ngStyle]="{'height': windowHeight+'px'}">-->
+    <!--<app-table-->
+        <!--[tableInput]='tableHeaderData'-->
+        <!--[rowData]="tableRowData"-->
+        <!--(selectAllEvent)="selectRow($event)"-->
+        <!--(rowDoubleClickEvent)="doubleClick($event)"-->
+        <!--(rightEventDel)="rightEventDel()"-->
+        <!--(rightEventEdit)="rightEventEdit()"-->
+    <!--&gt;-->
+    <!--</app-table>-->
+<!--</div>-->
+
+<div nz-row [ngStyle]="{'height': windowHeight+'px'}">
+    <app-table
+        [tableInput]='tableHeaderData'
+        [rowData]="tableRowData"
+        (selectAllEvent)="selectRow($event)"
+        (rightEventDel)="rightEventDel()"
+        (rightEventEdit)="rightEventEdit()"
+    >
+    </app-table>
+</div>

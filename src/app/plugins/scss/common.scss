@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/*
+
+    Name:      style.css（公共样式）
+    Author:    chenli
+    syetem:    客流分析系统
+    time:      2017/10/17 15:23
+
+*/
+
+/* _color */
+$border_gray:#ececec;   //描边和标题下横线的灰色，输入框描边颜色
+$font_black:#666666;
+$red:#cc0000;   //红色：数据上升，TOP排名第一的颜色
+$orange:#ffa800;
+
+$white:#fff;   //白色
+$plugins_border_gray:#ececec;   //描边和标题下横线的灰色，输入框描边颜色
+$plugins_font_black:#666666;   //除了输入框内，所有文字颜色
+$plugins_input_font_gray:#a9a9a9;   //输入框中的文字颜色
+$bg_black:#3f454a;   //背景灰黑色：整个系统背景灰黑色
+/* _font 字体设置 */
+@mixin font_style($family,$color,$size,$weight){
+    font-family: $family;
+    color:$color;
+    font-size:$size;
+    font-weight:$weight;
+}
+
+.plugins_left{
+  float: left;
+}
+
+.plugins_right{
+  float: right;
+}
+

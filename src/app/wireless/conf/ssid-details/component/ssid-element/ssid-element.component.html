@@ -1,0 +1,66 @@
+<div appSSid ssidStatus={{confInfo.ssidStatus}} class="card_title_14_bold" style="display: block; height:auto;">
+    <div class="ssid_bg padding_left_10 ellipsis" #t title="{{confInfo.ssidName}}">{{confInfo.ssidName}}</div>
+    <!--访问控制-->
+    <div class="padding_left_10">
+        <a appLink linkStatus="{{confInfo.ssidStatus}}" (click)="openEdit()">编辑</a>
+    </div>
+    <!--加密方式-->
+    <div class="padding_left_10">{{confInfo.saftetyCertified}}</div>
+    <!--3A服务器-->
+    <div class="padding_left_10 ">{{confInfo.certification===1?'启用':'未启用'}}</div>
+    <!--Portal服务器-->
+    <nz-tooltip [nzTitle]="confInfo.portalServerName">
+        <div nz-tooltip class="padding_left_10 font_cut"
+             [class]="confInfo.certification===0?'padding_left_10 font_cut unEditable':'padding_left_10 font_cut'">
+            {{confInfo.portalServerName}}
+        </div>
+    </nz-tooltip>
+    <!--Radius服务器-->
+    <nz-tooltip [nzTitle]="confInfo.radiusServerName">
+        <div nz-tooltip class="padding_left_10 font_cut"
+             [class]="confInfo.certification===0?'padding_left_10 font_cut unEditable':'padding_left_10 font_cut'">
+            {{confInfo.radiusServerName}}
+        </div>
+    </nz-tooltip>
+    <!--射频-->
+    <div class="padding_left_10">{{confInfo.rf===0?'2G':(confInfo.rf===1?'5G':'2G/5G')}}</div>
+    <!--vlanId-->
+    <div class="padding_left_10">{{confInfo.vlanId}}</div>
+    <!--宽带限制-->
+    <div class="padding_left_10">{{confInfo.downSpeedLimit}}</div>
+    <!--客户端IP限制-->
+    <div class="padding_left_10">{{confInfo.ipDistribution}}</div>
+    <!--VPN-->
+    <div class="padding_left_10">{{confInfo.vpnAllow}}</div>
+    <!--<div class="padding_left_10">-->
+    <!--<app-dropdown-->
+    <!--[inDefault]="confInfo.blackEnable"-->
+    <!--[dropDowns]="dropDown"-->
+    <!--[status]="!confInfo.ssidStatus"-->
+    <!--(selectID)="setEnable($event,'2')">-->
+    <!--</app-dropdown>-->
+    <!--</div>-->
+
+    <!--<div class="padding_left_10">-->
+    <!--<a appLink linkStatus="{{confInfo.ssidStatus}}"  (click)="openListEdit('2')">编辑MAC地址</a>-->
+    <!--</div>-->
+
+    <!--<div class="padding_left_10">-->
+    <!--<app-dropdown-->
+    <!--[inDefault]="confInfo.whiteEnable"-->
+    <!--[dropDowns]="dropDown"-->
+    <!--[status]="!confInfo.ssidStatus"-->
+    <!--(selectID)="setEnable($event,'1')">-->
+    <!--</app-dropdown>-->
+    <!--</div>-->
+
+    <!--<div class="padding_left_10">-->
+    <!--<a appLink linkStatus="{{confInfo.ssidStatus}}" (click)="openListEdit('1')">编辑MAC地址</a>-->
+    <!--</div>-->
+
+    <div class="padding_left_10">
+        <nz-switch [(ngModel)]="confInfo.ssidStatus" (ngModelChange)="getIsOpenOrClose()"></nz-switch>
+    </div>
+    <div class="padding_left_10">{{confInfo.acl}}</div>
+</div>
+

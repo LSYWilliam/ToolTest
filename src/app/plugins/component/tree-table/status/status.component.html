@@ -1,0 +1,11 @@
+
+<nz-dropdown [nzTrigger]="'click'" *ngIf="params.value !== undefined">
+    <a href class="ant-dropdown-link" nz-dropdown>
+        {{params.value}}
+        <i class="anticon anticon-down"></i>
+    </a>
+    <ul nz-menu>
+        <li nz-menu-item *ngFor="let item of statusList" (click)="getMail(item)">{{item}}</li>
+    </ul>
+</nz-dropdown>
+

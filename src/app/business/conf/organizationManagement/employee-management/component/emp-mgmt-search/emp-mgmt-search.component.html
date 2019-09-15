@@ -1,0 +1,54 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'start'" class="search_name_lh">
+    <!--所属部门-->
+    <div nz-col [nzSpan]="7">
+        <span class="padding_right_10">所属部门</span>
+        <!--<app-dropdown-->
+            <!--[dropDowns]= "dropDownList"-->
+            <!--[inDefault]="deptName"-->
+            <!--(selectID)= "getDropDown($event)">-->
+        <!--</app-dropdown>-->
+        <nz-select
+            [ngStyle]="{'width': '270px'}"
+            [nzPlaceHolder]="'请选择部门'"
+            [nzNotFoundContent]="'无法找到'"
+            [nzSize]="'large'"
+            [(ngModel)]="deptId"
+            (ngModelChange)="ngModelChange($event)"
+            [ngModelOptions]="{standalone: true}"
+            [nzShowSearch]="true"
+            style="width:60%">
+            <nz-option
+                *ngFor="let option of dropDownList"
+                [nzLabel]="option.name"
+                [nzValue]="option.id">
+            </nz-option>
+        </nz-select>
+    </div>
+    <!--员工姓名-->
+    <div nz-col [nzSpan]="7" >
+        <span class="padding_right_10">员工姓名</span>
+        <nz-input
+            [nzType]="'text'"
+            [nzSize]="'large'"
+            [(ngModel)]="empName"
+            (ngModelChange)="empNameChange($event)"
+            style="width:60%">
+        </nz-input>
+    </div>
+    <!--员工工号-->
+    <div nz-col [nzSpan]="7" >
+        <span class="padding_right_10">员工工号</span>
+        <nz-input
+            [nzType]="'text'"
+            [nzSize]="'large'"
+            [(ngModel)]="jobNumber"
+            (ngModelChange)="jobNumberChange($event)"
+            style="width:60%">
+        </nz-input>
+    </div>
+
+    <!--清空-->
+    <div nz-col [nzSpan]="3" class="padding_left_25">
+        <a (click)="clear()">清空</a>
+    </div>
+</div>

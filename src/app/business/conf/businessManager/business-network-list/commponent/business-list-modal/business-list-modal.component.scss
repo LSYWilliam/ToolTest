@@ -1,0 +1,36 @@
+@import "../../../../../../../base";
+.modal_con{
+    width: 358px;
+    margin: 0 auto;
+}
+.ant-form-item-label{
+    text-align: left;
+}
+.ant-form-item{
+    margin-bottom: 0;
+}
+.error_red{
+    color: $color_red;
+}
+.ul_business{
+    max-height: 145px;
+    overflow: auto;
+    width: 268px;
+    position: absolute;
+    left:0px;
+    top:35px;
+    z-index: 122222;
+    background: #fff;
+    border: 1px solid rgb(204,204,204);
+    border-radius: 5px;
+    display: none;
+}
+.li_business{
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+}
+.li_business:hover {
+    background: #ECF6FD;
+    color: rgba(0, 0, 0, 0.65);
+}

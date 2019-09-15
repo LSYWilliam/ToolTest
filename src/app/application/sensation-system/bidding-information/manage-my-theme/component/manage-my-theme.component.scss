@@ -1,0 +1,12 @@
+@import '../../../../../../base.scss';
+
+.ant-table-wrapper{
+    display: block;height: 500px;
+}
+:host ::ng-deep .ant-input{
+    width: 200px!important;
+}
+.editable-tag ::ng-deep .ant-tag {
+    background: rgb(255, 255, 255);
+    border-style: dashed;
+}

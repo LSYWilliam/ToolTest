@@ -1,0 +1,147 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">姓名</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="visitorName"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入姓名'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('visitorName')&&getFormControl('visitorName').dirty&&getFormControl('visitorName').invalid">
+        <div nz-form-label nz-col [nzSpan]="6"  class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18"   class="card_title_12 error_red">2-32位至少字母或中文，不支持数字和其他特殊符号!</div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6"  nz-form-label class="card_title_14_bold">所在单位</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="visitorWorkPlace"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入所在单位'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('visitorWorkPlace')&&getFormControl('visitorWorkPlace').dirty&&getFormControl('visitorWorkPlace').invalid">
+        <div nz-form-label nz-col [nzSpan]="6"  class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18"   class="card_title_12 error_red">请填写不超过32位的所在单位情况!</div>
+    </div>
+
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6"  nz-form-label class="card_title_14_bold">性别</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <app-dropdown
+                [dropDowns]= "sexDropDownList"
+                (selectID)= "getSexDropDown($event)"
+                [inDefault]= "gender">
+            </app-dropdown>
+        </div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">被访人</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="inviter"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入被访人'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('inviter')&&getFormControl('inviter').dirty&&getFormControl('inviter').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">2-32位至少字母或中文，不支持数字和其他特殊符号!</div>
+    </div>
+
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">是否预约</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <app-dropdown
+                [dropDowns]= "isPrecontractDropDownList"
+                (selectID)= "getIsPrecontractDropDown($event)"
+                [inDefault]= "isPrecontract">
+            </app-dropdown>
+        </div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">到访时间</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-datepicker
+                formControlName="visitDate"
+                nzShowTime
+                [nzSize]="'large'"
+                [nzPlaceHolder]="'请输入到访时间'"
+                [nzFormat]="'YYYY-MM-DD HH:mm:ss'" style="width: 100%;"></nz-datepicker>
+        </div>
+
+    </div>
+
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">联系方式</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="visitorTel"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入11位电话号码'"
+                [nzSize]="'large'"
+                autocomplete='tel'>
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('visitorTel')&&getFormControl('visitorTel').dirty&&getFormControl('visitorTel').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">不符合11位手机号码格式!</div>
+    </div>
+
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">来访事由</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="reasons"
+                [nzRows]="2"
+                [nzType]="'textarea'"
+                [nzPlaceHolder]="'请输入来访事由'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('reasons')&&getFormControl('reasons').dirty&&getFormControl('reasons').invalid">
+        <div nz-form-label nz-col [nzSpan]="6"  class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18"   class="card_title_12 error_red">请填写不超过200位的来访事由!</div>
+    </div>
+    <div nz-form-item nz-row style="margin-top: 20px;">
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">访客备注</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="remark"
+                [nzRows]="2"
+                [nzType]="'textarea'"
+                [nzPlaceHolder]="'请输入备注'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('remark')&&getFormControl('remark').dirty&&getFormControl('remark').invalid">
+        <div nz-form-label nz-col [nzSpan]="6"  class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18"   class="card_title_12 error_red">请填写不超过200位的访客备注!</div>
+    </div>
+    <div class="customize-footer">
+        <button
+            nz-button
+            [nzType]="'primary'"
+            [nzSize]="'large'"
+            (click)="submitForm($event,validateForm.value)">
+            保存
+        </button>
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="resetForm($event)">
+            取消
+        </button>
+    </div>
+</form>

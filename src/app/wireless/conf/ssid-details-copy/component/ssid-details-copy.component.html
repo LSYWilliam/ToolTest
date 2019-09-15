@@ -1,0 +1,50 @@
+<!--面包屑导航 开始-->
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>我的设备</nz-breadcrumb-item>
+    <nz-breadcrumb-item>我的AP</nz-breadcrumb-item>
+    <nz-breadcrumb-item>SSID清单</nz-breadcrumb-item>
+</nz-breadcrumb>
+<!--面包屑导航 结束-->
+
+<!--网络下拉框 开始-->
+<!--<div nz-row>-->
+    <!--<app-dropdown-->
+        <!--[dropDowns] = "ssidDetailsModel.dropDowns"-->
+        <!--[inDefault] = "netName"-->
+        <!--(selectID)="getDropDown($event)">-->
+    <!--</app-dropdown>-->
+<!--</div>-->
+<!--网络下拉框 结束-->
+
+<!--SSID清单 开始-->
+<div nz-col class="margin_top_10">
+    <div nz-row>
+        <div nz-col [nzSpan]="3" class="card_title_14">
+            <div class="card_title_14 ssid_bg"></div>
+            <div class="card_title_14_bold">访问控制</div>
+            <div class="padding_left_25">加密方式</div>
+            <div class="padding_left_25">eWiFi</div>
+            <div class="padding_left_25">Portal服务器</div>
+            <div class="padding_left_25">Radius服务器</div>
+            <div class="padding_left_25">射频</div>
+            <div class="padding_left_25">VLAN ID</div>
+            <div class="padding_left_25">宽带限制</div>
+            <div class="padding_left_25">客户端IP限制</div>
+            <div class="padding_left_25">VPN</div>
+            <!--<div class="card_title_14_bold">黑名单</div>-->
+            <!--<div class="card_title_14"></div>-->
+            <!--<div class="card_title_14_bold">白名单</div>-->
+            <!--<div class="card_title_14"></div>-->
+            <div class="card_title_14_bold">是否启用</div>
+            <div class="card_title_14_bold">ACL</div>
+        </div>
+        <div nz-col [nzSpan]="21">
+            <div nz-row>
+                <div *ngFor="let element of ssidDetailsModel.ssidListData" nz-col [nzSpan]="3">
+                    <app-ssid-element [message]="message" [confInfo]="element" [netId]="netID"></app-ssid-element>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--SSID清单 结束-->

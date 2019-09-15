@@ -1,0 +1,44 @@
+@import "../../../../base";
+
+.net_attention_web{
+    width: 98%;
+    height: 148px;
+    border: 1px solid $color_grey;
+}
+.net_attention_web:hover{
+    border-color: rgb(16,142,233);
+}
+.net_icon{
+    font-size: 6em;
+}
+.firmware_icon{
+    font-size: 9em;
+}
+.card_title_color{
+    color: $color_red;
+}
+.text_overflow{
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

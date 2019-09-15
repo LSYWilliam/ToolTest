@@ -1,0 +1,39 @@
+/*
+
+    Name:      card.css
+    Author:    吴双
+    syetem:    公共组件库
+    time:      2018/01/26
+
+*/
+@import "../../scss/common";
+.intructions{
+  background: #fff;
+  height: 300px;
+  border: 1px solid #e9e9e9;
+  margin-top: 20px;
+}
+.cardHover:hover{
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.ant-layout-header{
+  padding: 0 8px;
+  background: #ffffff;
+}
+
+.card_title,.card_tip{
+  display: inline-block;
+}
+
+.card_title{
+  padding-right: 20px;
+}
+
+.card_content{
+  border-top: 1px solid #e9e9e9;
+}
+
+.bordered{
+  border: none;
+}

@@ -1,0 +1,34 @@
+/*
+
+    Name:      notFound.component.scss
+    Author:    chenli
+    syetem:    客流分析系统
+    time:      2017/10/27 15:19
+
+*/
+
+@import "../../../scss/common";
+
+.not_found_bg{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: $border_gray;
+}
+.not_found_con{
+    position: absolute;
+    width: 320px;
+    left: 50%;
+    margin-left: -160px;
+    top: 30%;
+}
+.not_found_firstline{
+    height: 100px;
+    line-height: 100px;
+}
+.font_80{
+    font-size: 80px;
+}
+.font_24{
+    font-size: 24px;
+}

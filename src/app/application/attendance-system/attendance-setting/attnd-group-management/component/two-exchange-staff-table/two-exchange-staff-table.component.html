@@ -1,0 +1,36 @@
+<div nz-row>
+    <div nz-col [nzSpan]="10" class="card_title_14_bold">可选员工</div>
+    <div nz-col [nzSpan]="10" class="card_title_14_bold" [nzOffset]="4">已选员工</div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="10">
+        <app-table #leftTable
+                   [tableInput]="tableInput"
+                   [rowData]="leftTableData"
+                   (selectAllEvent)="selectAllItems($event)">
+        </app-table>
+    </div>
+
+    <div nz-col [nzSpan]="4">
+        <div nz-row  [nzType]="'flex'" [nzJustify]="'space-around'">
+            <div nz-col [nzSpan]="24" class="font_center">
+                <button nz-button [nzType]="'primary'" (click)="right2leftClick()">
+                    <i class="anticon anticon-left" ></i>
+                </button>
+            </div>
+            <div nz-col [nzSpan]="24" class="margin_top_10 font_center">
+                <button nz-button [nzType]="'primary'" (click)="left2rightClick()">
+                    <i class="anticon anticon-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div nz-col [nzSpan]="10">
+        <app-table #rightTable
+                   [tableInput]="tableInput"
+                   [rowData]="rightTableData"
+                   (selectAllEvent)="selectAllItems($event)">
+        </app-table>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>企业中心</nz-breadcrumb-item>
+    <nz-breadcrumb-item>认证用户列表</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<app-zorro-page-table
+    [dataSet]="dataSet"
+    [headData]="staticDataModel.tableInput"
+    [isCheckBox]="isCheckBox"
+    [resetArray]="resetArray"
+    (tableOperateEvent)="tableOperateEvent($event)"
+></app-zorro-page-table>

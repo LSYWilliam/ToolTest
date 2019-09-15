@@ -1,0 +1,114 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">适配器组地址</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <app-dropdown
+                [dropDowns]= "dropDownList"
+                (selectID)= "getDropDown($event)"
+                [inDefault]= "adapterGroupIp">
+            </app-dropdown>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="validateIP()">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请选择一个适配器组地址!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">适配器名称</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="adapterName"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入适配器名称'"
+                [nzSize]="'large'"
+                autocomplete='name'>
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('adapterName')&&getFormControl('adapterName').dirty&&getFormControl('adapterName').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入2-20个字符，不支持特殊字符!</div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">适配器地址</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="adapterIp"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入如下格式的IP:255.255.255.255'"
+                [nzSize]="'large'"
+                autocomplete='name'>
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('adapterIp')&&getFormControl('adapterIp').dirty&&getFormControl('adapterIp').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入正确格式的ip!</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">AP注册端口</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)]="port"
+                formControlName="port"
+                (keyup)="onKeyup($event)"
+                (keypress)="onKeypress($event)"
+                (blur)="onBlur($event)"
+                [nzReadonly]=true
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('port')&&getFormControl('port').dirty&&getFormControl('port').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入正确格式的端口号!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">交换机注册端口</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)]="port2"
+                formControlName="port2"
+                (keyup)="onKeyup($event)"
+                (keypress)="onKeypress($event)"
+                (blur)="onBlur($event)"
+                [nzReadonly]=true
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('port2')&&getFormControl('port2').dirty&&getFormControl('port2').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入正确格式的端口号!</div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">备注</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="remark"
+                [nzRows]="2"
+                [nzType]="'textarea'"
+                [nzPlaceHolder]="'请输入备注'"
+                [nzSize]="'large'"
+                autocomplete='tel'>
+            </nz-input>
+        </div>
+    </div>
+    <div class="customize-footer">
+        <button
+            nz-button
+            [nzType]="'primary'"
+            [nzSize]="'large'"
+            (click)="submitForm($event,validateForm.value)">
+            保存
+        </button>
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="resetForm($event)">
+            取消
+        </button>
+    </div>
+</form>

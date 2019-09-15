@@ -1,0 +1,436 @@
+<ul [nzTheme]="'#fff'" nz-menu [nzMode]="'inline'" style="padding-top: 20px;">
+    <li [appLayout]="menuList.wholeNetworkMonitor[0]" nz-submenu [(nzOpen)]="isOpenOne"
+        (nzOpenChange)="openChange('one')">
+        <span title><i class="icon-style anticon icon-Monitor3"></i>{{menuList.wholeNetworkMonitor[1]}}</span>
+        <ul>
+            <li [appLayout]="menuList.overview[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.overview[2]]">
+                    <span title>{{menuList.overview[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.networkOverview[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.networkOverview[2]]">
+                    <span title>{{menuList.networkOverview[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.enterpriseOverview[0]" nz-submenu [(nzOpen)]="isOpenEight"
+                (nzOpenChange)="openChange('eight')">
+                <span title>{{menuList.enterpriseOverview[1]}}</span>
+                <ul>
+                    <li [appLayout]="menuList.apList[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.apList[2]]">
+                            <span title>{{menuList.apList[1]}}</span>
+                        </a>
+                    </li>
+                    <li [appLayout]="menuList.switchDeviceList[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.switchDeviceList[2]]">
+                            <span title>{{menuList.switchDeviceList[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+    <li [appLayout]="menuList.myDevice[0]" nz-submenu [(nzOpen)]="isOpenTwo" (nzOpenChange)="openChange('two')">
+        <span title><i class="icon-style anticon icon-luyou3"></i>{{menuList.myDevice[1]}}</span>
+        <ul>
+            <li [appLayout]="menuList.myAp[0]" nz-submenu [(nzOpen)]="isOpenNine" (nzOpenChange)="openChange('nine')">
+                <span title>{{menuList.myAp[1]}}</span>
+                <ul>
+                    <li [appLayout]="menuList.ssidDetails[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.ssidDetails[2]]">
+                            <span title>{{menuList.ssidDetails[1]}}</span>
+                        </a>
+                    </li>
+                    <li [appLayout]="menuList.radioFrequencyManagement[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.radioFrequencyManagement[2]]">
+                            <span title>{{menuList.radioFrequencyManagement[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+    <li [appLayout]="menuList.myNetwork[0]" nz-submenu [(nzOpen)]="isOpenThree" (nzOpenChange)="openChange('three')">
+        <span title><i class="icon-style anticon icon-ACwifi"></i>{{menuList.myNetwork[1]}}</span>
+        <ul>
+            <li [appLayout]="menuList.networkManagement[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.networkManagement[2]]">
+                    <span title>{{menuList.networkManagement[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.authentication[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.authentication[2]]">
+                    <span title>{{menuList.authentication[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.probeConf[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.probeConf[2]]">
+                    <span title>{{menuList.probeConf[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="true" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.logManagement[2]]">
+                    <span title>{{menuList.logManagement[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.onlineClientManagement[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.onlineClientManagement[2]]">
+                    <span title>{{menuList.onlineClientManagement[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.alertManagement[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.alertManagement[2]]">
+                    <span title>{{menuList.alertManagement[1]}}</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li [appLayout]="menuList.corporateCenter[0]" nz-submenu [(nzOpen)]="isOpenFour"
+        (nzOpenChange)="openChange('four')">
+        <span title><i class="icon-style anticon icon-company"></i>{{menuList.corporateCenter[1]}}</span>
+        <ul>
+            <li [appLayout]="menuList.businessInformation[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.businessInformation[2]]">
+                    <span title>{{menuList.businessInformation[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.businessList[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.businessList[2]]">
+                    <span title>{{menuList.businessList[1]}}</span>
+                </a>
+            </li>
+
+            <!--<li [appLayout]="true" nz-menu-item routerLinkActive="active">-->
+                <!--<a [routerLink]="['/business-network-list']">-->
+                    <!--<span title>网络列表管理</span>-->
+                <!--</a>-->
+            <!--</li>-->
+
+            <li [appLayout]="menuList.businessNetworkList[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.businessNetworkList[2]]">
+                    <span title>{{menuList.businessNetworkList[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.userManage[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.userManage[2]]">
+                    <span title>{{menuList.userManage[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.roleManage[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.roleManage[2]]">
+                    <span title>{{menuList.roleManage[1]}}</span>
+                </a>
+            </li>
+
+            <li [appLayout]="menuList.plantAssetManagement[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.plantAssetManagement[2]]">
+                    <span title>{{menuList.plantAssetManagement[1]}}</span>
+                </a>
+            </li>
+
+            <!--<li [appLayout]="menuList.equipmentAssetManagement[0]" nz-menu-item routerLinkActive="active">-->
+                <!--<a [routerLink]="[menuList.equipmentAssetManagement[2]]">-->
+                    <!--<span title>{{menuList.equipmentAssetManagement[1]}}</span>-->
+                <!--</a>-->
+            <!--</li>-->
+
+            <!--<li [appLayout]="menuList.authenticateUserList[0]" nz-menu-item routerLinkActive="active">-->
+                <!--<a [routerLink]="[menuList.authenticateUserList[2]]">-->
+                    <!--<span title>{{menuList.authenticateUserList[1]}}</span>-->
+                <!--</a>-->
+            <!--</li>-->
+
+            <li [appLayout]="true" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="'/equipment-asset-management'">
+                    <span title>设备资产管理</span>
+                </a>
+            </li>
+
+            <li [appLayout]="true" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="'/authenticate-user-list'">
+                    <span title>认证用户列表</span>
+                </a>
+            </li>
+
+            <li nz-submenu [appLayout]="menuList.organizationManagement[0]" [(nzOpen)]="isOpenSixteen"
+                (nzOpenChange)="openChange('sixteen')">
+                <span title>{{menuList.organizationManagement[1]}}</span>
+                <ul>
+                    <li nz-menu-item [appLayout]="menuList.departmentManagement[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.departmentManagement[2]]">
+                            <span title>{{menuList.departmentManagement[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="menuList.employeeManagement[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.employeeManagement[2]]">
+                            <span title>{{menuList.employeeManagement[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="menuList.employeeTerminalManagement[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.employeeTerminalManagement[2]]">
+                            <span title>{{menuList.employeeTerminalManagement[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="true" routerLinkActive="active">
+                        <a [routerLink]="[menuList.visitorCertificationRecord[2]]">
+                            <span title>{{menuList.visitorCertificationRecord[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li [appLayout]="menuList.switchDeviceManagement[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.switchDeviceManagement[2]]">
+                    <span title>{{menuList.switchDeviceManagement[1]}}</span>
+                </a>
+            </li>
+            <li [appLayout]="menuList.businessDingTalk[0]" nz-menu-item routerLinkActive="active">
+                <a [routerLink]="[menuList.businessDingTalk[2]]">
+                    <span title>{{menuList.businessDingTalk[1]}}</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li [appLayout]="menuList.deviceCenter[0]" nz-submenu [(nzOpen)]="isOpenFive" (nzOpenChange)="openChange('five')">
+        <span title><i class="icon-style anticon icon-work"></i>{{menuList.deviceCenter[1]}}</span>
+        <ul>
+            <li nz-submenu [appLayout]="menuList.apRegisterManagement[0]" [(nzOpen)]="isOpenSeventeen"
+                (nzOpenChange)="openChange('seventeen')">
+                <span title>{{menuList.apRegisterManagement[1]}}</span>
+                <ul>
+                    <li nz-menu-item [appLayout]="menuList.apRegister[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.apRegister[2]]">
+                            <span title>{{menuList.apRegister[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="menuList.adapterManagement[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.adapterManagement[2]]">
+                            <span title>{{menuList.adapterManagement[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="menuList.apResourceMonitor[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.apResourceMonitor[2]]">
+                            <span title>{{menuList.apResourceMonitor[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li nz-submenu [appLayout]="menuList.adapterGroupRegisterManagement[0]" [(nzOpen)]="isOpenEighteen"
+                (nzOpenChange)="openChange('eighteen')">
+                <span title>{{menuList.adapterGroupRegisterManagement[1]}}</span>
+                <ul>
+                    <li nz-menu-item [appLayout]="[menuList.adapterGroupRegister[0]]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.adapterGroupRegister[2]]">
+                            <span title>{{menuList.adapterGroupRegister[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="[menuList.adapterGroupManagement[0]]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.adapterGroupManagement[2]]">
+                            <span title>{{menuList.adapterGroupManagement[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li nz-menu-item [appLayout]="menuList.firmwareManagementPlatform[0]" routerLinkActive="active">
+                <a [routerLink]="[menuList.firmwareManagementPlatform[2]]">
+                    <span title>{{menuList.firmwareManagementPlatform[1]}}</span>
+                </a>
+            </li>
+
+            <li nz-menu-item [appLayout]="menuList.firmwareManagement[0]" routerLinkActive="active">
+                <a [routerLink]="[menuList.firmwareManagement[2]]">
+                    <span title>{{menuList.firmwareManagement[1]}}</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li [appLayout]="menuList.attendenceSystem[0]" nz-submenu [(nzOpen)]="isOpenSix" (nzOpenChange)="openChange('six')">
+        <span title><i class="icon-style anticon icon-work"></i>{{menuList.attendenceSystem[1]}}</span>
+        <ul>
+            <li nz-submenu [appLayout]="menuList.systemManagement[0]" [(nzOpen)]="isOpenTen"
+                (nzOpenChange)="openChange('ten')">
+                <span title>{{menuList.systemManagement[1]}}</span>
+                <ul>
+                    <li nz-menu-item [appLayout]="menuList.deptBasicInfoManagement[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.deptBasicInfoManagement[2]]">
+                            <span title>{{menuList.deptBasicInfoManagement[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="menuList.staffBasicInfoManagement[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.staffBasicInfoManagement[2]]">
+                            <span title>{{menuList.staffBasicInfoManagement[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!--<li nz-submenu [appLayout] = "menuList.visitorManagement[0]"  >-->
+            <!--<span title>{{menuList.visitorManagement[1]}}</span>-->
+            <!--<ul>-->
+            <!--<li [appLayout] = "menuList.onlineVisitors[0]" nz-menu-item routerLinkActive="active">-->
+            <!--<a  [routerLink] = "[menuList.onlineVisitors[2]]">-->
+            <!--<span title>{{menuList.onlineVisitors[1]}}</span>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li [appLayout] = "menuList.networkVisitor[0]" nz-menu-item routerLinkActive="active">-->
+            <!--<a  [routerLink] = "[menuList.networkVisitor[2]]" >-->
+            <!--<span title>{{menuList.networkVisitor[1]}}</span>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li [appLayout] = "menuList.visitorRegistration[0]" nz-menu-item routerLinkActive="active">-->
+            <!--<a  [routerLink] = "[menuList.visitorRegistration[2]]" >-->
+            <!--<span title>{{menuList.visitorRegistration[1]}}</span>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <li nz-submenu [appLayout]="menuList.attendanceSetting[0]" [(nzOpen)]="isOpenEleven"
+                (nzOpenChange)="openChange('eleven')">
+                <span title>{{menuList.attendanceSetting[1]}}</span>
+                <ul>
+                    <li [appLayout]="menuList.attndGroupManagement[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.attndGroupManagement[2]]">
+                            <span title>{{menuList.attndGroupManagement[1]}}</span>
+                        </a>
+                    </li>
+                    <li [appLayout]="menuList.workShiftManagement[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.workShiftManagement[2]]">
+                            <span title>{{menuList.workShiftManagement[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li nz-submenu [appLayout]="menuList.staffAttendance[0]" [(nzOpen)]="isOpenTwelve"
+                (nzOpenChange)="openChange('twelve')">
+                <span title>{{menuList.staffAttendance[1]}}</span>
+                <ul>
+                    <li nz-menu-item [appLayout]="menuList.onlineStaff[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.onlineStaff[2]]">
+                            <span title>{{menuList.onlineStaff[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="menuList.dailyStatistics[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.dailyStatistics[2]]">
+                            <span title>{{menuList.dailyStatistics[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="menuList.monthlySummary[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.monthlySummary[2]]">
+                            <span title>{{menuList.monthlySummary[1]}}</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item [appLayout]="menuList.onlineUsers[0]" routerLinkActive="active">
+                        <a [routerLink]="[menuList.onlineUsers[2]]">
+                            <span title>{{menuList.onlineUsers[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+    <li [appLayout]="menuList.sensationSystem[0]" nz-submenu [(nzOpen)]="isOpenSeven"
+        (nzOpenChange)="openChange('seven')">
+        <span title><i class="icon-style anticon icon-money"></i>{{menuList.sensationSystem[1]}}</span>
+        <ul>
+            <li [appLayout]="menuList.biddingInformation[0]" nz-submenu [(nzOpen)]="isOpenThirteen"
+                (nzOpenChange)="openChange('thirteen')">
+                <span title>{{menuList.biddingInformation[1]}}</span>
+                <ul>
+                    <li [appLayout]="menuList.examineMyTheme[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.examineMyTheme[2]]">
+                            <span title>{{menuList.examineMyTheme[1]}}</span>
+                        </a>
+                    </li>
+                    <li [appLayout]="menuList.manageMyTheme[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.manageMyTheme[2]]">
+                            <span title>{{menuList.manageMyTheme[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li [appLayout]="menuList.myTrack[0]" nz-submenu [(nzOpen)]="isOpenFourteen"
+                (nzOpenChange)="openChange('fourteen')">
+                <span title>{{menuList.myTrack[1]}}</span>
+                <ul>
+                    <li [appLayout]="menuList.myAttention[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.myAttention[2]]">
+                            <span title>{{menuList.myAttention[1]}}</span>
+                        </a>
+                    </li>
+                    <li [appLayout]="menuList.myRecycleBin[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.myRecycleBin[2]]">
+                            <span title>{{menuList.myRecycleBin[1]}}</span>
+                        </a>
+                    </li>
+                    <li [appLayout]="menuList.openBid[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.openBid[2]]">
+                            <span title>{{menuList.openBid[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li [appLayout]="menuList.governmentInformation[0]" nz-submenu [(nzOpen)]="isOpenFifteen"
+                (nzOpenChange)="openChange('fifteen')">
+                <span title>{{menuList.governmentInformation[1]}}</span>
+                <ul>
+                    <li [appLayout]="menuList.examineMySniffer[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.examineMySniffer[2]]">
+                            <span title>{{menuList.examineMySniffer[1]}}</span>
+                        </a>
+                    </li>
+                    <li [appLayout]="menuList.manageMySniffer[0]" nz-menu-item routerLinkActive="active">
+                        <a [routerLink]="[menuList.manageMySniffer[2]]">
+                            <span title>{{menuList.manageMySniffer[1]}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+    <li [appLayout]="menuList.workOrderManage[0]" nz-menu-item routerLinkActive="active">
+        <a [routerLink]="[menuList.workOrderManage[2]]">
+            <span title><i class="icon-style anticon icon-work"></i>{{menuList.workOrderManage[1]}}</span>
+        </a>
+    </li>
+
+    <li [appLayout]="menuList.installRecord[0]" nz-menu-item routerLinkActive="active">
+        <a [routerLink]="[menuList.installRecord[2]]">
+            <span title><i class="icon-style anticon icon-work"></i>{{menuList.installRecord[1]}}</span>
+        </a>
+    </li>
+
+    <!--<li [appLayout]="menuList.wxEdit[0]" nz-menu-item routerLinkActive="active">-->
+        <!--<a [routerLink]="[menuList.wxEdit[2]]">-->
+            <!--<span title><i class="icon-style anticon icon-work"></i>{{menuList.wxEdit[1]}}</span>-->
+        <!--</a>-->
+    <!--</li>-->
+
+    <li [appLayout]="menuList.applicationStore[0]" nz-menu-item routerLinkActive="active">
+        <a [routerLink]="[menuList.applicationStore[2]]">
+            <span title><i class="icon-style anticon icon-work"></i>{{menuList.applicationStore[1]}}</span>
+        </a>
+    </li>
+
+
+</ul>
+
+
+

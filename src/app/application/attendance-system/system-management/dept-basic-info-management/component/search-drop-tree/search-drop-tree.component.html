@@ -1,0 +1,20 @@
+<div nz-row class="margin_top_10 card_title_12">
+    <nz-select
+        style="width: 155px;"
+        nzAllowClear
+        [nzPlaceHolder]="''"
+        [(ngModel)]="selectedOption"
+        [nzShowSearch]="true"
+        (ngModelChange) = "onSearch($event)">
+
+        <nz-option
+            *ngFor="let option of searchOptions"
+            [nzLabel]="option.label"
+            [nzValue]="option.value">
+        </nz-option>
+    </nz-select>
+</div>
+<app-dept-drop-tree
+    [dataMenu]="dataMenu"
+    (selectedItem)="menuClick($event)">
+</app-dept-drop-tree>

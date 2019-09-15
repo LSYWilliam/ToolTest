@@ -1,0 +1,18 @@
+@import '../../../../base';
+.set_name{
+    width: 30%;
+    padding-left: 5%;
+}
+.set_value{
+    width: 65%;
+    line-height: 35px;
+}
+.set_explain{
+    padding-left: 30%;
+}
+:host ::ng-deep .drop_font_style{
+    line-height: 35px!important;
+    height: 35px!important;
+    font-size: 12px!important;
+    font-weight: normal!important;
+}

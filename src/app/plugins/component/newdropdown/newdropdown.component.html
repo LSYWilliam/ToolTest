@@ -1,0 +1,19 @@
+<!-- <nz-dropdown-button [nzDisabled]="status">
+    <span class="drop_font_style">{{ngModelValue}}</span>
+    <ul nz-menu class="drop_con">
+        <li *ngFor="let item of dropDownList" nz-menu-item (click)="selectDropDown(item)">
+            {{item.name}}
+        </li>
+    </ul>
+</nz-dropdown-button> -->
+<nz-dropdown>
+    <span [ngStyle]="{'font-size': fontSize+'px'}" nz-dropdown>
+        {{ngModelValue}} <i class="anticon anticon-down"></i>
+    </span>
+    <ul nz-menu class="drop_con" [ngStyle]="{'height': height+'px'}">
+        <li [ngStyle]="{'font-size': fontSize+'px'}"
+            *ngFor="let item of dropDownList" nz-menu-item (click)="selectDropDown(item)">
+            {{item.name}}
+        </li>
+    </ul>
+</nz-dropdown>

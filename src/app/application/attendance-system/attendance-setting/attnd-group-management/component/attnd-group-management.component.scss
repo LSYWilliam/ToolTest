@@ -1,0 +1,18 @@
+@import '../../../../../../base.scss';
+
+.ant-table-wrapper{
+    display: block;height: 500px;
+}
+:host ::ng-deep .ant-input{
+    width: 200px!important;
+}
+:host ::ng-deep .ant-form-item{
+    margin-bottom: 0px;
+}
+
+.ant-form-item-label{
+    text-align: left;
+}
+.error_red{
+    color: $color_red;
+}

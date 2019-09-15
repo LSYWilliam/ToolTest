@@ -1,0 +1,31 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'start'">
+    <div nz-col [nzSpan]="24" class="card_title_18_bold">
+        访客认证记录
+    </div>
+    <div nz-col [nzSpan]="24" class="border">
+        <app-visitor-certification-record-search
+            [startTime]="startTime"
+            [endTime]="endTime"
+            [mac]="mac"
+            [telephone]="telephone"
+            (output)="search($event)">
+        </app-visitor-certification-record-search>
+    </div>
+</div>
+<div nz-row class="margin_top_10">
+    <div nz-col [nzSpan]="24">
+        <span class="card_title_18_bold">终端列表（{{visitorCertificationRecordDataModel.list.length}}）</span><a (click)="loadButton()" class="padding_left_10 ">导出数据</a>
+    </div>
+</div>
+<div nz-row class="">
+    <div nz-col [nzSpan]="24" [ngStyle]="{'height': '600px'}">
+        <app-table
+            [tableInput]="visitorCertificationRecordHeadDataModel.tableInput"
+            [rowData]="visitorCertificationRecordDataModel.list"
+            (selectAllEvent)="selectAllItems($event)"
+            (cellClickEvent)="cellClickEvent($event)"
+            (rowDoubleClickEvent)="doubleClick($event)"
+            (getDowLength)="getDowLength($event)">
+        </app-table>
+    </div>
+</div>

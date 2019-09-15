@@ -1,0 +1,135 @@
+<div nz-row>
+    <i class="icon-ACback icon_explain card_title_14_bold icon_cursor" (click)="goBackShow()"></i>
+</div>
+
+<div nz-row>
+    <span class="card_title_18_bold">{{flag}}嗅探</span>
+    <a  (click)="saveTopic()" class="card_title_12 padding_left_10">保存</a>
+</div>
+
+<div nz-row>
+    <div nz-col [nzSpan]="2" class="card_title_14_bold">嗅探名称</div>
+    <div nz-col [nzSpan]="22" class="card_title_14">
+        <input nz-input
+               #topicTarget
+               placeholder="请输入主题名称"
+               (keyup)="themeValidate($event)"
+               [(ngModel)]="topicData.topicName"
+        >
+    </div>
+</div>
+<p style="color: red; text-indent: 8.33333333%;"><span *ngIf="isSuccess" >只支持字母和中文且2-30位!</span></p>
+
+<div nz-row class="auto_height">
+    <div nz-col [nzSpan]="2" class="card_title_14_bold">添加网站</div>
+    <div nz-col [nzSpan]="22">
+        <app-tag [type] = "true"
+                 [title]="'添加(最多可添加五项)'"
+                 [maxLength]= 5
+                 [defaultValue] = 'topicData.webSiteInfo'
+                 (tagValue)="setTagValue($event, 'webSiteInfo')"
+                 style="line-height: 35px;"
+        ></app-tag>
+    </div>
+</div>
+
+<div nz-row style="height: 120px;">
+    <div nz-col [nzSpan]="2" class="card_title_14_bold"> 匹配词 </div>
+    <div nz-col [nzSpan]="22" class="card_title_14">
+        <textarea row="10"
+                  nz-input
+                  [(ngModel)]="topicData.matchWord"
+                  #matchTarget
+                  (blur)="onBlur()"
+                  (keyup)="wordValidate(true,$event)"
+                  style="min-height: 100px;max-height: 100px;"></textarea>
+        <nz-tooltip [nzTitle]="'爬虫匹配的关键词,多个关键字用逗号隔开'" [nzPlacement]="'right'">
+                <span nz-tooltip>
+                    <i class="icon-ACexplain1 icon_explain"></i>
+                </span>
+        </nz-tooltip>
+    </div>
+</div>
+<p style="color: red; text-indent: 8.33333333%;"><span *ngIf="matchWordBool" >只支持字母和中文且最多5个匹配词!</span></p>
+
+<div nz-row style="height: 120px;">
+    <div nz-col [nzSpan]="2" class="card_title_14_bold"> 排除词 </div>
+    <div nz-col [nzSpan]="22" class="card_title_14">
+        <textarea row="10"
+                  nz-input
+                  #misMatchTarget
+                  [(ngModel)]="topicData.mismatchWord"
+                  (blur)="onBlur()"
+                  (keyup)="wordValidate(false,$event)"
+                  style="min-height: 100px;max-height: 100px;"></textarea>
+        <nz-tooltip [nzTitle]="'爬虫匹配的关键词,多个关键字用逗号隔开'" [nzPlacement]="'right'">
+                <span nz-tooltip>
+                    <i class="icon-ACexplain1 icon_explain"></i>
+                </span>
+        </nz-tooltip>
+    </div>
+</div>
+<p style="color: red; text-indent: 8.33333333%;"><span *ngIf="removeWordBool" >只支持字母和中文且最多5个排除词!</span></p>
+
+<div nz-row class="auto_height">
+    <div nz-col [nzSpan]="2" class="card_title_14_bold"> 行业 </div>
+    <div nz-col [nzSpan]="22">
+        <nz-select
+            nzMode="tags"
+            style="width: 260px;"
+            nzPlaceHolder="请选择行业"
+            [nzNotFoundContent]="'无法找到'"
+            [nzMaxMultiple] = "5"
+            [(ngModel)]="topicData.industry">
+            <nz-option *ngFor="let option of industryList" [nzLabel]="option.label" [nzValue]="option.value">
+            </nz-option>
+        </nz-select>
+    </div>
+</div>
+
+<div nz-row style="height: 140px;">
+    <div nz-col [nzSpan]="2" class="card_title_14_bold"> 区域 </div>
+    <div nz-col [nzSpan]="22" class="card_title_14">
+        <app-link-list (outData)="selectArea($event)"></app-link-list>
+        <a  (click)="addArea()" class="card_title_12">添加</a>
+        <div class="result_box">
+            <nz-tag
+                *ngFor = "let item of topicData.region "
+                nzClosable="true"
+                (nzClose)="closeArea(item)">
+                {{item}}
+            </nz-tag>
+        </div>
+    </div>
+</div>
+
+<div nz-row>
+    <div nz-col [nzSpan]="2" class="card_title_14_bold">
+        推送通知
+    </div>
+    <div nz-col [nzSpan]="22" class="card_title_14">
+        <nz-switch [(ngModel)]="topicData.pushNotice"></nz-switch>
+    </div>
+
+    <div *ngIf = "topicData.pushNotice">
+        <div nz-col [nzSpan]="2" class="card_title_14" style="text-indent: 20px;"> 推送周期 </div>
+        <div nz-col [nzSpan]="22" class="card_title_14">
+            <nz-radio-group [(ngModel)]="radioValue">
+                <label nz-radio [nzValue]="'A'">
+                    <span>每天</span>
+                </label>
+            </nz-radio-group>
+        </div>
+
+        <div nz-col [nzSpan]="2" class="card_title_14" style="text-indent: 20px;"> 推送邮箱 </div>
+        <div nz-col [nzSpan]="22" class="card_title_14">
+            <app-tag [type] = "false"
+                     [title]="'添加(最多可添加十项)'"
+                     [maxLength]= 10
+                     [defaultValue] = 'topicData.mailReceiver'
+                     (tagValue)="setTagValue($event, 'mailReceiver')"
+            ></app-tag>
+        </div>
+    </div>
+
+</div>

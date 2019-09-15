@@ -1,0 +1,17 @@
+<div *ngIf="isValue; then value else object"></div>
+<ng-template #value>
+    {{params.value}}
+</ng-template>
+
+
+<ng-template #object>
+    <nz-dropdown [nzTrigger]="'click'" *ngIf="params.value !== null && params.value.value!=='null'">
+        <a href class="ant-dropdown-link" nz-dropdown>
+            {{params.value.value}}
+            <i *ngIf="params.value.valList !== null" class="anticon anticon-down"></i>
+        </a>
+        <ul nz-menu>
+            <li nz-menu-item *ngFor="let item of params.value.valList" (click)="getLiVal(item)">{{item}}</li>
+        </ul>
+    </nz-dropdown>
+</ng-template>

@@ -1,0 +1,23 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>数据监控台</nz-breadcrumb-item>
+    <nz-breadcrumb-item>企业设备概况</nz-breadcrumb-item>
+    <nz-breadcrumb-item>AP清单</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div nz-row>
+    <app-dropdown [dropDowns]= "apListModel.dropDowns" (selectID)="getDropDown($event)"></app-dropdown>
+    <span class="float_right card_title_12">
+        网络设备数
+        <span class="card_title_14_sum">{{apListModel.apNum| number:'1.0-1'}}</span>
+        台
+    </span>
+</div>
+
+<div nz-row [ngStyle]="{'height': windowHeight+'px'}" class="margin_top_10">
+    <app-table
+        [tableInput]='staticData.tableInput'
+        [rowData]='apListModel.tableData'
+        (cellClickEvent)="cellClick($event)"
+        (cellDoubleClickEvent)='cellClickEvent($event)'
+    ></app-table>
+</div>

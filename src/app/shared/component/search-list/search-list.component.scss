@@ -1,0 +1,21 @@
+@import '../../../../base.scss';
+.header{
+    width: 140px;
+}
+.ant-input-affix-wrapper{
+    width: 140px!important;
+}
+:host ::ng-deep .ant-menu-vertical, :host ::ng-deep .ant-menu-item{
+    padding: 0px;
+}
+:host ::ng-deep .ant-menu-vertical,:host ::ng-deep .ant-menu-item{
+    width: 140px;
+}
+:host ::ng-deep .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background: none;
+}
+.max_height{
+    max-height:500px;
+    min-height:300px;
+    overflow:auto;
+}

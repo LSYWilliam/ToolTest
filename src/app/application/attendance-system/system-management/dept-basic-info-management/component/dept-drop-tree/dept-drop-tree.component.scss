@@ -1,0 +1,25 @@
+@import "../../../../../../../base";
+.ant-menu-vertical .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title{
+    height: 35px;
+    line-height: 35px;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color: rgba(0,0,0,0);
+    color: rgba(0, 0, 0, 0.65);
+}
+.ant-menu-inline .ant-menu-item:after, .ant-menu-vertical .ant-menu-item:after{
+    border-right: 0px;
+}
+.custom-menu-selected{
+    color: rgb(16, 142, 233);
+}
+.item {
+    width: 100%;
+    display: inline-block;
+}
+.max_height{
+    max-height:500px;
+    min-height:300px;
+    overflow:auto;
+}
+

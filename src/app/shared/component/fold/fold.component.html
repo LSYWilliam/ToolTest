@@ -1,0 +1,28 @@
+<nz-layout class="margin_bottom">
+    <nz-header class="bg_white">
+        <div nz-row>
+            <div nz-col [nzSpan]="12">
+                <div nz-col [nzSpan]="24">
+                    <span class=" card_title_14_bold">{{foldTitle}}</span>
+                    <span *ngIf="foldTitle === '网络配置'" class="card_title_12 padding_left_25">
+                        <app-dropdown
+                            [dropDowns]="dropDown"
+                            [inDefault]="inDefault"
+                            (selectID)="selectID($event)">
+                        </app-dropdown>
+                    </span>
+
+                </div>
+
+
+            </div>
+            <div nz-col [nzSpan]="12" class="text_right">
+                <a (click)="downOrUp()" class="card_title_12">{{folder}}</a>
+            </div>
+        </div>
+    </nz-header>
+
+    <div *ngIf="isClosed" class="bg_white">
+        <ng-content></ng-content>
+    </div>
+</nz-layout>

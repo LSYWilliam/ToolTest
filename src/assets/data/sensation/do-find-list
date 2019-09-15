@@ -1,0 +1,71 @@
+{
+    "code": 0,
+    "msg": "操作成功:操作成功",
+    "result": [
+        {
+            "teCrawlerRegion": "[浙江],[江苏]",
+            "teNoMatchWord": "",
+            "webSiteInfo": "www.sian.com.cn,www.baidu.com,www.spring.com.org",
+            "refBusiness": "123",
+            "teMailStatus": "1",
+            "teMatchWord": "中国,校长",
+            "teId": 16,
+            "teName": "22王响平主题演示主1题",
+            "teMailReceiver": "wwp@163.com,kk@163.com",
+            "teCrawlerIndustry": "计算机,旅游",
+            "teCreateTime": 1527037589000
+        },
+        {
+            "teCrawlerRegion": "[浙江],[江苏,南京]",
+            "teNoMatchWord": "",
+            "webSiteInfo": "www.sian.com.cn,www.baidu.com,www.spring.com.org",
+            "refBusiness": "123",
+            "teMailStatus": "1",
+            "teMatchWord": "中国,校长",
+            "teId": 15,
+            "teName": "aaaaa",
+            "teMailReceiver": "wwp@163.com,kk@163.com",
+            "teCrawlerIndustry": "计算机,旅游",
+            "teCreateTime": 1527037579000
+        },
+        {
+            "teCrawlerRegion": "[湖北，武汉],[浙江]",
+            "teNoMatchWord": "",
+            "webSiteInfo": "www.sian.com.cn,www.baidu.com,www.spring.com.org",
+            "refBusiness": "123",
+            "teMailStatus": "1",
+            "teMatchWord": "中国,校长",
+            "teId": 14,
+            "teName": "王响平主题演示主题",
+            "teMailReceiver": "wwp@163.com,kk@163.com",
+            "teCrawlerIndustry": "计算机,旅游",
+            "teCreateTime": 1526979293000
+        },
+        {
+            "teCrawlerRegion": "[安徽],[浙江]",
+            "teNoMatchWord": "",
+            "webSiteInfo": "www.sian.com.cn,www.baidu.com,www.spring.com.org",
+            "refBusiness": "123",
+            "teMailStatus": "0",
+            "teMatchWord": "中国,校长",
+            "teId": 13,
+            "teName": "王平主题测试",
+            "teMailReceiver": "",
+            "teCrawlerIndustry": "计算机,旅游",
+            "teCreateTime": 1526978492000
+        },
+        {
+            "teCrawlerRegion": "[浙江],[江苏]",
+            "teNoMatchWord": "",
+            "webSiteInfo": "www.sian.com.cn,www.baidu.com,www.spring.com.org",
+            "refBusiness": "123",
+            "teMailStatus": "0",
+            "teMatchWord": "中国,校长",
+            "teId": 12,
+            "teName": "王湘平主题测试",
+            "teMailReceiver": "",
+            "teCrawlerIndustry": "计算机,旅游",
+            "teCreateTime": 1526978039000
+        }
+    ]
+}

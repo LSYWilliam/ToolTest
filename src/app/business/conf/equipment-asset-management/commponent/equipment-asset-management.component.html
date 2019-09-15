@@ -1,0 +1,29 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>企业中心</nz-breadcrumb-item>
+    <nz-breadcrumb-item>设备资产管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div nz-row class="card_title_18_bold"> 设备资产表 </div>
+<div nz-row >
+    <!--<a (click)="create()" class="card_title_12 padding_left_10">新增</a>-->
+    <a (click)="batchImport()" class="card_title_12 padding_left_10">批量导入</a>
+    <a (click)="templateDownLoad()" class="card_title_12 padding_left_10">模板下载</a>
+</div>
+
+<app-zorro-page-table
+    [dataSet]="dataSet"
+    [resetArray]="resetArray"
+    [isCheckBox]="isCheckBox"
+    [pageSize]="pageSize"
+    [current]="current"
+    [total]="total"
+    [headData]="staticDataModel.tableInput"
+    (tableOperateEvent)="tableOperateEvent($event)"
+    (searchEvent)="searchEvent($event)"
+    (filterEvent)="filterEvent($event)"
+    (resetEvent)="resetEvent()"
+    (pageIndexEvent)="pageIndexEvent($event)"
+    (sortEvent)="sortEvent($event)"
+    (cellEditEvent)="cellEditEvent($event)"
+></app-zorro-page-table>
+

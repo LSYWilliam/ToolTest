@@ -1,0 +1,32 @@
+@import '../../../../../base.scss';
+
+:host ::ng-deep .drop_font_style{
+    @include title-style(40px,18px,bold);
+}
+
+.update_color{
+    color: #bfbfbf;
+}
+
+a{
+    text-decoration: underline;
+}
+
+.icon_cursor{
+    cursor: pointer;
+}
+:host ::ng-deep .ant-modal-footer {
+    text-align: center !important;
+}
+.noCv{
+    margin-left: 70px;
+}
+.addIcon{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    padding-right: 20px;
+    display: inline-block;
+    text-decoration: underline;
+}

@@ -1,0 +1,37 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'start'" class="search_name_lh">
+    <div nz-col [nzSpan]="7">
+        <span class="padding_right_10">员工姓名</span>
+        <nz-input
+            [(ngModel)]="empName"
+            [nzType]="'text'"
+            [nzSize]="'large'"
+            (ngModelChange)="empNameChange($event)"
+            style="width:60%">
+        </nz-input>
+    </div>
+
+    <div nz-col [nzSpan]="7">
+        <span class="padding_right_10">MAC地址</span>
+        <nz-input
+            [(ngModel)]="mac"
+            [nzType]="'text'"
+            [nzSize]="'large'"
+            (ngModelChange)="macChange($event)"
+            style="width:60%">
+        </nz-input>
+    </div>
+    <div nz-col [nzSpan]="7">
+        <span class="padding_right_10">设备资产编号</span>
+        <nz-input
+            [(ngModel)]="number"
+            [nzType]="'text'"
+            [nzSize]="'large'"
+            (ngModelChange)="numberChange($event)"
+            style="width:60%">
+        </nz-input>
+    </div>
+
+    <div nz-col [nzSpan]="3" class="padding_left_25">
+        <a (click)="clear()">清空</a>
+    </div>
+</div>

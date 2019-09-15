@@ -1,0 +1,19 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>设备管理</nz-breadcrumb-item>
+    <nz-breadcrumb-item>适配器组管理</nz-breadcrumb-item>
+    <nz-breadcrumb-item>适配器组管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div nz-row class="header">
+    <span class="card_title_18_bold">适配器组管理</span>
+    <a (click)="addButton()" class="card_title_12 padding_left_10 ">新增</a>
+    <a (click)="editButton()" class="card_title_12 padding_left_10 ">编辑</a>
+</div>
+<div nz-row [ngStyle]="{'height': windowHeight+'px'}" class="margin_top_10">
+    <app-table
+        [tableInput]="adapterManagementHeadModel.tableInput"
+        [rowData]="adapterManagementModel.tableData"
+        (selectAllEvent)="selectAllItems($event)"
+        (rowDoubleClickEvent)="doubleClick($event)"
+    >
+    </app-table>
+</div>

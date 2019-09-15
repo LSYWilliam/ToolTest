@@ -1,0 +1,36 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'start'">
+    <div nz-col [nzSpan]="24" class="card_title_18_bold">
+        员工管理
+    </div>
+    <div nz-col [nzSpan]="24" class="border">
+        <app-emp-mgmt-search
+            [dropDownList]="dropDownList"
+            [deptName]="deptName"
+            [empName]="empName"
+            [jobNumber]="jobNumber"
+            (output)="search($event)">
+        </app-emp-mgmt-search>
+    </div>
+</div>
+<div nz-row class="margin_top_10">
+    <div nz-col [nzSpan]="21" class="card_title_18_bold">
+        {{registerInfo.businessName}}（{{empMgmtDataModel.list.length}}）
+    </div>
+    <div nz-col [nzSpan]="3" class="text_right card_title_14">
+        <a (click)="addButton()" >新增</a>
+        <a (click)="editButton()" class="padding_left_10">编辑</a>
+        <a (click)="delButton()" class="padding_left_10">删除</a>
+    </div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="24" [ngStyle]="{'height': '600px'}">
+        <app-table
+            [tableInput]="empMgmtHeadDataModel.tableInput"
+            [rowData]="empMgmtDataModel.list"
+            (selectAllEvent)="selectAllItems($event)"
+            (cellClickEvent)="cellClickEvent($event)"
+            (rowDoubleClickEvent)="doubleClick($event)"
+            (getDowLength)="getDowLength($event)">
+        </app-table>
+    </div>
+</div>

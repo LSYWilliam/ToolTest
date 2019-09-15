@@ -1,0 +1,97 @@
+<div nz-row class="card_title_18_bold">{{apName}} <i class="{{apStatusIcon}}"></i></div>
+<div nz-row>
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">型号</div>
+    <div nz-col [nzSpan]="12" class="card_title_12_bold">
+        {{apInfoModel.apModel}}
+    </div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">MAC地址</div>
+    <div nz-col [nzSpan]="12" class="card_title_12_bold">
+        {{apInfoModel.apMac}}
+    </div>
+</div>
+<div nz-row class="bg_color">
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">SSID</div>
+    <div nz-col [nzSpan]="12" *ngIf="ssidList; then haveSsid else nonSsid"></div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">2.4GHz信道</div>
+    <div nz-col [nzSpan]="12" class="card_title_12_bold">
+        {{apInfoModel.channel2}}
+    </div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">2.4GHz功率</div>
+    <div nz-col [nzSpan]="12" class="card_title_12_bold">
+        {{apInfoModel.power2}}
+    </div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">5GHz信道</div>
+    <div nz-col [nzSpan]="12" class="card_title_12_bold">
+        {{apInfoModel.channel5}}
+    </div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">5GHz功率</div>
+    <div nz-col [nzSpan]="12" class="card_title_12_bold">
+        {{apInfoModel.power5}}
+    </div>
+</div>
+<div nz-row class="bg_color">
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">本地IP</div>
+    <div nz-col [nzSpan]="12" class="card_title_12_bold">
+        {{apInfoModel.localIp}}
+    </div>
+</div>
+<!--<div nz-row class="bg_color">-->
+    <!--<div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">公网IP</div>-->
+    <!--<div nz-col [nzSpan]="12" class="card_title_12_bold">-->
+        <!--{{apInfoModel.publicIp}}-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div nz-row class="bg_color">-->
+    <!--<div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">网关</div>-->
+    <!--<div nz-col [nzSpan]="12" class="card_title_12_bold">-->
+        <!--{{apInfoModel.gateway}}-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div nz-row class="bg_color">-->
+    <!--<div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">DNS</div>-->
+    <!--<div nz-col [nzSpan]="12" class="card_title_12_bold">-->
+        <!--{{apInfoModel.dns}}-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div nz-row>-->
+    <!--<div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">序列号</div>-->
+    <!--<div nz-col [nzSpan]="12" class="card_title_12_bold">-->
+        <!--{{apInfoModel.apSn}}-->
+    <!--</div>-->
+<!--</div>-->
+<div nz-row class="bg_color">
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">固件版本</div>
+    <div nz-col [nzSpan]="12" class="card_title_12_bold">
+        {{apInfoModel.version}}
+    </div>
+</div>
+<div nz-row class="bg_color">
+    <div nz-col [nzSpan]="12" class="card_title_12 padding_left_10">备注</div>
+    <div nz-col [nzSpan]="12" class="card_title_12_bold">
+        {{apInfoModel.remark}}
+    </div>
+</div>
+<ng-template #nonSsid>
+    <div nz-row class="card_title_12_bold">no SSID</div>
+</ng-template>
+
+<ng-template #haveSsid>
+    <div nz-row class="card_title_12_bold">{{apInfoModel.ssidList[0]}}</div>
+    <div nz-row *ngFor="let info of apInfoModel.ssidList; let i = index" class="card_title_12_bold">
+        <div nz-col [nzSpan]="12"></div>
+        <div nz-col [nzSpan]="12">{{apInfoModel.ssidList[i + 1]}}</div>
+    </div>
+</ng-template>
+
+
+

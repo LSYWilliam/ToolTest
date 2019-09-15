@@ -1,0 +1,20 @@
+<!--回退按钮 开始-->
+<div nz-row>
+    <i class="icon-ACback" (click)="goBack()" ></i>
+</div>
+<!--回退按钮 结束-->
+
+<!--ssid保存按钮 开始-->
+<div nz-row>
+    <span class="card_title_18_bold padding_right_10">{{ssidName}}</span>
+    <a (click)="saveGlobalData()">保存</a>
+</div>
+<!--ssid保存按钮 结束->
+
+<!--每一个ssid配置项 开始-->
+<app-ssid-item-list
+    [inData]="initData"
+    (outData)="outData($event)"
+    (outValidateFlag)="outValidateFlag($event)">
+</app-ssid-item-list>
+<!--每一个ssid配置项 结束-->

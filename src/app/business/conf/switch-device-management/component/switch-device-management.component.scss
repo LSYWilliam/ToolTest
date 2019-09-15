@@ -1,0 +1,17 @@
+@import "../../../../../base";
+
+a{
+    text-decoration: underline;
+}
+
+:host ::ng-deep .drop_font_style{
+    font-size: 18px;
+    line-height: 40px;
+    height: 40px;
+    font-weight: bold;
+
+}
+
+:host ::ng-deep .ag-header-cell-resize::after{
+    border-right: 1px solid #f7f7f7!important;
+}

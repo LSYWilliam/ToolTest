@@ -1,0 +1,7 @@
+<div [ngStyle]="{'height': windowHeight+'px'}">
+    <app-table
+        [tableInput]="tableInput"
+        [rowData]="alertReceiverListModel"
+        (selectAllEvent)="selectAllItems($event)">
+    </app-table>
+</div>

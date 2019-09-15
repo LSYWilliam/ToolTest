@@ -1,0 +1,130 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold">企业</div>
+        <div nz-col [nzSpan]="14" nz-form-control nzHasFeedback class="card_title_14">
+            {{userElement.businessName}}
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold">用户名</div>
+        <div nz-col [nzSpan]="14" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="userName"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入用户名'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row *ngIf="getFormControl('userName')&&getFormControl('userName').dirty&&getFormControl('userName').invalid">
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="14" class="card_title_12 error_red">请输入2-32个字符，不支持中文及特殊字符!</div>
+    </div>
+
+    <div nz-form-item nz-row *ngIf="modalTitleName=='新增'">
+        <div nz-col [nzSpan]="10" nz-form-label class="card_title_14_bold">密码</div>
+        <div>
+            <div nz-col [nzSpan]="14" nz-form-control class="card_title_14">
+                <nz-input
+                    formControlName="password"
+                    [nzPlaceHolder]="'请输入密码'"
+                    [nzType]="isShowPassword"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+            <i class="icon-ACcloseEye position" *ngIf="!openFlag" (click)="isOpenEyes(false)"></i>
+            <i class="icon-ACopenEye position" *ngIf="openFlag" (click)="isOpenEyes(true)"></i>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row *ngIf="getFormControl('password')&&getFormControl('password').dirty&&getFormControl('password').invalid">
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="14" class="card_title_12 error_red">请输入8-32个字符，只支持数字及英文</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold">联系人</div>
+        <div nz-col [nzSpan]="14" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="contactName"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入联系人'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('contactName')&&getFormControl('contactName').dirty&&getFormControl('contactName').invalid">
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="14" class="card_title_12 error_red">请输入2-16个字符，不支持特殊字符!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold">电话</div>
+        <div nz-col [nzSpan]="14" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="contactTele"
+                [nzType]="'phoneNumber'"
+                [nzPlaceHolder]="'请输入电话'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('contactTele')&&getFormControl('contactTele').dirty&&getFormControl('contactTele').invalid">
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="14" class="card_title_12 error_red" >不符合11位手机号码格式！</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold">E-mail</div>
+        <div nz-col [nzSpan]="14" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="contactEmail"
+                [nzPlaceHolder]="'请输入电子邮箱'"
+                [nzType]="'email'"
+                [nzSize]="'large'" >
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('contactEmail')&&getFormControl('contactEmail').dirty&&getFormControl('contactEmail').invalid">
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="14" class="card_title_12 error_red" >请输入正确email地址，不超过64个字符！</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold">允许同时在线登录数</div>
+        <div nz-form-control nz-col [nzSpan]="14" class="card_title_14">
+            <nz-input-number
+                formControlName="peakConcurrentUsers"
+                [nzPlaceHolder]="'请输入允许同时在线登录数'"
+                value="1"
+                [nzMin]="1"
+                [nzMax]="100"
+                [nzStep]="1">
+            </nz-input-number>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="10" class="card_title_14_bold">角色</div>
+        <div nz-form-control nz-col [nzSpan]="14" class="card_title_14">
+            <app-dropdown
+                [dropDowns]= "roleList"
+                (selectID)="getDropDown($event)"
+                [inDefault]="defaultRoleName">
+            </app-dropdown>
+        </div>
+    </div>
+    <div class="customize-footer">
+            <button
+                nz-button
+                [nzType]="'primary'"
+                [nzSize]="'large'"
+                (click)="submitForm($event,validateForm.value)">
+                保存
+            </button>
+            <button
+                nz-button
+                [nzType]="'default'"
+                [nzSize]="'large'"
+                (click)="resetForm($event)">
+                取消
+            </button>
+    </div>
+</form>
+

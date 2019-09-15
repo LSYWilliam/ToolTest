@@ -1,0 +1,75 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold">部门名称</div>
+        <div nz-col [nzSpan]="16" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="partName"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入部门名称'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row *ngIf="getFormControl('partName')&&getFormControl('partName').dirty&&getFormControl('partName').invalid">
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="16" class="card_title_12 error_red">2-32位至少字母或中文，不支持数字!</div>
+    </div>
+
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="8" nz-form-label class="card_title_14_bold">部门领导</div>
+        <div>
+            <div nz-col [nzSpan]="16" nz-form-control class="card_title_14">
+                <nz-input
+                    formControlName="partLeader"
+                    [nzType]="'text'"
+                    [nzPlaceHolder]="'请输入部门领导'"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('partLeader')&&getFormControl('partLeader').dirty&&getFormControl('partLeader').invalid">
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="16" class="card_title_12 error_red">2-32位至少字母或中文，不支持数字!</div>
+    </div>
+    <div nz-row>
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold">部门编码</div>
+        <div nz-col [nzSpan]="16" class="card_title_14">
+            <nz-input
+                [(ngModel)]="partCode"
+                [nzType]="'text'"
+                [nzPlaceHolder]="''"
+                [nzSize]="'large'"
+                [nzDisabled]="true"
+                [ngModelOptions]="{standalone: true}">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="modalTitleName!='编辑'" >
+        <div nz-form-label nz-col [nzSpan]="8" class="card_title_14_bold">上级部门</div>
+        <div nz-form-control nz-col [nzSpan]="16" class="card_title_14">
+            <app-dropdown
+                [dropDowns]= "dropDownList"
+                (selectID)= "getDropDown($event)"
+                [inDefault]= "defaultName">
+            </app-dropdown>
+        </div>
+    </div>
+    <div class="customize-footer">
+        <button
+            nz-button
+            [nzType]="'primary'"
+            [nzSize]="'large'"
+            (click)="submitForm($event,validateForm.value)">
+            保存
+        </button>
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="resetForm($event)">
+            取消
+        </button>
+    </div>
+</form>

@@ -1,0 +1,15 @@
+@import "../../../../../../base";
+a{
+    text-decoration: underline;
+}
+
+
+:host ::ng-deep .ant-modal-footer {
+    text-align: center !important;
+}
+
+.width_margin{
+    width: 123px;
+    margin: 3px auto;
+    font-size: 14px;
+}

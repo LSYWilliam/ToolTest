@@ -1,0 +1,28 @@
+@import '../../../../base';
+:host ::ng-deep .ant-btn {
+    border: none!important;
+    padding: 0;
+}
+:host ::ng-deep .ant-input{
+    width: 240px!important;
+}
+:host ::ng-deep .drop_font_style{
+    @include title-style(35px,14px);
+}
+.ssid_block{
+    display: block;
+}
+.drop_con{
+    height: 175px;
+    overflow-y: auto;
+}
+:host ::ng-deep .ag-layout-normal .ag-body-viewport-wrapper{
+    height: auto!important;
+}
+.error_red{
+    color: $color_red;
+}
+.ant-form-item-label{
+    text-align: left;
+}
+

@@ -1,0 +1,55 @@
+<div nz-row>
+   <div nz-col [nzSpan]="1">
+       <span class="card_title_14_bold padding_left_10">类型:</span>
+   </div>
+    <div nz-col [nzSpan]="23" class="card_title_12">
+        <label nz-checkbox
+               [(ngModel)]="queryData.allCheck"
+               (ngModelChange)="updateChecked(true)"
+               [nzIndeterminate]="queryData.indeterminate"
+                style="padding-right: 10px; padding-left: 10px;"><span class="padding_left_10">全部</span>
+        </label>
+        <nz-checkbox-group [(ngModel)]="queryData.typeCheckOptions" (ngModelChange)="updateChecked(false)"></nz-checkbox-group>
+    </div>
+</div>
+
+<div nz-row>
+    <div nz-col [nzSpan]="1">
+    <span class="card_title_14_bold padding_left_10">时间:</span>
+    </div>
+    <div nz-col [nzSpan]="23" class="card_title_12">
+    <nz-radio-group [(ngModel)]="queryData.dateRadioValue" (ngModelChange)="setRadio()"  class="card_title_12 padding_left_10">
+        <label nz-radio [nzValue]="'A'">
+            <span>近一个月</span>
+        </label>
+        <label nz-radio [nzValue]="'B'">
+            <span>自定义</span>
+            <nz-datepicker style="width: 200px;"
+                           [nzMode]="'day'"
+                           (ngModelChange)="_startValueChange($event)"
+                           [(ngModel)]="queryData._startDate"
+                           [nzDisabledDate]="_disabledStartDate"
+                           [nzFormat]="'YYYY-MM-DD'"
+                           [nzPlaceHolder]="'起始时间'">
+            </nz-datepicker>
+            <span class="padding_left_10 padding_right_10">-</span>
+            <nz-datepicker style="width: 200px;"
+                           [nzMode]="'day'"
+                           (ngModelChange)="_endValueChange($event)"
+                           [(ngModel)]="queryData._endDate"
+                           [nzDisabledDate]="_disabledEndDate"
+                           [nzFormat]="'YYYY-MM-DD'"
+                           [nzPlaceHolder]="'结束时间'"></nz-datepicker>
+
+
+        </label>
+    </nz-radio-group>
+    </div>
+</div>
+
+<div nz-row class="card_title_12 a_center">
+    <a (click)="search()" class="padding_right_10">搜索</a>
+    <a (click)="emptyData()">清空</a>
+</div>
+
+

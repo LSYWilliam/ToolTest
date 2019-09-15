@@ -1,0 +1,14 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>设备管理</nz-breadcrumb-item>
+    <nz-breadcrumb-item>AP注册管理</nz-breadcrumb-item>
+    <nz-breadcrumb-item>AP资源监控</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div nz-row class="header">
+    <span class="card_title_18_bold">AP资源监控</span>
+</div>
+<div nz-row [ngStyle]="{'height': windowHeight+'px'}" class="margin_top_10">
+    <app-table
+        [tableInput]="apResourceMonitorHeadModel.tableInput"
+        [rowData]="apResourceMonitorModel.tableData">
+    </app-table>
+</div>

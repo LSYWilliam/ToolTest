@@ -1,0 +1,35 @@
+@import "../../../../../base";
+.work_filter{
+    border: 1px solid #ccc;
+    background-color: #F4F5F7;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 15px 0 15px 0;
+    //height: 50px;
+    //line-height: 50px;
+}
+.name_algin{
+    text-align: center;
+    margin-top: 5px;
+}
+.padding_tops{
+    padding-top: 5px;
+    text-align: center;
+}
+//.work_flex{
+//    border: 1px solid #ccc;
+//    background-color: #F4F5F7;
+//    margin-top: 10px;
+//    margin-bottom: 20px;
+//    padding: 15px 0 15px 0;
+//    display: flex;
+//    flex-wrap: wrap;
+//}
+
+.work_item{
+    flex: 1;
+}
+
+.work_style{
+    border: 1px solid #ccc;
+}

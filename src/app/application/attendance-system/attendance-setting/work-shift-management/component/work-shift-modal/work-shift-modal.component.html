@@ -1,0 +1,100 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">班次名称</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="flightName"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入班次名称'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('flightName')&&getFormControl('flightName').dirty&&getFormControl('flightName').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">2-32位至少字母或中文，支持数字!</div>
+    </div>
+
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">上班时间</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="flightAmTime"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入上班时间 HH:mm'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('flightAmTime')&&getFormControl('flightAmTime').dirty&&getFormControl('flightAmTime').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请按照 HH:mm 格式输入时间!</div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">下班时间</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="flightPmTime"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入下班时间 HH:mm'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('flightPmTime')&&getFormControl('flightPmTime').dirty&&getFormControl('flightPmTime').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请按照 HH:mm 格式输入时间!</div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">严重迟到</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="flightLateTime"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入分钟数'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+        <i class="position">min</i>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('flightLateTime')&&getFormControl('flightLateTime').dirty&&getFormControl('flightLateTime').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" *ngIf="!exceedFlag" class="card_title_12 error_red">请输入0-240的分钟数!</div>
+        <div nz-form-label nz-col [nzSpan]="18" *ngIf="exceedFlag" class="card_title_12 error_red">迟到分钟数不能超过旷工分钟数!</div>
+    </div>
+
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">旷工时间</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="flightAbsentTime"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入分钟数'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+        <i class="position">min</i>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('flightAbsentTime')&&getFormControl('flightAbsentTime').dirty&&getFormControl('flightAbsentTime').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" *ngIf="!exceedFlag" class="card_title_12 error_red">请输入0-240的分钟数!</div>
+        <div nz-form-label nz-col [nzSpan]="18" *ngIf="exceedFlag" class="card_title_12 error_red">旷工分钟数不能小于迟到分钟数!</div>
+    </div>
+
+    <div class="customize-footer">
+        <button
+            nz-button
+            [nzType]="'primary'"
+            [nzSize]="'large'"
+            (click)="submitForm($event,validateForm.value)">
+            保存
+        </button>
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="resetForm($event)">
+            取消
+        </button>
+    </div>
+</form>

@@ -1,0 +1,61 @@
+<div class="max_height">
+<ul nz-menu [nzTheme]="'#fff'" [nzMode]="'inline'">
+    <li nz-submenu
+        [(nzOpen)]="rootOpenFlag"
+        [ngClass]="{'custom-menu-selected': rootSelected}"
+        (click)="menuClick('组织机构','')" >
+        <span title class="rootDepart" style="margin-left:-25px;">
+             组织机构
+        </span>
+        <ul *ngFor="let item of dataMenu;let i = index;" >
+            <li nz-menu-item *ngIf="item.childs.length == 0" style="margin-left:-24px;"
+                [nzSelected] ="item.iSelected"
+                (click)="menuClick($event,item)">
+                 <span title class="item" [ngClass]="{'custom-menu-selected':item.iSelected}">
+                     {{item.partName}}
+                 </span>
+            </li>
+            <li nz-submenu *ngIf="item.childs.length != 0" [(nzOpen)]="item.iOpen" (click)="menuClick($event,item)" >
+                <span title class="item" [ngClass]="{'custom-menu-selected':item.iSelected}">
+                     {{item.partName}}
+                </span>
+                <ul *ngFor="let subItem of item.childs;let idx = index;">
+                    <li nz-menu-item *ngIf="subItem.childs.length == 0"  [nzSelected] ="subItem.iSelected" (click)="menuClick($event,subItem)">
+                        <span title class="item" [ngClass]="{'custom-menu-selected':subItem.iSelected}">{{subItem.partName}}</span>
+                    </li>
+                    <li nz-submenu *ngIf="subItem.childs.length != 0" [(nzOpen)]="subItem.iOpen" (click)="menuClick($event,subItem)">
+                        <span title class="item" [ngClass]="{'custom-menu-selected':subItem.iSelected}">{{subItem.partName}}</span>
+                        <ul *ngFor="let thirdItem of item.childs[idx].childs;let tidx = index;">
+                            <li nz-menu-item *ngIf="tidx == 0&&thirdItem.childs.length == 0" [nzSelected] ="thirdItem.iSelected" (click)="menuClick($event,thirdItem)">
+                                <span title class="item" [ngClass]="{'custom-menu-selected':thirdItem.iSelected}">{{thirdItem.partName}}</span>
+                            </li>
+                            <li nz-submenu *ngIf="tidx == 0&&thirdItem.childs.length != 0" style="padding-left: 24px;" [(nzOpen)]="thirdItem.iOpen" (click)="menuClick($event,thirdItem)">
+                                <span title class="item" [ngClass]="{'custom-menu-selected':thirdItem.iSelected}">{{thirdItem.partName}}</span>
+                                <ul *ngFor="let forthItem of item.childs[idx].childs[tidx].childs;">
+                                    <li nz-menu-item *ngIf="tidx == 0" [nzSelected] ="forthItem.iSelected" (click)="menuClick($event,forthItem)">
+                                        <span title class="item" [ngClass]="{'custom-menu-selected':forthItem.iSelected}">{{forthItem.partName}}</span>
+                                    </li>
+                                    <li nz-menu-item *ngIf="tidx != 0" [nzSelected] ="forthItem.iSelected" (click)="menuClick($event,forthItem)">
+                                        <span title class="item" [ngClass]="{'custom-menu-selected':forthItem.iSelected}">{{forthItem.partName}}</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li nz-menu-item *ngIf="tidx != 0&&thirdItem.childs.length == 0"  [nzSelected] ="thirdItem.iSelected" (click)="menuClick($event,thirdItem)">
+                                <span title class="item" [ngClass]="{'custom-menu-selected':thirdItem.iSelected}">{{thirdItem.partName}}</span>
+                            </li>
+                            <li nz-submenu *ngIf="tidx != 0&&thirdItem.childs.length != 0" style="padding-left: 24px;" [(nzOpen)]="thirdItem.iOpen" (click)="menuClick($event,thirdItem)">
+                                <span title class="item" [ngClass]="{'custom-menu-selected':thirdItem.iSelected}">{{thirdItem.partName}}</span>
+                                <ul *ngFor="let forthItem of item.childs[idx].childs[tidx].childs;">
+                                    <li nz-menu-item  [nzSelected] ="forthItem.iSelected" (click)="menuClick($event,forthItem)">
+                                        <span title class="item" [ngClass]="{'custom-menu-selected':forthItem.iSelected}">{{forthItem.partName}}</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+</div>

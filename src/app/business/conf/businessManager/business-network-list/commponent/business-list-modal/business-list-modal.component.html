@@ -1,0 +1,234 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">网络名称</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)] = "data.netName"
+                formControlName="netName"
+                [nzPlaceHolder]="'请输入网络名称'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['netName'].dirty && this.validateForm.controls['netName'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入2-64个字符，不支持特殊字符</div>
+    </div>
+    <!--(nzSearchChange)="searchBusiness()"-->
+    <div nz-form-item nz-row >
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">企业</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14" style="position: relative;">
+            <!--<nz-select style="width: 200px;" nzShowSearch-->
+                       <!--nzPlaceHolder="请选择网络所属企业"-->
+                       <!--[(ngModel)]="data.businessName"-->
+                       <!--formControlName="businessName"-->
+            <!--&gt;-->
+                <!--<nz-option *ngFor="let item of businessList" nzLabel="{{item.businessName}}" nzValue="{{item.businessName}}"></nz-option>-->
+            <!--</nz-select>-->
+
+
+            <!--<nz-select-->
+                <!--style="width: 200px;"-->
+                <!--[nzPlaceHolder]="'请选择网络所属企业'"-->
+                <!--[(ngModel)]="data.businessName"-->
+                <!--formControlName="businessName"-->
+                <!--[nzShowSearch]="true"-->
+                <!--(ngModelChange)="searchBusiness(data.businessName)">-->
+                <!--<nz-option-->
+                    <!--*ngFor="let option of businessList"-->
+                    <!--[nzLabel]="option.businessName"-->
+                    <!--[nzValue]="option.businessName"-->
+                <!--&gt;-->
+                <!--</nz-option>-->
+            <!--</nz-select>-->
+
+            <nz-input style="width: 268px;"
+                [(ngModel)] = "data.businessName"
+                formControlName="businessName"
+                [nzPlaceHolder]="'请选择网络所属企业'"
+                [nzSize]="'large'"
+                (keyup)="searchBusiness()"
+                (click)="onclick()"
+                (nzBlur)="blur()"
+                [nzDisabled]="status === 1"
+            >
+            </nz-input>
+            <ul class="ul_business">
+                <li *ngFor="let item of businessListShowData" (click)="liClick(item)" class="li_business">{{item.businessName}}</li>
+            </ul>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['businessName'].dirty && this.validateForm.controls['businessName'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入2-64个字符，不支持特殊字符</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">地址</div>
+
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <app-three-link-list  [threeLinkData]="threeLinkData " (outData)="outData($event)"
+                                  [provinceLink]="provinceLink" [cityLink]="cityLink" [areaLink]="areaLink"></app-three-link-list>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="isSave && !(data.province && data.city && data.county)">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >省市区为必填选项！</div>
+    </div>
+
+    <div nz-form-item nz-row style="margin-bottom: 30px;">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">
+        </div>
+
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)] = "data.detailAddress"
+                [nzType]="'textarea'"
+                formControlName="detailAddress"
+                [nzPlaceHolder]="'请输入详细地址'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['detailAddress'].dirty && this.validateForm.controls['detailAddress'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >字节最大不能超过64位！</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div  nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">
+            有效日期
+        </div>
+        <div  nz-form-control nz-col [nzSpan]="6" class="card_title_14">
+            <nz-datepicker
+                [(ngModel)]="data.dueTime"
+                formControlName="dueTime"
+                [nzPlaceHolder]="'请选择申购时间'"
+                [nzFormat]="'YYYY-MM-DD HH:mm:ss'"
+                [nzShowTime]="true"
+                (ngModelChange)="dateChange($event)"
+                style="width: 240px;">
+            </nz-datepicker>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['dueTime'].dirty && this.validateForm.controls['dueTime'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >网络有效日期为必填选项！</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">联系人</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)] = "data.netContact"
+                formControlName="netContact"
+                [nzPlaceHolder]="'请输入网络联系人'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['netContact'].dirty && this.validateForm.controls['netContact'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入2-16个字符，不支持特殊字符</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">联系方式</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)] = "data.netTel"
+                formControlName="netTel"
+                [nzPlaceHolder]="'请输入联系方式'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['netTel'].dirty && this.validateForm.controls['netTel'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入11位电话号码！</div>
+    </div>
+
+   <div *ngIf=" status === 0">
+       <div nz-form-item nz-row class="margin_top_10 margin_bottom_10">
+           <div nz-form-label nz-col class="card_title_14_bold text_right" [nzSpan]="5">
+               设备型号：
+           </div>
+           <div nz-form-label nz-col [nzSpan]="1"></div>
+           <div nz-form-control nz-col [nzSpan]="16">
+               <nz-select formControlName="assetModel"
+                          [nzPlaceHolder]="'请选择设备型号'"
+                          [(ngModel)]="data.apModel"
+               >
+                   <nz-option
+                       *ngFor="let option of apModelList"
+                       [nzLabel]="option.name"
+                       [nzValue]="option.name">
+                   </nz-option>
+               </nz-select>
+           </div>
+       </div>
+
+       <div nz-form-item nz-row class="margin_top_10 margin_bottom_10">
+           <div nz-form-label nz-col class="card_title_14_bold text_right" [nzSpan]="5">
+               设备数量：
+           </div>
+           <div nz-form-label nz-col [nzSpan]="1"></div>
+           <div nz-form-control nz-col [nzSpan]="16">
+               <nz-input formControlName="assetCount"
+                         [nzPlaceHolder]="'请输入设备数量'"
+                         [(ngModel)]="data.assetCount"
+                         (keyup.enter)="onEnter()">
+               </nz-input>
+           </div>
+       </div>
+       <div nz-form-item nz-row *ngIf="this.validateForm.controls['assetCount'].dirty && this.validateForm.controls['assetCount'].invalid">
+           <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+           <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >
+               <div *ngIf="exceedNumFlag">
+                   请输入设备数量!
+               </div>
+               <div *ngIf="!exceedNumFlag">
+                   请输入整数!
+               </div>
+           </div>
+       </div>
+
+       <div nz-form-item nz-row style="margin-bottom: 20px;" >
+           <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">
+               设备信息
+           </div>
+
+           <div nz-form-control nz-col [nzSpan]="18" class="card_title_14" style="height: 120px; border-radius: 5px;"
+                [style.border]="selectDeviceInput? '1px solid #ccc' : '1px solid red'"
+           >
+               <ul>
+                   <li *ngFor="let item of deviceInventory; let idx = index">
+                       <span class="card_title_14">{{item}}</span>
+                       <a class="card_title_14" (click)="delInvebtory(idx)">清除</a>
+                   </li>
+               </ul>
+           </div>
+           <div nz-col [nzSpan]="6"></div>
+           <div nz-col [nzSpan]="16" style="color: red" *ngIf="!selectDeviceInput">请确认选中的设备</div>
+       </div>
+   </div>
+
+</form>
+
+<div class="customize-footer">
+    <button
+        nz-button
+        [nzType]="'primary'"
+        [nzSize]="'large'"
+        (click)="handleOk()">
+        保存
+    </button>
+
+    <button
+        nz-button
+        [nzType]="'default'"
+        [nzSize]="'large'"
+        (click)="handleCancel()">
+        取消
+    </button>
+</div>

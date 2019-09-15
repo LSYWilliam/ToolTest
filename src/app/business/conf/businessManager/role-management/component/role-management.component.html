@@ -1,0 +1,51 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>企业中心</nz-breadcrumb-item>
+    <nz-breadcrumb-item>角色管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+<!--用户管理内容开始-->
+<nz-layout>
+    <!--角色搜索 开始-->
+    <nz-sider>
+        <div nz-row>
+            <div nz-col [nzSpan]="24" class="card_title_18_bold">角色</div>
+            <div nz-col [nzSpan]="24" class="card_title_12">
+                <a (click)="showModal($event)">新增</a>
+                <a *ngIf="editableFlag" (click)="delRole($event)" class="padding_left_10">删除</a>
+                <span *ngIf="!editableFlag" class="unDeletable">编辑</span>
+            </div>
+            <div nz-col [nzSpan]="24">
+                <app-search-list
+                    [inData]="roleListData"
+                    [addData]="addData"
+                    [delData]="delData"
+                    (id)="searchClick($event)">
+                </app-search-list>
+            </div>
+        </div>
+    </nz-sider>
+    <div class="line_style"></div>
+    <!--角色搜索 结束-->
+    <nz-content class="margin_left_20">
+        <div nz-row class="card_title_18_bold">权限</div>
+        <div nz-row class="card_title_12">
+            <div nz-col [nzSpan]="4">
+                <app-dropdown *ngIf="options" [dropDowns]= "options" (selectID)="showSystemMenu($event)"></app-dropdown>
+            </div>
+
+            <div nz-col [nzSpan]="19" class="margin_left_10">
+                <a *ngIf="editableFlag" (click)="showEditTableModal()">编辑</a>
+                <span *ngIf="!editableFlag" class="unEditable">编辑</span>
+            </div>
+        </div>
+        <div nz-row>
+            <div nz-col [nzSpan]="4">
+                <app-drop-tree [dataMenu]="dataMenu" (selectedItem)="menuClick($event)"></app-drop-tree>
+            </div>
+
+            <div nz-col [nzSpan]="19" class="margin_left_10" style="height: 500px;">
+              <app-table id="tableChange" [tableInput] = 'roleHeadDataModel.tableInput' [rowData] = 'tableRowDataFather' ></app-table>
+            </div>
+        </div>
+    </nz-content>
+  </nz-layout>
+  <!--用户管理内容结束-->

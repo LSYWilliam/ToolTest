@@ -1,0 +1,98 @@
+<!--<p class="card_title_18_bold">-->
+<!--企业钉钉配置-->
+<!--</p>-->
+<div nz-row>
+    <div nz-col [nzSpan]="24" class="card_title_18_bold">
+        企业钉钉配置
+    </div>
+</div>
+<div class="form margin_top_10">
+    <form nz-form [formGroup]="validateForm" class="modal_con">
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">corpId</div>
+            <div>
+                <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+                    <nz-input
+                        formControlName="corpId"
+                        [nzType]="'text'"
+                        [nzPlaceHolder]="''"
+                        [nzSize]="'large'"
+                        [(ngModel)]="dingCorpId"
+                        (ngModelChange)="changDingCorpId($event)">
+                    </nz-input>
+                </div>
+            </div>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+
+        <div nz-form-item nz-row
+             *ngIf="getFormControl('corpId')&&getFormControl('corpId').dirty&&getFormControl('corpId').invalid">
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+            <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入2-255个字符，不支持中文及特殊字符!</div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">CorpSecret</div>
+            <div>
+                <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+                    <nz-input
+                        formControlName="corpSecret"
+                        [nzPlaceHolder]="''"
+                        [nzType]="'text'"
+                        [nzSize]="'large'"
+                        [(ngModel)]="dingCorpSecret"
+                        (ngModelChange)="changDingCorpSecret($event)">
+                    </nz-input>
+                </div>
+            </div>
+            <div class="position red card_title_18_bold">*</div>
+        </div>
+
+        <div nz-form-item nz-row
+             *ngIf="getFormControl('corpSecret')&&getFormControl('corpSecret').dirty&&getFormControl('corpSecret').invalid">
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+            <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入2-255个字符，不支持中文及特殊字符!</div>
+        </div>
+        <div class="customize-footer">
+            <button
+                nz-button
+                [nzType]="'default'"
+                [nzSize]="'large'"
+                (click)="transData($event)">
+                同步数据
+            </button>
+            <button
+                [ngClass]="{ 'disabled': disabledButton}"
+                nz-button
+                [nzType]="'primary'"
+                [nzSize]="'large'"
+                (click)="submitForm($event,validateForm.value)"
+                [disabled]="disabledButton">
+                保存
+            </button>
+        </div>
+    </form>
+</div>
+
+<nz-modal [nzWrapClassName]="'vertical-center-modal'"
+          [nzContent]="contentBody"
+          [nzVisible]="isVisibleMiddle"
+          [nzTitle]="null"
+          [nzFooter]="null"
+          [nzClosable]="false"
+>
+</nz-modal>
+<ng-template #contentLoading>
+    <div class="label height_150">
+        <p>正在从钉钉同步数据...</p>
+    </div>
+</ng-template>
+<ng-template #contentSuccess>
+    <div class="success"></div>
+    <div class="label">数据同步完成！</div>
+</ng-template>
+<ng-template #contentError>
+    <div class="label height_150">
+        <p>传输失败，请重新输入！</p>
+    </div>
+</ng-template>

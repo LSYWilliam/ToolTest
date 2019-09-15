@@ -1,0 +1,344 @@
+/*
+
+    Name:      base.css
+    Author:    chenli
+    system:    云AC
+    time:      2018/2/28 11:30
+
+*/
+a{
+    text-decoration: underline;
+}
+$bpx:5px; /*…基础padding,margin像素…*/
+.font_center{
+    text-align: center;
+}/*…文字居中…*/
+.text_right{
+    text-align: right;
+}/*…文字靠右…*/
+
+/* _color */
+$color_yellow: rgb(232,180,68);/*…上行流量…*/
+$color_dark_green:rgb(5,142,153);/*…下行流量…*/
+$color_green:rgb(111,164,61);/*…总流量…*/
+$color_grey:rgb(234,234,234);/*…图表X轴Y轴线颜色(按钮描边和树形菜单旁分界线条颜色)…*/
+$color_light_grey:rgb(247,247,247);/*…表格表头背景颜色和表格线颜色（AP详情中的基础信息的分块背景灰色）…*/
+$color_dark_grey:rgb(191, 191, 191) ;/*…设备离线（字体置灰颜色，用户锁定图标颜色）…*/
+$color_red:rgb(194,51,51);/*…红色…*/
+$color_font_black:rgb(102,102,102);/*…文字基础色…*/
+$color_bg_black:rgb(63,69,74);/*…系统背景色…*/
+$color_blue:rgb(16,142,233);/*…链接文字、按钮文字颜色…*/
+
+/* _float */
+.float{
+    &_left{
+        float: left;
+    }
+    &_right{
+        float: right;
+    }
+}
+/* _boxWidth */
+.width_300 {
+    width: 300px;
+}
+/* _boxHeight */
+.height{
+    &_200{
+        height: 200px;
+    }
+    &_150{
+        height: 150px;
+    }
+    &_165{
+        height: 165px;
+    }
+    &_270{
+        height: 270px;
+    }
+    &_400{
+        height: 400px;
+    }
+}
+
+/* _margin&padding */
+.margin{
+    &_top{
+        &_5{
+            margin-top: $bpx;
+        }
+        &_10{
+            margin-top: $bpx *2;
+        }
+        &_20{
+            margin-top: $bpx *4;
+        }
+        &_25{
+            margin-top: $bpx *5;
+        }
+        &_30{
+            margin-top: $bpx *6;
+        }
+    }
+
+    &_right{
+        &_10{
+            margin-right: $bpx *2;
+        }
+        &_20{
+            margin-right: $bpx *4;
+        }
+    }
+
+    &_bottom {
+        &_5 {
+            margin-bottom: $bpx;
+        }
+        &_10{
+            margin-bottom: $bpx *2;
+        }
+        &_20{
+            margin-bottom: $bpx *4;
+        }
+        &_30{
+            margin-bottom: $bpx *6;
+        }
+    }
+}
+.padding{
+    &_left{
+        &_50{
+            padding-left: $bpx *10;
+        }
+        &_25{
+            padding-left: $bpx *5;
+        }
+        &_10{
+            padding-left: $bpx *2;
+        }
+        &_30{
+            padding-left: $bpx *6;
+        }
+    }
+    &_right{
+        &_10{
+            padding-right: $bpx *2;
+        }
+    }
+    &_top {
+        &_5 {
+            padding-top: $bpx;
+        }
+    }
+    &_bottom {
+        &_5 {
+            padding-bottom: $bpx;
+        }
+    }
+}
+/* _title */
+/*…高 行高 字体大小 是否加粗…*/
+@mixin title-style($height,$font_size,$font_weight:normal){
+    height:$height;
+    line-height: $height;
+    font:{
+        size: $font_size;
+        weight: $font_weight;
+    }
+}
+
+/*…当前位置字体样式…*/
+.my_location{
+    @include title-style(50px,14px);
+}
+/*…字体30px 行高40px 加粗 最大标题…*/
+.title_30{
+    @include title-style(40px,30px,500);
+}
+.card_title{
+    &_14{
+        @include title-style(35px,14px);
+        &_bold{
+            @include title-style(35px,14px,bold);
+        }
+        &_sum{
+            @extend .card_title_14_bold;
+            padding:{
+                left: $bpx;
+                right: $bpx;
+            }
+        }
+    }
+    &_12{
+        @include title-style(35px,12px);
+        &_bold{
+            @include title-style(35px,12px,bold);
+        }
+        &_sum{
+            @extend .card_title_12;
+            margin-right: 100px;
+        }
+        &_height{
+            @include title-style(20px,12px,bold)
+        }
+    }
+    &_18{
+        &_bold{
+            @include title-style(35px,18px,bold);
+        }
+    }
+
+}
+
+/* _explain 解释小图标样式 */
+.icon_explain{
+    color: $color_font_black;
+    @include title-style(35px,1.1em);
+    position: relative;
+    top: 1px;
+    cursor: pointer;
+}
+
+
+
+/* 模态框样式 */
+.customize-footer{
+    width: 176px;
+    margin: 0 auto!important;
+    padding: 20px!important;
+    border-top: none!important;
+    button{
+        background: none;
+        border: none;
+        color: $color_blue!important;
+        text-decoration: underline;
+    }
+}
+.frame{
+    &_name{
+        width: 50%;
+        padding-left: 5%;
+    }
+    &_value{
+        width: 50%;
+        line-height: 35px;
+    }
+}
+.ant-modal-header{
+    border-bottom: none!important;
+}
+.ant-modal-title{
+    font-size: 18px!important;
+    font-weight: bold!important;
+    color: $color_font_black!important;
+}
+
+/* 表格样式修改 */
+.ag-theme-fresh .ag-root{
+    border: none!important;
+}
+.ag-header-cell{
+    font-size: 12px;
+    font-weight: bold;
+    color: $color_font_black!important;
+}
+.ag-theme-fresh .ag-header-cell{
+    border-right: none!important;
+}
+.ag-theme-fresh .ag-header{
+    border-bottom: none!important;
+    background: $color_light_grey!important;
+
+}
+.ag-font-style{
+    font-size: 12px!important;
+    color: $color_font_black!important;
+}
+.ag-theme-fresh .ag-cell-no-focus{
+    border-right: none!important;
+}
+.ag-theme-fresh .ag-header-cell, .ag-theme-fresh .ag-header-group-cell{
+    line-height: 35px!important;
+}
+:host ::ng-deep .ag-header-cell-resize::after{
+    border-right: 1px solid #f7f7f7!important;
+}
+.ag-theme-fresh .ag-row-odd{
+    background-color: #fff!important;
+}
+.ag-body-viewport-wrapper{
+    background-color: #fff!important;
+}
+.ag-row{
+    border-bottom: 1px solid $color_light_grey!important;
+}
+.ag-theme-fresh .ag-header-cell-menu-button .ag-icon-menu{
+    //height: 35px!important;
+    line-height: 35px!important;
+}
+.ag-theme-fresh .ag-cell-focus{
+    border:1px solid #ecf0f1!important;
+}
+.ag-theme-fresh .ag-cell{
+    line-height: 35px!important;
+}
+.ag-theme-fresh .ag-row-selected{
+    background-color: #ecf0f1!important;
+}
+.ag-theme-fresh .ag-menu{
+    border: 1px solid $color_grey!important;
+    border-radius: 5px!important;
+    background: #ffffff!important;
+}
+.ag-filter-select{
+    border: 1px solid $color_grey!important;
+    color: $color_font_black!important;
+    font-size: 12px;
+}
+.ag-filter-body input{
+    border: 1px solid $color_grey!important;
+    color: $color_font_black!important;
+    font-size: 12px;
+    margin: 4px;
+    width: calc(100% - 8px)!important;
+}
+
+
+.ag-theme-fresh .ag-paging-panel{
+    border-top: none!important;
+    height: auto;
+}
+.ag-paging-button{
+    height: 35px;
+    background: #fff!important;
+    border-radius: 5px!important;
+    border: 1px solid $color_grey;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.ag-theme-fresh .ag-filter input[type='text'], .ag-theme-fresh .ag-filter input[type='date']{
+    line-height: 25px;
+}
+.ag-overlay-wrapper{
+    display: block!important;
+    margin-top: 35px!important; //无数据时，文字距顶部的样式。
+    line-height: 35px!important;
+    color: $color_font_black!important;
+}
+/* 返回样式修改 */
+.icon-ACback {
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 35px;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+}
+.icon-ACback:hover{
+    font-weight: bold;
+    color: rgb(16,142,233);
+    font-size: 18px;
+}
+
+
+

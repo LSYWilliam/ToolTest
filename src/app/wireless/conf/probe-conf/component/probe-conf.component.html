@@ -1,0 +1,26 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>我的网络</nz-breadcrumb-item>
+    <nz-breadcrumb-item>探针配置</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div nz-row class="header">
+    <span class="card_title_18_bold">探针配置</span>
+    <a (click)="editButton()" class="card_title_12 padding_left_10 ">编辑</a>
+</div>
+<nz-spin
+    [nzTip]="'正在更新配置，请稍后'"
+    [nzSize]="'large'"
+    [nzSpinning]="nzSpinning">
+    <div nz-row class="margin_top_10">
+        <div nz-col [nzSpan]="24">
+            <div [ngStyle]="{'height': '600px'}">
+                <app-table
+                    [tableInput]="probeConfModel.tableInput"
+                    [rowData]="probeConfModel.tableData"
+                    (selectAllEvent)="selectAllItems($event)"
+                    (rowDoubleClickEvent)="cellClickEvent($event)"
+                >
+                </app-table>
+            </div>
+        </div>
+    </div>
+</nz-spin>

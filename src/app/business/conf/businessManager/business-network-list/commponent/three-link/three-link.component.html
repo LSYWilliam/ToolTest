@@ -1,0 +1,39 @@
+<nz-select
+    style="width: 85px;"
+    [nzPlaceHolder]="'省'"
+    [(ngModel)]="valueProvinces"
+    [nzShowSearch]="true"
+    (ngModelChange)="provinceSearch()">
+    <nz-option
+        *ngFor="let option of searchOptionsProvinces"
+        [nzLabel]="option.name"
+        [nzValue]="option"
+        [nzDisabled]="option.disabled">
+    </nz-option>
+</nz-select>
+<nz-select
+    style="width: 85px;margin-left:2px;"
+    [nzPlaceHolder]="'市'"
+    [(ngModel)]="valueCities"
+    [nzShowSearch]="true"
+    (ngModelChange)="citiesSearch()">
+    <nz-option
+        *ngFor="let option of selectedOptionCities"
+        [nzLabel]="option.name"
+        [nzValue]="option"
+        [nzDisabled]="option.disabled">
+    </nz-option>
+</nz-select>
+<nz-select
+    style="width: 85px; margin-left:2px;"
+    [nzPlaceHolder]="'区'"
+    [(ngModel)]="valueAreas"
+    [nzShowSearch]="true"
+    (ngModelChange)="areaSearch()">
+    <nz-option
+        *ngFor="let option of selectedOptionAreas"
+        [nzLabel]="option.name"
+        [nzValue]="option"
+        [nzDisabled]="option.disabled">
+    </nz-option>
+</nz-select>

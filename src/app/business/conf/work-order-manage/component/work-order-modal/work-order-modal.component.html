@@ -1,0 +1,69 @@
+<form nz-form [formGroup]="validateForm">
+    <div nz-form-item nz-row class="margin_top_10 margin_bottom_10" *ngIf="types === 3">
+        <div nz-form-label nz-col class="card_title_14_bold text_right" [nzSpan]="5">
+            工单状态：
+        </div>
+        <div nz-form-label nz-col class="card_title_14_bold" [nzSpan]="1"></div>
+        <div nz-form-control nz-col [nzSpan]="16">
+            <label formControlName="workStatusTest"
+                   nz-radio
+                   [(ngModel)]="data.workStatusTest"
+                   (ngModelChange)="wordSelectStatus($event)">
+                <span>是否结束工单状态</span>
+            </label>
+            <div nz-form-explain *ngIf="getFormControl('workStatusTest').dirty&&getFormControl('workStatusTest').hasError('required')">
+                请选择工单状态!
+            </div>
+        </div>
+    </div>
+
+
+    <div nz-form-item nz-row class="margin_top_10 margin_bottom_10" *ngIf="types === 3">
+        <div nz-form-label nz-col class="card_title_14_bold text_right" [nzSpan]="5">
+            工单反馈：
+        </div>
+        <div nz-form-label nz-col class="card_title_14_bold" [nzSpan]="1"></div>
+        <div nz-form-control nz-col [nzSpan]="16">
+            <nz-input formControlName="workFeedback"
+                      [nzPlaceHolder]="'请输入工单反馈'"
+                      [nzRows]="6"
+                      [nzType]="'textarea'"
+                      [nzPlaceHolder]="''"
+                      [nzSize]="'large'"
+                      minlength="2"
+                      maxlength="255"
+                      [(ngModel)]="data.workFeedback">
+            </nz-input>
+            <div nz-form-explain *ngIf="getFormControl('workFeedback').dirty&&getFormControl('workFeedback').hasError('required')">
+                请输入工单反馈!
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('workFeedback').dirty&&getFormControl('remarks').hasError('minlength')">
+                备注最少2个字!
+            </div>
+
+            <div nz-form-explain *ngIf="getFormControl('workFeedback').dirty&&getFormControl('remarks').hasError('maxlength')">
+                备注最多255个字!
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div class="customize-footer" >
+    <button
+        nz-button
+        [nzType]="'primary'"
+        [nzSize]="'large'"
+        (click)="handleOk()">
+        保存
+    </button>
+
+    <button
+        nz-button
+        [nzType]="'default'"
+        [nzSize]="'large'"
+        (click)="handleCancel()">
+        取消
+    </button>
+</div>
+

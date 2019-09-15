@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/ag-grid/dist/styles/ag-grid.css';
+@import '../node_modules/ag-grid/dist/styles/ag-theme-fresh.css';
+
+@import 'base';
+
+// 365编辑器
+//@import "assets/ueditor-utf8-php/css/demo.css";
+
+.my-table{
+    line-height: 35px;
+}
+body{
+    font-family: "Microsoft Yahei"!important;
+    color: $color_font_black!important;
+}

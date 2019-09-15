@@ -1,0 +1,20 @@
+<nz-spin [nzTip]="'正在读取数据...'" [nzSize]="'large'" [nzSpinning]="_isSpinning">
+    <span class="card_title_18_bold">用户终端</span>
+    <div nz-row class="margin_top_10">
+        <div nz-col [nzSpan]="24">
+            <div style="height: 500px;">
+                <app-table [tableInput]='eventListModel.tableInput' [rowData]='enevtLogData'></app-table>
+            </div>
+        </div>
+    </div>
+
+    <span class="card_title_18_bold">设备端</span>
+    <div nz-row class="margin_top_10">
+        <div nz-col [nzSpan]="24">
+            <div style="height: 325px;">
+                <app-table [tableInput]='userTerminalModel.tableInput' [rowData]='userLogData'></app-table>
+            </div>
+        </div>
+    </div>
+</nz-spin>
+

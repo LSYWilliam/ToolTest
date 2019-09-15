@@ -1,0 +1,129 @@
+<form nz-form [formGroup]="validateForm">
+    <div nz-row>
+        <div class="set_name card_title_14 float_left">扫频控制：</div>
+        <div class="set_value float_left">
+            <nz-select style="width: 120px;"
+                       formControlName="probeStatus"
+                       (blur)="onBlurValue($event,'probeStatus')"
+                       [nzPlaceHolder]="'choose option'">
+                <nz-option
+                    *ngFor="let option of probeStatusDropDownList"
+                    [nzLabel]="option.name"
+                    [nzValue]="option.id"
+                    [nzDisabled]="option.disabled">
+                </nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div nz-row ant-form-item
+         *ngIf="getFormControl('probeStatus')&&getFormControl('probeStatus').dirty&&getFormControl('probeStatus').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">至少选择一个!</div>
+    </div>
+
+    <div nz-row>
+        <div nz-form-item nz-col [nzSpan]="12" >
+            <div class="card_title_14 float_left" nz-col [nzSpan]="6">日志IP：</div>
+            <div nz-form-control nz-col [nzSpan]="18" >
+                <nz-input
+                    formControlName="sysLogIp"
+                    [nzPlaceHolder]="'请输入如下格式的IP:255.255.255.255'"
+                    [nzDisabled]="this.validateForm.get('probeStatus').value===0"
+                    (blur)="onBlurValue($event,'sysLogIp')"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+        </div>
+        <div nz-form-item nz-col [nzSpan]="6">
+            <div class="card_title_14 float_left" nz-col [nzSpan]="16">日志端口：</div>
+            <div nz-form-control nz-col [nzSpan]="8" >
+                <nz-input
+                    formControlName="sysLogPort"
+                    [nzPlaceHolder]="'请输入端口'"
+                    [nzDisabled]="this.validateForm.get('probeStatus').value===0"
+                    (keyup)="onKeyup($event)"
+                    (keypress)="onKeypress($event)"
+                    (blur)="onBlur($event,'sysLogPort')"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+        </div>
+    </div>
+    <div nz-row ant-form-item
+         *ngIf="getFormControl('sysLogIp')&&getFormControl('sysLogIp').dirty&&getFormControl('sysLogIp').invalid">
+        <div nz-form-label nz-col [nzSpan]="3" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="21" class="card_title_12 error_red">请输入正确格式的ip!</div>
+    </div>
+    <div nz-row>
+        <div nz-form-item nz-col [nzSpan]="12">
+            <div class="card_title_14 float_left" nz-col [nzSpan]="6">发送IP：</div>
+            <div nz-form-control  nz-col [nzSpan]="18" >
+                <nz-input
+                    formControlName="probeServerIp"
+                    [nzPlaceHolder]="'请输入如下格式的IP:255.255.255.255'"
+                    [nzDisabled]="this.validateForm.get('probeStatus').value===0"
+                    (blur)="onBlurValue($event,'probeServerIp')"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+        </div>
+        <div nz-form-item nz-col [nzSpan]="6">
+            <div class="card_title_14 float_left" nz-col [nzSpan]="16">发送端口：</div>
+            <div nz-form-control nz-col [nzSpan]="8" >
+                <nz-input
+                    formControlName="probeServerPort"
+                    [nzDisabled]="this.validateForm.get('probeStatus').value===0"
+                    [nzPlaceHolder]="'请输入端口'"
+                    (keyup)="onKeyup($event)"
+                    (keypress)="onKeypress($event)"
+                    (blur)="onBlur($event,'probeServerPort')"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+        </div>
+    </div>
+    <div nz-row ant-form-item
+         *ngIf="getFormControl('probeServerIp')&&getFormControl('probeServerIp').dirty&&getFormControl('probeServerIp').invalid">
+        <div nz-form-label nz-col [nzSpan]="3" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="21" class="card_title_12 error_red">请输入正确格式的ip!</div>
+    </div>
+
+    <div nz-row>
+        <div class="set_name card_title_14 float_left">扫频间隔(秒)：</div>
+        <div class="set_value float_left">
+            <nz-input
+                formControlName="probeInterval"
+                [nzDisabled]="this.validateForm.get('probeStatus').value===0"
+                [nzPlaceHolder]="'请输入大于0的秒数'"
+                (keyup)="onKeyup($event)"
+                (keypress)="onKeypress($event)"
+                (blur)="onBlur($event,'probeInterval')"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-row ant-form-item
+         *ngIf="getFormControl('probeInterval')&&getFormControl('probeInterval').dirty&&getFormControl('probeInterval').invalid">
+        <div nz-form-label nz-col [nzSpan]="12" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="12" class="card_title_12 error_red">请输入大于0的秒数!</div>
+    </div>
+    <div nz-row>
+        <div class="set_name card_title_14 float_left">扫频场强：</div>
+        <div class="set_value float_left">
+            <nz-input
+                formControlName="scanRssi"
+                [nzDisabled]="this.validateForm.get('probeStatus').value===0"
+                [nzPlaceHolder]="'请输入端口'"
+                (keyup)="onKeyup($event)"
+                (keypress)="onKeypress($event)"
+                (blur)="onBlur($event,'scanRssi')"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-row ant-form-item
+         *ngIf="getFormControl('scanRssi')&&getFormControl('scanRssi').dirty&&getFormControl('scanRssi').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入40-90之间的正整数!</div>
+    </div>
+</form>

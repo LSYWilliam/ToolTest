@@ -1,0 +1,146 @@
+<!--<form nz-form [formGroup] = "validateForm" class="modal_con">-->
+    <!--<div nz-form-item nz-row >-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">-->
+            <!--所属企业-->
+        <!--</div>-->
+        <!--<div  nz-form-control nz-col [nzSpan]="18" class="card_title_14">-->
+            <!--<app-dropdown-->
+                <!--[dropDowns]= "businessList"-->
+                <!--(selectValue)="getDropDownBusiName($event)"-->
+                <!--(selectID)="getDropDownBusiId($event)"-->
+                <!--[inDefault]="defaultBusiName"-->
+                <!--*ngIf="businessList"-->
+            <!--&gt;-->
+            <!--</app-dropdown>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div nz-form-item nz-row>-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">-->
+            <!--设备名称-->
+        <!--</div>-->
+        <!--<div nz-form-control nz-col [nzSpan]="18" class="card_title_14">-->
+            <!--<nz-input-->
+                <!--[(ngModel)]="data.apName"-->
+                <!--formControlName="apName"-->
+                <!--style="width:240px;"-->
+                <!--[nzPlaceHolder]="'请输入设备名称'"-->
+            <!--&gt;-->
+            <!--</nz-input>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div nz-form-item nz-row *ngIf="this.validateForm.controls['apName'].dirty && this.validateForm.controls['apName'].invalid">-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>-->
+        <!--<div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入2-16个字符，支持下划线!</div>-->
+    <!--</div>-->
+
+    <!--<div nz-form-item nz-row>-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">-->
+            <!--序列号-->
+        <!--</div>-->
+        <!--<div nz-form-control nz-col [nzSpan]="18" class="card_title_14">-->
+            <!--<nz-input-->
+                <!--[(ngModel)]="data.apSN"-->
+                <!--formControlName="apSN"-->
+                <!--[nzPlaceHolder]="'请输入设备序列号'"-->
+                <!--[nzDisabled]=" status === 1"-->
+                <!--(nzBlur)="blur()"-->
+                <!--[nzSize]="'default'"-->
+                <!--style="width: 240px;">-->
+            <!--</nz-input>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div nz-form-item nz-row *ngIf="this.validateForm.controls['apSN'].dirty && this.validateForm.controls['apSN'].invalid">-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>-->
+        <!--<div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入正确的序列号！</div>-->
+    <!--</div>-->
+
+    <!--<div  nz-form-item nz-row >-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">-->
+            <!--型号-->
+        <!--</div>-->
+        <!--<div nz-form-control nz-col [nzSpan]="18" class="card_title_14">-->
+            <!--<nz-input-->
+                <!--[(ngModel)]="data.apModel"-->
+                <!--formControlName = 'apModel'-->
+                <!--[nzPlaceHolder]="'请输入设备类型'"-->
+                <!--[nzDisabled] = "true"-->
+                <!--[nzSize]="'default'"-->
+                <!--style="width: 240px;">-->
+            <!--</nz-input>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div nz-form-item nz-row>-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">-->
+            <!--型号说明-->
+        <!--</div>-->
+        <!--<div nz-form-control nz-col [nzSpan]="18" class="card_title_14">-->
+            <!--<nz-input-->
+                <!--[(ngModel)]="data.apModelDescription"-->
+                <!--formControlName = 'apModelDescription'-->
+                <!--[nzPlaceHolder]="'请输入型号说明'"-->
+                <!--[nzDisabled] = "true"-->
+                <!--[nzSize]="'default'"-->
+                <!--style="width: 240px;">-->
+            <!--</nz-input>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div nz-form-item nz-row>-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">-->
+            <!--MAC地址-->
+        <!--</div>-->
+        <!--<div  nz-form-control nz-col [nzSpan]="18" class="card_title_14">-->
+            <!--<nz-input-->
+                <!--[(ngModel)]="data.apMac"-->
+                <!--formControlName="apMac"-->
+                <!--[nzDisabled]=" status === 1"-->
+                <!--[nzPlaceHolder]="'AA:BB:CC:DD:EE:FF'"-->
+                <!--[nzSize]="'default'"-->
+                <!--style="width: 240px;">-->
+            <!--</nz-input>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div nz-form-item nz-row *ngIf="this.validateForm.controls['apMac'].dirty && this.validateForm.controls['apMac'].invalid">-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>-->
+        <!--<div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入正确的mac地址！</div>-->
+    <!--</div>-->
+
+    <!--<div nz-form-item nz-row>-->
+        <!--<div  nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">-->
+            <!--申购时间-->
+        <!--</div>-->
+        <!--<div  nz-form-control nz-col [nzSpan]="6" class="card_title_14">-->
+            <!--<nz-datepicker-->
+                <!--[(ngModel)]="data.updateTime"-->
+                <!--formControlName="updateTime"-->
+                <!--[nzPlaceHolder]="'请选择申购时间'"-->
+                <!--[nzFormat]="'YYYY-MM-DD HH:mm'"-->
+                <!--[nzShowTime]="true"-->
+                <!--style="width: 240px;">-->
+            <!--</nz-datepicker>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div nz-form-item nz-row *ngIf="this.validateForm.controls['updateTime'].dirty && this.validateForm.controls['updateTime'].invalid">-->
+        <!--<div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>-->
+        <!--<div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >申购时间为必填选项！</div>-->
+    <!--</div>-->
+<!--</form>-->
+<!--<div class="customize-footer">-->
+    <!--<button-->
+        <!--nz-button-->
+        <!--[nzType]="'primary'"-->
+        <!--[nzSize]="'large'"-->
+        <!--(click)="handleOk()">-->
+        <!--保存-->
+    <!--</button>-->
+
+    <!--<button-->
+        <!--nz-button-->
+        <!--[nzType]="'default'"-->
+        <!--[nzSize]="'large'"-->
+        <!--(click)="handleCancel()">-->
+        <!--取消-->
+    <!--</button>-->
+<!--</div>-->

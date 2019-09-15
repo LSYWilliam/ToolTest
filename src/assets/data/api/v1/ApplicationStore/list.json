@@ -1,0 +1,33 @@
+{
+    "code":0,
+    "msg":"操作成功",
+    "result":[
+        {
+            "id":1,"name":"新增","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":2,"name":"工作","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":3,"name":"娱乐","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":4,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":5,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":6,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":7,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":8,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":9,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":10,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":11,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":12,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        },{
+            "id":2,"name":"192.168.1.166","desc":"适配器1","picture":"/assets/img/t0144b14c0e17539d15.png","url":"....."
+        }
+    ]
+}

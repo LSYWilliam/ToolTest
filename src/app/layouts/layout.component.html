@@ -1,0 +1,17 @@
+<nz-layout class="layout">
+    <!--头部组件-->
+    <app-header-layout></app-header-layout>
+
+    <!--导航组件-->
+    <nz-layout style="background: #d9dfe5;">
+        <!--导航内容组件-->
+        <nz-sider class="nav_listCon">
+            <app-menu-nav [menuList]="menuList"></app-menu-nav>
+        </nz-sider>
+
+        <nz-layout class="layout_content">
+            <router-outlet></router-outlet>
+        </nz-layout>
+    </nz-layout>
+</nz-layout>
+

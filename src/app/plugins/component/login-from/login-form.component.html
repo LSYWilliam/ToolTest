@@ -1,0 +1,47 @@
+<div class="login_form right" >
+    <div id="login_title" class="login_item">用 户 登 录 <span class="login_line">| </span> <span class="login_name_login">LOGIN</span></div>
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="logIn()">
+        <div nz-form-item class="login_input">
+            <div nz-form-control [nzValidateStatus]="validateForm.controls.userName">
+                <nz-input style="height: 37px; font-family: 'Microsoft YaHei';" formControlName="userName" [nzPlaceHolder]="'请输入账号'" [nzSize]="'large'">
+                    <ng-template #prefix><i class="icon-systemUser icon_common"></i></ng-template>
+                </nz-input>
+                <div nz-form-explain *ngIf="validateForm.controls.userName.dirty&&validateForm.controls.userName.hasError('required')">请输入账号!</div>
+            </div>
+        </div>
+
+        <div class="login_input" nz-form-item>
+            <div nz-form-control [nzValidateStatus]="validateForm.controls.password">
+                <nz-input style="height: 37px;font-family: 'Microsoft YaHei';" formControlName="password" [nzType]="isShowPassword" [nzPlaceHolder]="'请输入密码'" [nzSize]="'large'" >
+                    <ng-template #prefix><i class="icon-systemPassword icon_common"></i></ng-template>
+                </nz-input>
+                <div nz-form-explain *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('required')">请输入密码!</div>
+            </div>
+            <i class="icon-ACcloseEye position white" *ngIf="!openFlag" (click)="isOpenEyes(false)"></i>
+            <i class="icon-ACopenEye position white" *ngIf="openFlag" (click)="isOpenEyes(true)"></i>
+        </div>
+
+        <div class="login_input" nz-form-item>
+            <div nz-form-control [nzValidateStatus]="validateForm.controls.code">
+                <nz-input style="height: 37px;text-transform: uppercase; font-family: 'Microsoft YaHei';" formControlName="code" [nzPlaceHolder]="'请输入验证码'" [nzSize]="'large'">
+                    <ng-template #prefix><i class="icon-systemVerificationCode icon_common"></i></ng-template>
+
+                    <ng-template #suffix>
+                        <div class="validate_line"></div>
+                        <div id="validate" (click)="refreshValidate()">
+                            <!--<div *ngIf="validateCode"><img [src]="validate"/></div>-->
+                            <div *ngIf="validateCode"><img [src]="validateCode"/></div>
+                        </div>
+                    </ng-template>
+                </nz-input>
+                <div nz-form-explain *ngIf="validateForm.controls.code.dirty&&validateForm.controls.code.hasError('required')">请输入验证码!</div>
+            </div>
+        </div>
+
+        <div nz-form-item>
+            <div nz-form-control>
+                <button nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">登录</button>
+            </div>
+        </div>
+    </form>
+</div>

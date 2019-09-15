@@ -1,0 +1,29 @@
+<div nz-row>
+    <div nz-col [nzSpan]="11">
+        <span class=" card_title_12"> 可添加设备
+            <span class="card_title_14_bold"> {{unUserDevice}} </span> 台
+        </span>
+
+        <app-left-table [leftTableInput]="leftTableInput"
+                        [rowDataLeft]="leftData"
+                        (rowDow)="leftDoubleClick($event)">
+        </app-left-table>
+    </div>
+
+    <div nz-col [nzSpan]="2" style="text-align: center;margin-top: 120px;">
+        <i class="anticon anticon-left-square" (click)="convert(false)"></i>
+        <i class="anticon anticon-right-square" (click)="convert(true)"></i>
+    </div>
+
+    <div nz-col [nzSpan]="11">
+        <span class=" card_title_12"> 已选
+            <span class="card_title_14_bold"> {{useDevice}} </span> 台设备
+        </span>
+
+        <app-right-table [leftTableInput]="leftTableInput"
+                         [rowDataRight]="rightData"
+                         (rowDow)="rightDoubleClick($event)">
+        </app-right-table>
+    </div>
+</div>
+

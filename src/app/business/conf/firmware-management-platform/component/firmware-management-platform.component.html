@@ -1,0 +1,209 @@
+<div nz-row [ngSwitch] = "firmwareManagement" class="box">
+    <div *ngSwitchCase="'versionManagement'">
+        <nz-breadcrumb class="my_location">
+            <nz-breadcrumb-item>设备管理</nz-breadcrumb-item>
+            <nz-breadcrumb-item>版本资源管理</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <div nz-row>
+            <div nz-row class="margin_top_10">
+                <span class="card_title_18_bold">{{firmwareManagementPlatformModel.fileUploadServer}}</span>
+                <a class="card_title_14 padding_left_10" (click)="upload()">版本上传</a>
+            </div>
+
+            <div nz-row class="searchApVer">
+                <div nz-col [nzSpan]="6">
+                    <span class="card_title_14_bold margin_left_30">版本号</span>：
+                    <input (keyup.enter)="onInputChanged()" [(ngModel)]="enterValue" nz-input placeholder="版本号" class="input_width" />
+                </div>
+                <div nz-col [nzSpan]="6">
+                    <span class="card_title_14_bold">设备类型</span>：
+                    <app-dropdown
+                        [inDefault]="verType"
+                        [dropDowns]="versionTypeDropDown.deviceType"
+                        (selectID)="getDeviceType($event)"
+                        (selectValue)="getDeviceTypeName($event)">
+                    </app-dropdown>
+                </div>
+                <div nz-col [nzSpan]="6">
+                    <span class="card_title_14_bold">设备型号</span>：
+                    <app-dropdown
+                        [inDefault]="verModel"
+                        [dropDowns]="searchDeviceModelDropDown"
+                        (selectID)="getDeviceModel($event)"
+                        (selectValue)="getDeviceModelName($event)">
+                    </app-dropdown>
+                </div>
+                <div nz-col [nzSpan]="6">
+                    <a (click)="clearDropDown()" class="a_text_decoration">清空</a>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div [ngStyle]="{'height': windowHeight+'px'}">
+                    <app-table [tableInput]='versionListModel.tableInput'
+                               [rowData]='firmwareManagementPlatformModel.tableData'
+                               (cellClickEvent)="operateStop($event)">
+                    </app-table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngSwitchCase="'versionUpload'">
+        <div nz-row>
+            <i class="icon-ACback icon_explain card_title_14_bold icon_cursor" (click)="goBackShowWithMessage('是否放弃版本上传？')"></i>
+        </div>
+        <div nz-row>
+            <!--<div>-->
+                <!--<span class="card_title_18_bold">版本上传</span>-->
+                <!--<a class="padding_left_25" (click)="saveUpload()">保存</a>-->
+            <!--</div>-->
+
+            <form nz-form [formGroup]="validateForm">
+                <div nz-form-item nz-row>
+                    <div nz-form-control>
+                        <span class="card_title_18_bold">版本上传</span>
+                        <button nz-button nzType="primary" (click)="saveUpload()" [ngClass]="{'disabled':!validateForm.valid}" [disabled]="!validateForm.valid">保存</button>
+                    </div>
+                </div>
+                <div nz-form-item nz-row>
+                    <div nz-col [nzSpan]="3" class="card_title_14_bold">
+                        <label>版本号</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSpan]="10" >
+                        <nz-input [(ngModel)]="versionUploadModel.version"
+                                  [nzSize]="'large'"
+                                  formControlName="version"
+                                  [nzId]="'version'"></nz-input>
+                                  <!--(keydown)="onInputMax($event)"-->
+                                  <!--(paste)="OnPasteInput($event)"></nz-input>-->
+                        <div nz-form-explain
+                             *ngIf="(getFormControl('version').dirty&&getFormControl('version').hasError('required'))">
+                            请输入版本号!
+                        </div>
+                        <!--<div nz-form-explain-->
+                             <!--*ngIf="(getFormControl('version').dirty&&getFormControl('version').hasError('maxlength'))">-->
+                            <!--字数应小于或等于16位!-->
+                        <!--</div>-->
+                    </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                    <div nz-col [nzSpan]="3" class="card_title_14_bold">
+                        <label>MD5</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSpan]="10">
+                        <nz-input [(ngModel)]="versionUploadModel.checkMd5"
+                                  [nzSize]="'large'"
+                                  formControlName="checkMd5"
+                                  [nzId]="'version'"></nz-input>
+                        <!--(keydown)="onInputMax($event)"-->
+                        <!--(paste)="OnPasteInput($event)"></nz-input>-->
+                        <div nz-form-explain
+                             *ngIf="getFormControl('checkMd5').dirty&&getFormControl('checkMd5').hasError('required')">
+                            请输入合适的MD5!
+                        </div>
+                    </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                    <div nz-col [nzSpan]="3" class="card_title_14_bold">
+                        <label>设备类型</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSpan]="10">
+                        <nz-input style="display: none;" [(ngModel)]="versionUploadModel.type"
+                                  [nzPlaceHolder]="'版本类型'"
+                                  [nzSize]="'large'"
+                                  formControlName="type"></nz-input>
+                        <app-dropdown
+                            [dropDowns]="versionTypeDropDown.uploadDeviceType"
+                            (selectID)="getDropDownType($event)"
+                            [inDefault]="uploadDeviceType">
+                        </app-dropdown>
+                        <div nz-form-explain
+                             *ngIf="getFormControl('type').dirty&&getFormControl('type').hasError('required')">
+                            请选择版本类型!
+                        </div>
+                    </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                    <div nz-col [nzSpan]="3" class="card_title_14_bold">
+                        <label>设备型号</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSpan]="10">
+                        <nz-input style="display: none;" [(ngModel)]="versionUploadModel.deviceModel"
+                                  [nzPlaceHolder]="'设备型号'"
+                                  [nzSize]="'large'"
+                                  formControlName="deviceModel"></nz-input>
+                        <app-dropdown
+                            [dropDowns]="uploadDeviceModelDropDown"
+                            (selectValue)="getDropDownModel($event)">
+                        </app-dropdown>
+                        <div nz-form-explain
+                             *ngIf="getFormControl('deviceModel').dirty&&getFormControl('deviceModel').hasError('required')">
+                            请选择设备型号!
+                        </div>
+                    </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                    <div nz-col [nzSpan]="3" class="card_title_14_bold">
+                        <label>版本上传</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSpan]="20">
+                        <nz-input style="display: none;" [(ngModel)]="versionUploadModel.filePath"
+                                  [nzPlaceHolder]="'版本上传'"
+                                  [nzSize]="'large'"
+                                  formControlName="upload"
+                                  [nzId]="'upload'"></nz-input>
+                        <div nz-col [nzSpan]="21" class="card_title_12">
+                            <input #fileUpLaod type="file" name='file' (change)="doUpload($event)" />
+                        </div>
+                        <div nz-form-explain
+                             *ngIf="getFormControl('upload').dirty&&getFormControl('upload').hasError('required')">
+                            上传失败!
+                        </div>
+                    </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                    <div nz-col [nzSpan]="3" class="card_title_14_bold">
+                        <label>版本说明</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSpan]="20">
+                        <nz-input [(ngModel)]="versionUploadModel.instruction"
+                                  [nzType]="'textarea'"
+                                  [nzSize]="'large'"
+                                  [nzRows]="'8'"
+                                  formControlName="instruction"
+                                  [nzPlaceHolder]="'版本说明'"
+                                  [nzId]="'instruction'"></nz-input>
+                                  <!--(keydown)="onTextMax($event)"-->
+                                  <!--(paste)="OnPasteText($event)"></nz-input>-->
+                        <div nz-form-explain
+                             *ngIf="getFormControl('instruction').dirty&&getFormControl('instruction').hasError('required')">
+                            请输入版本说明!
+                        </div>
+                        <div nz-form-explain
+                             *ngIf="getFormControl('instruction').dirty&&getFormControl('instruction').hasError('maxlength')">
+                            字数应小于或等于4000位!
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="'versionExplanation'">
+        <div nz-row>
+            <i class="icon-ACback icon_explain card_title_14_bold" (click)="goBackShow('是否离开版本说明？')"></i>
+        </div>
+
+        <div nz-row>
+            {{firmwareManagementPlatformModel.versionDetails}}
+        </div>
+    </div>
+</div>
+

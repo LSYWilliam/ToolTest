@@ -1,0 +1,114 @@
+<div nz-row>
+    <div nz-col [nzSpan]="12">
+        <div nz-row class="card_title_14_bold">2.4GHz配置</div>
+        <div nz-row>
+            <div class="set_name card_title_14 float_left">状态</div>
+            <div class="set_value float_left">
+                <nz-switch
+                    [(ngModel)]="globalRadioFreq.config2gState"
+                    (click)="wireless2Enable(globalRadioFreq.config2gState,'channel2Enable')">
+                </nz-switch>
+            </div>
+        </div>
+
+        <!--<div nz-row>-->
+            <!--<div class="set_name card_title_14 float_left">信道</div>-->
+            <!--<div class="set_value float_left">-->
+                <!--<app-dropdown-->
+                    <!--[status]="!globalRadioFreq.config2gState"-->
+                    <!--[dropDowns]= "globalRadioFreq.config2gChannel"-->
+                    <!--[inDefault]="inData.config2gChannel"-->
+                    <!--(selectID)="getDropDown($event,'channel2')">-->
+                <!--</app-dropdown>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div nz-row>-->
+            <!--<div class="set_name card_title_14 float_left">功率</div>-->
+            <!--<div class="set_value float_left">-->
+                <!--<app-dropdown-->
+                    <!--[status]="!globalRadioFreq.config2gState"-->
+                    <!--[dropDowns]= "globalRadioFreq.config2gPowerDbm"-->
+                    <!--[inDefault]="inData.config2gPowerDbm"-->
+                    <!--(selectID)="getDropDown($event,'power2')">-->
+                <!--</app-dropdown>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div nz-row>-->
+            <!--<div class="set_name card_title_14 float_left">信道宽度</div>-->
+            <!--<div class="set_value float_left">-->
+                <!--<app-dropdown-->
+                    <!--[status]="!globalRadioFreq.config2gState"-->
+                    <!--[dropDowns]= "globalRadioFreq.config2g11nChannelWidth"-->
+                    <!--[inDefault]="inData.config2g11nChannelWidth"-->
+                    <!--(selectID)="getDropDown($event,'channelWidth2')">-->
+                <!--</app-dropdown>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div nz-col [nzSpan]="12">
+        <div nz-row class="card_title_14_bold">5GHz配置</div>
+        <div nz-row>
+            <div class="set_name card_title_14 float_left">状态</div>
+            <div class="set_value float_left">
+                <nz-switch
+                    [(ngModel)]="globalRadioFreq.config5gState"
+                    (click)="wireless2Enable(globalRadioFreq.config5gState,'channel5Enable')">
+                </nz-switch>
+            </div>
+        </div>
+        <!--<div nz-row>-->
+            <!--<div class="set_name card_title_14 float_left">信道</div>-->
+            <!--<div class="set_value float_left">-->
+                <!--<app-dropdown-->
+                    <!--[status]="!globalRadioFreq.config5gState"-->
+                    <!--[dropDowns]= "globalRadioFreq.config5gChannel"-->
+                    <!--[inDefault]="inData.config5gChannel"-->
+                    <!--(selectID)="getDropDown($event,'channel5')">-->
+                <!--</app-dropdown>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div nz-row>-->
+            <!--<div class="set_name card_title_14 float_left">功率</div>-->
+            <!--<div class="set_value float_left">-->
+                <!--<app-dropdown-->
+                    <!--[status]="!globalRadioFreq.config5gState"-->
+                    <!--[dropDowns]= "globalRadioFreq.config5gPowerDbm"-->
+                    <!--[inDefault]="inData.config5gPowerDbm"-->
+                    <!--(selectID)="getDropDown($event,'power5')">-->
+                <!--</app-dropdown>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div nz-row>-->
+            <!--<div class="set_name card_title_14 float_left">信道宽度</div>-->
+            <!--<div class="set_value float_left">-->
+                <!--<app-dropdown-->
+                    <!--[status]="!globalRadioFreq.config5gState"-->
+                    <!--[dropDowns]= "globalRadioFreq.config5g11nChannelWidth"-->
+                    <!--[inDefault]="inData.config5g11nChannelWidth"-->
+                    <!--(selectID)="getDropDown($event,'channelWidth5')">-->
+                <!--</app-dropdown>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <!--<div nz-col [nzSpan]="8">-->
+        <!--<div nz-row class="card_title_14_bold">射频参数</div>-->
+        <!--<div nz-row>-->
+            <!--<div class="set_name card_title_14 float_left">漫游诱导</div>-->
+            <!--<div class="set_value float_left">-->
+                <!--<app-dropdown-->
+                    <!--[dropDowns]= "globalRadioFreq.roamingInductionValue"-->
+                    <!--[inDefault]="inData.roamingInduction"-->
+                    <!--(selectID)="getDropDown($event,'roamingInduction')">-->
+                <!--</app-dropdown>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div nz-row class="set_explain">-->
+            <!--取值范围-90到-60,0为禁止测功能-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+
+

@@ -1,0 +1,29 @@
+<div class="login_con">
+    <div id="form">
+        <div class="login_title">
+            <div class="login_title_name">
+            <i class="icon-logo"></i> <span>企 业 无 限 云</span>
+            </div>
+        </div>
+        <div class="login_content">
+            <nz-carousel nzAutoPlay [nzEffect]="'fade'" class="carousel">
+                <div nz-carousel-content *ngFor="let index of array">
+                    <img src='{{index}}'/>
+                </div>
+            </nz-carousel>
+                <!--login-form组件 开始-->
+            <app-login-form [validateCode]="validateCode" [loginMessage]="loginMessage"
+                                (validateCodeEvent)="validateCodeEvent()" (loginEvent)="loginEvent($event)"
+                                (loginSuccessEvent)="loginSuccessEvent()"></app-login-form>
+                <!--login-form组件 结束-->
+        </div>
+    </div>
+
+    <div class="login_copy">
+        <span>企业无限云 © 2018 杭州全维技术股份有限公司 版权所有</span>
+    </div>
+</div>
+
+
+
+

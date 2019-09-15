@@ -1,0 +1,48 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>无线商情</nz-breadcrumb-item>
+    <nz-breadcrumb-item>我的跟踪</nz-breadcrumb-item>
+    <nz-breadcrumb-item>我的删除</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div nz-row style="text-align: center;">
+    <button nz-button [nzType]="bidBtnType" (click)="biddingInfo()" class="leftBtn">招标信息</button>
+    <button nz-button [nzType]="govBtnType" (click)="govInfo()" class="rightBtn">政策信息</button>
+</div>
+
+<div nz-row>
+    <a (click)="delete()" class="padding_left_10">彻底删除</a>
+    <a (click)="cancelDel()" class="padding_left_10">取消删除</a>
+</div>
+
+<div nz-row class="search_bg">
+    <span class="card_title_14_bold padding_right_10">我的主题:</span>
+    <app-dropdown
+        [dropDowns]= "topicList"
+        (selectID)="getTopicID($event)"
+        [status] = "false">
+    </app-dropdown>
+
+    <span class="card_title_14_bold padding_left_25 padding_right_10">删除时间:</span>
+    <nz-datepicker [nzMode]="'day'"
+                   (ngModelChange)="_startValueChange($event)"
+                   [(ngModel)]="_startDate"
+                   [nzDisabledDate]="_disabledStartDate"
+                   [nzFormat]="'YYYY-MM-DD'"
+                   [nzPlaceHolder]="'起始时间'">
+    </nz-datepicker>
+    <span class="padding_left_10 padding_right_10">-</span>
+    <nz-datepicker [nzMode]="'day'"
+                   (ngModelChange)="_endValueChange($event)"
+                   [(ngModel)]="_endDate"
+                   [nzDisabledDate]="_disabledEndDate"
+                   [nzFormat]="'YYYY-MM-DD'"
+                   [nzPlaceHolder]="'结束时间'"></nz-datepicker>
+
+</div>
+
+<div nz-row style="width: 100%; height: 600px;" class="margin_top_10">
+    <app-table
+        [tableInput]="staticDataModel.myThemeTableInput"
+        [rowData]="topicData">
+    </app-table>
+</div>

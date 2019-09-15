@@ -1,0 +1,19 @@
+<!--<div [ngSwitch]="show">-->
+    <!--<div *ngSwitchCase = "true">-->
+        <!--<div class="ap_link_style">-->
+            <!--<span>{{params.typeName}}</span>-->
+            <!--<span>{{params.deviceName}}</span>-->
+            <!--<span>{{params.version}}</span>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div *ngSwitchCase = "false">-->
+        <!--<div class="ap_link_style">-->
+            <!--{{params}}-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="ap_link_style" [title]="params.value">
+    {{params.value}}
+</div>

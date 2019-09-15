@@ -1,0 +1,13 @@
+@import "../../../../base";
+.btn {
+    width:60px;
+    height:25px;
+    display: inline-block;
+}
+.upload{
+    width:60px;
+    position: absolute;
+    left:0px;
+    top:-4px;
+    opacity: 0;
+}

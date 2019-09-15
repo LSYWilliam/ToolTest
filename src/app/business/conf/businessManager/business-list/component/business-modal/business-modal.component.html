@@ -1,0 +1,95 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">名称</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)] = "data.busiName"
+                formControlName="busiName"
+                [nzPlaceHolder]="'请输入企业名称'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['busiName'].dirty && this.validateForm.controls['busiName'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入2-32个字符，支持下划线</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">联系人</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)] = "data.busiContact"
+                formControlName="busiContact"
+                [nzPlaceHolder]="'请输入联系人'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['busiContact'].dirty && this.validateForm.controls['busiContact'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入2-16个字符，不支持特殊字符</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">联系方式</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)] = "data.busiTel"
+                formControlName="busiTel"
+                [nzPlaceHolder]="'请输入联系方式'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['busiTel'].dirty && this.validateForm.controls['busiTel'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >请输入11位电话号码！</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">地址</div>
+
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <app-three-link-list  [threeLinkData]="threeLinkData " (outData)="outData($event)"
+                                  [provinceLink]="provinceLink" [cityLink]="cityLink" [areaLink]="areaLink"></app-three-link-list>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row style="margin-bottom: 20px;">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">
+        </div>
+
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)] = "data.businessAddr"
+                [nzType]="'textarea'"
+                formControlName="businessAddr"
+                [nzPlaceHolder]="'请输入详细地址'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['businessAddr'].dirty && this.validateForm.controls['businessAddr'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red" >字节最大不能超过64位！</div>
+    </div>
+</form>
+
+<div class="customize-footer">
+    <button
+        nz-button
+        [nzType]="'primary'"
+        [nzSize]="'large'"
+        (click)="handleOk()">
+        保存
+    </button>
+
+    <button
+        nz-button
+        [nzType]="'default'"
+        [nzSize]="'large'"
+        (click)="handleCancel()">
+        取消
+    </button>
+</div>

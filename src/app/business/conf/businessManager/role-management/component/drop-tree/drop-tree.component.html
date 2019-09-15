@@ -1,0 +1,55 @@
+<ul nz-menu [nzTheme]="'#fff'" [nzMode]="isCollapsed?'vertical':'inline'">
+    <li *ngFor="let item of dataMenu;let i = index;"  #menuLi>
+        <ul>
+            <div >
+                <li nz-menu-item *ngIf="item.children == null" [nzSelected] ="true">
+                     <span title (click)="menuClick($event,item)" class="item">
+                         <span *ngIf="i == 0" class="custom-menu-selected ">{{item.permissionName}}</span>
+                         <span *ngIf="i !== 0">{{item.permissionName}}</span>
+                     </span>
+                </li>
+                <li nz-submenu *ngIf="item.children != null">
+                    <span title (click)="menuClick($event,item)" class="item">
+                         <span *ngIf="i == 0" class="custom-menu-selected ">{{item.permissionName}}</span>
+                         <span *ngIf="i !== 0">{{item.permissionName}}</span>
+                     </span>
+                    <ul *ngFor="let subItem of item.children;let idx = index;">
+                        <li nz-menu-item *ngIf="subItem.children == null">
+                            <span title (click)="menuClick($event,subItem)" class="item">{{subItem.permissionName}}</span>
+                        </li>
+                        <li nz-submenu *ngIf="subItem.children != null">
+                            <span title (click)="menuClick($event,subItem)" class="item">{{subItem.permissionName}}</span>
+                            <ul *ngFor="let thirdItem of item.children[idx].children;let tidx = index;">
+                                <li nz-menu-item *ngIf="tidx == 0&&thirdItem.children == null" >
+                                    <span title (click)="menuClick($event,thirdItem)" class="item">{{thirdItem.permissionName}}</span>
+                                </li>
+                                <li nz-submenu *ngIf="tidx == 0&&thirdItem.children != null" style="padding-left: 24px;">
+                                    <span title (click)="menuClick($event,thirdItem)" class="item">{{thirdItem.permissionName}}</span>
+                                    <ul *ngFor="let forthItem of item.children[idx].children[tidx].children;">
+                                        <li nz-menu-item *ngIf="tidx == 0"  >
+                                            <span title (click)="menuClick($event,forthItem)" class="item">{{forthItem.permissionName}}</span>
+                                        </li>
+                                        <li nz-menu-item *ngIf="tidx != 0"  [nzSelected] ="false">
+                                            <span title (click)="menuClick($event,forthItem)" class="item">{{forthItem.permissionName}}</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li nz-menu-item *ngIf="tidx != 0&&thirdItem.children == null" >
+                                    <span title (click)="menuClick($event,thirdItem)" class="item">{{thirdItem.permissionName}}</span>
+                                </li>
+                                <li nz-submenu *ngIf="tidx != 0&&thirdItem.children != null" style="padding-left: 24px;" >
+                                    <span title (click)="menuClick($event,thirdItem)" class="item">{{thirdItem.permissionName}}</span>
+                                    <ul *ngFor="let forthItem of item.children[idx].children[tidx].children;">
+                                        <li nz-menu-item>
+                                            <span title (click)="menuClick($event,forthItem)" class="item">{{forthItem.permissionName}}</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </ul>
+    </li>
+</ul>

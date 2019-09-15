@@ -1,0 +1,100 @@
+<nz-spin [nzTip]="'正在读取数据...'" [nzSize]="'large'" [nzSpinning]="_isSpinning">
+    <div nz-row>
+        <span class="card_title_18_bold">实时统计</span>
+    </div>
+
+    <div nz-row>
+        <div nz-col [nzSpan]="6">
+            <span class="card_title_14_bold">{{tooltitleModel.dataMonitoring}}</span>
+            <nz-tooltip [nzTitle]="tooltipModel.dataMonitoring" [nzPlacement]="'top'">
+            <span nz-tooltip>
+                <i class="icon-ACexplain1 icon_explain"></i>
+            </span>
+            </nz-tooltip>
+        </div>
+
+        <div nz-col [nzSpan]="18" class="text_right">
+        <span class="card_title_12_sum">
+            当前在线客户端<span class="card_title_14_sum">{{summaryModel.info.upUsrNum}}</span>个
+	    <span class="padding_left_25">
+            	今日转发流量<span class="card_title_14_sum">{{summaryModel.info.dayTraffic|number:'1.0-1'}}</span>MB
+	    </span>
+            （
+            <span class="color_dark_green card_title_14_bold">↑{{summaryModel.info.dayUpTraffic|number:'1.0-1'}}MB</span>
+            <span class="color_yellow card_title_14_bold">↓{{summaryModel.info.dayDownTraffic|number:'1.0-1'}}MB</span>
+            ）
+        </span>
+        </div>
+    </div>
+
+    <div nz-row>
+        <app-highcharts [chartInput]="summaryModel.businessMonitorChart"></app-highcharts>
+    </div>
+
+    <div nz-row>
+        <div #chart></div>
+    </div>
+
+    <!--历史数据-->
+    <!--运行状态-->
+    <div nz-row class="margin_top_10">
+        <div nz-row>
+            <span class="card_title_18_bold padding_right_10">历史数据</span>
+            <app-dropdown [dropDowns]= "historyDropDown.dropDowns" (selectID)="getDropDown($event)"></app-dropdown>
+        </div>
+
+        <div nz-row>
+            <div nz-col [nzSpan]="24">
+                <span class="card_title_14_bold">{{tooltitleModel.operatingStatus}}</span>
+                <nz-tooltip [nzTitle]="tooltipModel.operatingStatus" [nzPlacement]="'top'">
+                <span nz-tooltip>
+                    <i class="icon-ACexplain1 icon_explain"></i>
+                </span>
+                </nz-tooltip>
+            </div>
+            <app-highcharts [chartInput]="summaryModel.operatingStatusChart"></app-highcharts>
+        </div>
+
+
+        <!--流速监控-->
+        <div nz-row class="margin_top_30">
+            <div nz-col [nzSpan]="6">
+                <span class="card_title_14_bold">{{tooltitleModel.flowRateMonitoring}}</span>
+                <nz-tooltip [nzTitle]="tooltipModel.flowRateMonitoring" [nzPlacement]="'top'">
+                <span nz-tooltip>
+                    <i class="icon-ACexplain1 icon_explain"></i>
+                </span>
+                </nz-tooltip>
+            </div>
+            <div nz-col [nzSpan]="18" class="text_right">
+            <span class="card_title_12_sum">
+                {{changeTimes}}转发流量<span class="card_title_14_sum">  {{summaryModel.flowInfo.dayTraffic|number:'1.0-1'}}</span>MB
+                (
+                <span class="color_dark_green card_title_14_bold">↑{{summaryModel.flowInfo.upDayTraffic|number:'1.0-1'}}MB</span>
+                <span class="color_yellow card_title_14_bold">↓{{summaryModel.flowInfo.downDayTraffic|number:'1.0-1'}}MB</span>
+                )
+            </span>
+            </div>
+            <app-highcharts [chartInput]="summaryModel.flowRateMonitorChart"></app-highcharts>
+        </div>
+        <br/>
+
+        <!--在线客户端-->
+        <div nz-row class="margin_top_25">
+            <div nz-col [nzSpan]="6">
+                <span class="card_title_14_bold">{{tooltitleModel.onlineClient}}</span>
+                <nz-tooltip [nzTitle]="tooltipModel.onlineClient" [nzPlacement]="'top'">
+                <span nz-tooltip>
+                    <i class="icon-ACexplain1 icon_explain"></i>
+                </span>
+                </nz-tooltip>
+            </div>
+            <!--<div nz-col [nzSpan]="18" class="card_title_12 text_right">-->
+                <!--{{changeTimes}}在线客户端<span class="card_title_14_sum">{{userNumAbstract|number:'1.0-1'}}</span>个-->
+            <!--</div>-->
+            <app-highcharts [chartInput]="summaryModel.onlineClientChart"></app-highcharts>
+        </div>
+    </div>
+</nz-spin>
+
+

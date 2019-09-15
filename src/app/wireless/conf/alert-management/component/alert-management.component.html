@@ -1,0 +1,57 @@
+<div [ngSwitch]="conditionExpression">
+    <ng-template ngSwitchCase="firstShow">
+        <nz-breadcrumb class="my_location">
+            <nz-breadcrumb-item>我的网络</nz-breadcrumb-item>
+            <nz-breadcrumb-item>警报接收管理</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <div nz-row>
+            <app-dropdown
+                [dropDowns]= "alertManagementDropDownsModel.dropDowns"
+                (selectID)="getDropDown($event)">
+            </app-dropdown>
+        </div>
+        <div nz-row class="card_title_12">
+            <a (click)="saveAlertConf()">保存报警设置</a>
+            <a (click)="jumpConfPage('add')" class="padding_left_10">添加警报接收人</a>
+            <a (click)="jumpConfPage('del')" class="padding_left_10">移除警报接收人</a>
+        </div>
+        <div style="width: auto">
+            <app-tree-table
+                [treeTableInput]='treeTableInput'
+                [rowData]='alertListModel'
+                (selectSubEvent)="selectSubItems($event)"
+                (cellClickEvent)="cellClickJump($event)"
+                (outputData)="saveAlertData($event)">
+            </app-tree-table>
+        </div>
+    </ng-template>
+    <ng-template ngSwitchCase="editAlertMember">
+        <div>
+            <i class="icon-ACback pointer" (click)="goBack()" ></i>
+        </div>
+        <div nz-row class="modal_con">
+            <span class="card_title_18_bold">{{editSpan}}</span>
+            <a *ngIf="addFlag" (click)="add()" class="padding_left_10">添加</a>
+            <a *ngIf="!addFlag" (click)="del()" class="padding_left_10">移除</a>
+        </div>
+        <app-alert-receiver-table
+            [alertReceiverListModel]="alertReceiverListModel"
+            (outputDataEvent)="getAlertReceiverData($event)"
+            (outputTableData)="saveAlertData($event)"
+        ></app-alert-receiver-table>
+    </ng-template>
+    <ng-template ngSwitchCase="editSingleAlertMember">
+        <div>
+            <i class="icon-ACback pointer" (click)="goBack()" ></i>
+        </div>
+        <div nz-row class="modal_con">
+            <span  class="card_title_18_bold">{{editSingleAlertSpan}}</span>
+            <a (click)="save()" class="padding_left_10">保存</a>
+        </div>
+        <app-two-exchange-table
+            [leftTableData]="twoExchangeListModel.unselectedList"
+            [rightTableData]="twoExchangeListModel.selectedList"
+            (outputRightData)="exchangeTableOutputData($event)">
+        </app-two-exchange-table>
+    </ng-template>
+</div>

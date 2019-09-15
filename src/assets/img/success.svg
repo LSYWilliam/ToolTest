@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+
+	 <defs><style type="text/css">
+	 	.path{
+		  stroke-dasharray: 1000;
+		  stroke-dashoffset: 1000;
+		  animation: dash 2s linear forwards;
+		}
+
+		@keyframes dash {
+		  to {
+		    stroke-dashoffset: 0;
+		  }
+		}
+	</style>
+</defs>
+<path class="path" fill="none" stroke="#65B218" stroke-width="20" stroke-miterlimit="10" d="M190,99.875c0,49.637-40.238,89.875-89.875,89.875
+	S10.25,149.512,10.25,99.875S50.488,10,100.125,10c22.391,0,42.868,8.188,58.604,21.732"/>
+<polyline class="path" fill="none" stroke="#65B218" stroke-width="20" stroke-miterlimit="10" points="51.066,83.4 93.593,134.683
+	185.938,54.502 "/>
+</svg>

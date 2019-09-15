@@ -1,0 +1,93 @@
+<div [ngSwitch]="conditionExpression">
+    <ng-template ngSwitchCase="firstShow">
+        <nz-breadcrumb class="my_location">
+            <nz-breadcrumb-item>考勤应用</nz-breadcrumb-item>
+            <nz-breadcrumb-item>考勤设置</nz-breadcrumb-item>
+            <nz-breadcrumb-item>考勤组管理</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <div nz-row class="header">
+            <span class="card_title_18_bold">考勤组列表</span>
+            <a (click)="addButton()" class="card_title_12 padding_left_10">新增</a>
+            <a (click)="editButton()" class="card_title_12 padding_left_10 ">编辑</a>
+            <a (click)="deleteButton()" class="card_title_12 padding_left_10">删除</a>
+        </div>
+        <div style="height:550px; width: 100%;display: block;">
+            <app-table #attndGroupList
+                [tableInput]="tableInput"
+                [rowData]="tableData"
+                (selectAllEvent)="getDataSelectedFromZorroTable($event)"
+                (rowDoubleClickEvent)="doubleClick($event)"
+            >
+            </app-table>
+        </div>
+    </ng-template>
+    <ng-template ngSwitchCase="editPage">
+        <div>
+            <i class="icon-ACback pointer" (click)="goBack()"></i>
+        </div>
+        <div nz-row class="header">
+            <span class="card_title_18_bold">{{oper}}组列表</span>
+            <a (click)="saveButton()" class="card_title_12 padding_left_10">保存</a>
+        </div>
+        <div>
+            <form nz-form [formGroup]="validateForm">
+            <div nz-form-item nz-row class="card_title_12">
+                <div nz-col [nzSpan]="3" class="card_title_14_bold"> 考勤组名称</div>
+                <div nz-form-control nz-col [nzSpan]="21" class="card_title_14">
+                    <nz-input
+                        formControlName="groupName"
+                        [(ngModel)]="groupItem.groupName"
+                        [nzPlaceHolder]="'请输入考勤组名称'">
+                    </nz-input>
+                </div>
+            </div>
+            <div nz-form-item nz-row *ngIf="getFormControl('groupName')&&getFormControl('groupName').dirty&&getFormControl('groupName').invalid">
+                <div nz-form-label nz-col [nzSpan]="3" class="card_title_14_bold"></div>
+                <div nz-form-label nz-col [nzSpan]="21" class="card_title_12 error_red">2-32位至少字母或中文，支持数字!</div>
+            </div>
+            <div nz-form-item nz-row class="card_title_12">
+                <div nz-col [nzSpan]="3" class="card_title_14_bold"> 考勤负责人</div>
+                <div nz-form-control nz-col [nzSpan]="21" class="card_title_14">
+                    <nz-input
+                        formControlName="groupManagerName"
+                        [(ngModel)]="groupItem.groupManagerName"
+                        [nzPlaceHolder]="'请输入考勤负责人姓名'">
+                    </nz-input>
+                </div>
+            </div>
+            <div nz-form-item nz-row *ngIf="getFormControl('groupManagerName')&&getFormControl('groupManagerName').dirty&&getFormControl('groupManagerName').invalid">
+                <div nz-form-label nz-col [nzSpan]="3" class="card_title_14_bold"></div>
+                <div nz-form-label nz-col [nzSpan]="21" class="card_title_12 error_red">2-32位至少字母或中文，支持数字!</div>
+            </div>
+            </form>
+            <div nz-row class="card_title_12">
+                <div nz-col [nzSpan]="24" class="card_title_14_bold"> 考勤规则</div>
+                <div nz-col [nzSpan]="3" class="card_title_14 padding_left_50"> 班次选择</div>
+                <div nz-col [nzSpan]="21">
+                    <app-dropdown
+                        [dropDowns]="workShiftListModel.dropDowns"
+                        (selectID)="getWorkShiftDropDown($event)"
+                        [inDefault]="flightName">
+                    </app-dropdown>
+                </div>
+                <div nz-col [nzSpan]="3" class="card_title_14 padding_left_50"> 工作时间</div>
+                <div nz-col [nzSpan]="21">
+                    <nz-checkbox-group
+                        [(ngModel)]="checkOptions"
+                        (ngModelChange)="saveWorkModel(checkOptions)">
+                    </nz-checkbox-group>
+                </div>
+                <div nz-col [nzSpan]="3" class="card_title_14_bold"> 新增员工</div>
+                <div nz-col [nzSpan]="21"><a (click)="addUsersButton()">新增员工</a></div>
+                <div nz-col [nzSpan]="21" [nzOffset]="'3'" style="height: 600px">
+                    <app-table #staffListTable
+                        [tableInput]="staffListHeadModel.tableInput"
+                        [rowData]="staffList"
+                        (rowDow)="getUsrIdData($event)">
+                    </app-table>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>
+

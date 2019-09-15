@@ -1,0 +1,48 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <nz-spin [nzSize]="'large'" [nzTip]="'注册中，请稍后.....'" [nzSpinning]="contentStatus">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">企业名称</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="businessName"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入企业名称'"
+                [nzSize]="'large'"
+                [nzReadonly]="true"
+                autocomplete='name'>
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('businessName')&&getFormControl('businessName').dirty&&getFormControl('businessName').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入正确的序列号!</div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">适配器组地址</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <app-dropdown
+                [dropDowns]= "dropDownList"
+                [dropDownItemNumber]= "2"
+                (selectID)= "getDropDown($event)"
+                [inDefault]= "adapterGroupIp">
+            </app-dropdown>
+        </div>
+    </div>
+    <div class="customize-footer">
+        <button
+            nz-button
+            [nzType]="'primary'"
+            [nzSize]="'large'"
+            (click)="submitForm($event,validateForm.value)">
+            保存
+        </button>
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="resetForm($event)">
+            取消
+        </button>
+    </div>
+    </nz-spin>
+</form>

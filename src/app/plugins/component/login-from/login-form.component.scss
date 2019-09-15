@@ -1,0 +1,103 @@
+/*
+
+    Name:      login.css
+    Author:    wushuang
+    syetem:    客流分析系统
+    time:      2017/10/18
+
+*/
+
+/*__Styles Updated: 2017/10/23 Author: chenli
+--------------------------------------------------------------------------------------------*/
+/*__Styles Updated: 2018/06/11 Author: chenli
+--------------------------------------------------------------------------------------------*/
+@import "../../scss/common";
+.login_form{
+  height:390px;
+  width:350px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    float: right;
+  padding:0px 35px;
+  position: relative;
+}
+.login_item{
+    height: 100px;
+    line-height: 100px;
+    font-size: 24px;
+  margin-bottom:12px;
+    color: #fff;
+}
+.login_line{
+    font-size: 18px;
+    color: rgba(255,255,255,0.2);
+    padding-left: 10px;
+}
+.login_name_login{
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.login-form {
+  max-width: 280px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+  height: 42px;
+    font-size: 18px;
+    letter-spacing: 20px;
+}
+.login_VerificationCode{
+  width:180px!important;
+  border-radius: 0px!important;
+}
+.login_button{
+  background: #1ab1e3!important;
+}
+.icon_common{
+  font-size: 12px;
+  color: #fff;
+}
+:host ::ng-deep .ant-input-affix-wrapper .ant-input{
+    background: none!important;
+    border: 1px solid rgba(255,255,255,0.5)!important;
+    color: #fff;
+}
+.ant-btn-primary{
+    background-color: #00c3d3!important;
+    border-color: #00c3d3!important;
+}
+/*验证码样式 开始*/
+#validate{
+  width: 100px;
+  height:100%;
+  text-align: center;
+  float: right;
+}
+.validate_line{
+  width: 1px;
+  height: 26px;
+  background: $plugins_border_gray;
+  float: left;
+  margin-top: 4px;
+}
+.error_account, .error_password, .error_validateCode{
+  height:20px;
+  color: red;
+}
+
+.position{
+    position: absolute;
+    left: 290px;
+    top: 185px;
+    z-index: 999;
+}
+.white{
+    color:#FFFFFF;
+}

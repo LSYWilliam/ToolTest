@@ -1,0 +1,11 @@
+{
+    "code":0,
+    "msg":"操作成功！",
+    "result":[
+        {
+            "id":1,"apId":123456,"apSn":"ZH000100000","apName":"测试AP1","adapterIp":"192.168.1.66"
+        },{
+            "id":1,"apId":123457,"apSn":"ZH000100001","apName":"测试AP2","adapterIp":"192.168.1.66"
+        }
+    ]
+}

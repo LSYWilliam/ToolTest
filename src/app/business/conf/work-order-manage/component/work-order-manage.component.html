@@ -1,0 +1,70 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>工单管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div nz-row class="card_title_18_bold">工单列表</div>
+
+<!--<div nz-row class="work_filter">-->
+<div nz-row class="work_filter">
+    <div nz-col [nzSpan]="4">
+        <div nz-col [nzSpan]="6" class="name_algin">企业:</div>
+        <div nz-col [nzSpan]="18">
+            <nz-input [(ngModel)]="filterWorkOrder.businessName"
+                      [nzPlaceHolder]="'请输入企业！'"
+            ></nz-input>
+        </div>
+    </div>
+    <div nz-col [nzSpan]="4">
+        <div nz-col [nzSpan]="6" class="name_algin">施工队:</div>
+        <div nz-col [nzSpan]="18">
+            <nz-input [(ngModel)]="filterWorkOrder.responsibleName"
+                      [nzPlaceHolder]="'请输入施工队！'"
+            ></nz-input>
+        </div>
+    </div>
+    <div nz-col [nzSpan]="3">
+        <div nz-col [nzSpan]="6" class="name_algin">状态:</div>
+        <div nz-col [nzSpan]="18">
+            <app-dropdown
+                [dropDowns]= "workOrderStatusData"
+                (selectID)="getWorkStatusId($event)"
+                [inDefault]="inDefault"
+                [status] = "false"
+                *ngIf="true">
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div nz-col [nzSpan]="3">
+        <div nz-col [nzSpan]="6" class="name_algin">类别:</div>
+        <div nz-col [nzSpan]="18">
+            <app-dropdown
+                [dropDowns]= "workOrderTypeData"
+                (selectID)="getWorkOrderTypeId($event)"
+                [inDefault]="inTypeDefault"
+                [status] = "false"
+                *ngIf="true">
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div nz-col [nzSpan]="3">
+        <a (click)="inquireWorkFliter()"  class="padding_tops">查询</a>
+        <a (click)="clearWorkFliter()">重置</a>
+    </div>
+
+</div>
+
+<div nz-row style="text-align: right;">
+    <a (click)="endWorkOrder()" class="card_title_12 padding_left_10">手动关闭</a>
+    <a (click)="finishedWorkOrder()" class="card_title_12 padding_left_10">确认完成</a>
+</div>
+<app-zorro-page-table
+    [dataSet]="dataSet"
+    [isCheckBox]="isCheckBox"
+    [pageSize]="pageSize"
+    [total]="total"
+    [headData]="headerDataModel.tableInput"
+    (pageIndexEvent)="pageIndexEvent($event)"
+    (selectAllEvent)="selectAllEvent($event)"
+    (sortEvent)="sortEvent($event)"
+></app-zorro-page-table>

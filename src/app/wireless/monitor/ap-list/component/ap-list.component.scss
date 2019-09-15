@@ -1,0 +1,4 @@
+@import '../../../../../base.scss';
+:host ::ng-deep .drop_font_style{
+    @include title-style(40px,18px,bold);
+}

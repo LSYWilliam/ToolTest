@@ -1,0 +1,66 @@
+<div class="net_attention_web" [ngSwitch]="netVersionType">
+    <div nz-row *ngSwitchCase = "'关注网络'" (click)="netWorkDts(netWebs)">
+        <div nz-col  [nzSpan]="8" class="font_center">
+            <p class="card_title_18_bold margin_top_25 padding_left_10 text_overflow" [title]="netWebs.netName">{{netWebs.netName}}</p>
+            <i class="icon-ACweb net_icon"></i>
+        </div>
+        <div nz-col  [nzSpan]="16">
+            <div nz-row class="margin_top_25">
+                <div nz-col  [nzSpan]="14" class="font_center">
+                    <span class="card_title_12">当前在线客户端</span>
+                </div>
+                <div nz-col  [nzSpan]="10">
+                    <span class="card_title_18_bold">{{netWebs.netCurrentClient | number:'1.0-1'}}</span>
+                    <span class="card_title_12">个</span>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col  [nzSpan]="14" class="font_center">
+                    <span class="card_title_12">今日转发流量</span>
+                </div>
+                <div nz-col  [nzSpan]="10">
+                    <span class="card_title_18_bold">{{netWebs.netDayTraffic | number:'1.0-1'}}</span>
+                    <span class="card_title_12">GB</span>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col  [nzSpan]="14" class="font_center">
+                    <span class="card_title_12">今日AP告警数</span>
+                </div>
+                <div nz-col  [nzSpan]="10">
+                    <span class="card_title_18_bold card_title_color">{{netWebs.netAlarmNum | number:'1.0-1'}}</span>
+                    <span class="card_title_12">次</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div nz-row *ngSwitchCase = "'固件版本'">
+        <div nz-col  [nzSpan]="8" class="font_center margin_top_20">
+            <i class="icon-ACap firmware_icon"></i>
+        </div>
+        <div nz-col  [nzSpan]="16">
+            <div nz-row class="margin_top_25">
+                <div nz-col  [nzSpan]="10" class="font_center">
+                    <span class="card_title_18_bold">{{version.versionName}}</span>
+                </div>
+                <div nz-col  [nzSpan]="14">
+                    <span class="card_title_18_bold">{{version.version}}</span>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col  [nzSpan]="10" class="font_center">
+                    <span class="card_title_14">更新时间</span>
+                </div>
+                <div nz-col  [nzSpan]="14">
+                    <span class="card_title_14">{{version.createTime}}</span>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col  [nzSpan]="24" class="font_center">
+                    <a class="card_title_12" (click)="versionExplain(version.versionId)">版本说明</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

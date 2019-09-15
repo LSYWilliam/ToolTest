@@ -1,0 +1,176 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">间隔（秒）</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-input
+                formControlName="step"
+                [nzPlaceHolder]="'请输入间隔（秒）'"
+                (keyup)="onKeyup($event)"
+                (keypress)="onKeypress($event)"
+                (blur)="onBlur($event)"
+                [nzReadonly]=false
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('step')&&getFormControl('step').dirty&&getFormControl('step').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入数字!</div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">是否启用</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-select
+                       formControlName="flag"
+                       [nzPlaceHolder]="'请选择是否启用'">
+                <nz-option
+                    *ngFor="let option of dropDownList"
+                    [nzLabel]="option.name"
+                    [nzValue]="option.id"
+                    [nzDisabled]="option.disabled">
+                </nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('flag')&&getFormControl('flag').dirty&&getFormControl('flag').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请选择一个选项!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">主机1</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                formControlName="host1"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入如下格式的IP:255.255.255.255'"
+                [nzSize]="'large'"
+                autocomplete='name'>
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('host1')&&getFormControl('host1').dirty&&getFormControl('host1').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入正确格式的IP!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">端口1</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                formControlName="port1"
+                [nzPlaceHolder]="'请输入端口'"
+                (keyup)="onKeyup($event)"
+                (keypress)="onKeypress($event)"
+                (blur)="onBlur($event)"
+                [nzReadonly]=false
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('port1')&&getFormControl('port1').dirty&&getFormControl('port1').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入1-65535范围的端口号!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">主机2</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                formControlName="host2"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入如下格式的IP:255.255.255.255'"
+                [nzSize]="'large'"
+                autocomplete='name'>
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('host2')&&getFormControl('host2').dirty&&getFormControl('host2').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入正确格式的IP!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">端口2</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                formControlName="port2"
+                [nzPlaceHolder]="'请输入端口'"
+                (keyup)="onKeyup($event)"
+                (keypress)="onKeypress($event)"
+                (blur)="onBlur($event)"
+                [nzReadonly]=false
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('port2')&&getFormControl('port2').dirty&&getFormControl('port2').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入1-65535范围的端口号!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">主机3</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                formControlName="host3"
+                [nzType]="'text'"
+                [nzPlaceHolder]="'请输入如下格式的IP:255.255.255.255'"
+                [nzSize]="'large'"
+                autocomplete='name'>
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('host3')&&getFormControl('host3').dirty&&getFormControl('host3').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入正确格式的IP!</div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">端口3</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                formControlName="port3"
+                [nzPlaceHolder]="'请输入端口'"
+                (keyup)="onKeyup($event)"
+                (keypress)="onKeypress($event)"
+                (blur)="onBlur($event)"
+                [nzReadonly]=false
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('port3')&&getFormControl('port3').dirty&&getFormControl('port3').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入1-65535范围的端口号!</div>
+    </div>
+    <div nz-form-item nz-row >
+        <div nz-col [nzSpan]="6" nz-form-label class="card_title_14_bold">网络分组</div>
+        <div nz-col [nzSpan]="18" nz-form-control class="card_title_14">
+            <nz-select
+                       formControlName="netId"
+                       [nzPlaceHolder]="'请选择网络分组'">
+                <nz-option
+                    *ngFor="let option of dropDownNetList"
+                    [nzLabel]="option.netName"
+                    [nzValue]="option.netId"
+                    [nzDisabled]="option.disabled">
+                </nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="getFormControl('netId')&&getFormControl('netId').dirty&&getFormControl('netId').invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请选择一个分组!</div>
+    </div>
+    <div class="customize-footer">
+        <button
+            nz-button
+            [nzType]="'primary'"
+            [nzSize]="'large'"
+            (click)="submitForm($event,validateForm.value)">
+            保存
+        </button>
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="resetForm($event)">
+            取消
+        </button>
+    </div>
+</form>

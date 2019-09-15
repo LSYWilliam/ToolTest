@@ -1,0 +1,37 @@
+@import "../../../../../../base";
+/*…背景色…*/
+:host ::ng-deep .ant-layout-sider, :host ::ng-deep .ant-layout-content{
+    background: #fff!important;
+}
+:host ::ng-deep .margin_top_10{
+    margin-top: 0px!important;
+}
+.ant-layout{
+    background-color: #fff;
+}
+/*…中间线条…*/
+.line_style{
+    position: absolute;
+    top:140px;
+    bottom: 0;
+    left: 420px;
+    width: 1px;
+    background: $color_grey;
+}
+.margin_left_20{
+    margin-left: 20px;
+}
+.margin_left_10{
+    margin-left: 10px;
+}
+
+.unEditable{
+    color:rgb(191, 191, 191);
+    text-decoration:underline;
+}
+
+.unDeletable{
+    padding-left: 10px;
+    color:rgb(191, 191, 191);
+    text-decoration:underline;
+}

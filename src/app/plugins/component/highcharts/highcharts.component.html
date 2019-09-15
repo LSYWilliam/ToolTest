@@ -1,0 +1,12 @@
+
+<div [ngSwitch]="chartInput.chartType">
+
+    <div *ngSwitchCase = "'HighChart'">
+        <chart [options]="chartInput.chartOption" class="{{chartInput.className}}"></chart>
+    </div>
+
+    <div *ngSwitchCase = "'StockChart'">
+        <chart type="StockChart" [options]="chartInput.chartOption" class="{{chartInput.className}}"></chart>
+    </div>
+
+</div>

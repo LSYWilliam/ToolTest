@@ -1,0 +1,19 @@
+<!--<div nz-row [ngSwitch] = "params.value">-->
+    <!--<div *ngSwitchCase="'0'" class="noStop" (click)="getStop()" [ngStyle]="{'color': colors}">-->
+        <!--停用-->
+    <!--</div>-->
+
+    <!--<div *ngSwitchCase="'1'" class="stop" (click)="warning()">-->
+        <!--停用-->
+    <!--</div>-->
+<!--</div>-->
+
+<div nz-row [ngSwitch] = "params.value">
+    <div *ngSwitchCase="'0'" class="noStop">
+        停用
+    </div>
+
+    <div *ngSwitchCase="'1'" class="stop">
+        停用
+    </div>
+</div>

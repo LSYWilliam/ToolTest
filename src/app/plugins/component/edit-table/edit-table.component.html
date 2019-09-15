@@ -1,0 +1,41 @@
+<!--<ag-grid-angular-->
+    <!--#agGrid-->
+    <!--style="width: 100%; height: 200px;"-->
+    <!--[ngStyle]='editTableArgs.tableStyle'-->
+    <!--id="myGrid"-->
+    <!--class="ag-theme-fresh"-->
+    <!--[columnDefs]="editTableArgs.editTableHeaderData"-->
+    <!--[rowData]='rowData'-->
+    <!--[rowSelection]='editTableArgs.rowSelection'-->
+    <!--[rowHeight]='editTableArgs.tableRowHeight'-->
+    <!--[pagination]='editTableArgs.paginationBool'-->
+    <!--[paginationPageSize]='editTableArgs.sizeEveryPage'-->
+    <!--[enableSorting]="true"-->
+    <!--[enableFilter]="true"-->
+    <!--[animateRows]="true"-->
+    <!--[editType]="editTableArgs.editType"-->
+    <!--(cellClicked)="cellClick($event)"-->
+    <!--(cellEditingStopped)="onCellEditingStopped($event)"-->
+    <!--(gridReady)="onGridReady($event)"-->
+<!--&gt;</ag-grid-angular>-->
+
+<ag-grid-angular
+    #agGrid
+    style="width: 100%; height: 200px;"
+    [ngStyle]='editTableArgs.tableStyle'
+    id="myGrid"
+    class="ag-theme-fresh"
+    [columnDefs]="editTableArgs.editTableHeaderData"
+    [rowData]='rowData'
+    [rowSelection]='editTableArgs.rowSelection'
+    [rowHeight]='editTableArgs.tableRowHeight'
+    [pagination]='editTableArgs.paginationBool'
+    [paginationPageSize]='editTableArgs.sizeEveryPage'
+    [enableSorting]="true"
+    [enableFilter]="true"
+    [animateRows]="true"
+    [editType]="editTableArgs.editType"
+    [getRowNodeId]="getRowNodeId"
+    (cellEditingStopped)="onCellEditingStopped($event)"
+    (gridReady)="onGridReady($event)"
+></ag-grid-angular>

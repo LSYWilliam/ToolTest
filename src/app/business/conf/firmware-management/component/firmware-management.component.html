@@ -1,0 +1,231 @@
+<div *ngIf="firmwareShow === true">
+    <div nz-row>
+        <nz-breadcrumb class="my_location">
+            <nz-breadcrumb-item>设备管理</nz-breadcrumb-item>
+            <nz-breadcrumb-item>设备更新管理</nz-breadcrumb-item>
+        </nz-breadcrumb>
+
+        <div nz-row>
+            <app-dropdown
+                [dropDowns]= "bidDropDownModel.dropDowns"
+                (selectID)="getDropDownId($event)"
+                [inDefault]="infoDefaultName" >
+            </app-dropdown>
+            <nz-tabset [(nzSelectedIndex)]="nzSelectedIndex">
+                <nz-tab *ngFor="let tab of tabs">
+                    <ng-template #nzTabHeading>
+                        {{tab.name}}
+                    </ng-template>
+                    <div nz-row *ngIf="tab.content === 'AP'">
+                        <a class="card_title_12 padding_left_10" (click)="updateModel()">更新</a>
+                        <nz-modal [nzVisible]="isVisible"
+                                  [nzTitle]="modalTitle"
+                                  [nzContent]="modalContent"
+                                  [nzFooter]="modalFooter"
+                                  (nzOnCancel)="handleCancel($event)">
+                            <ng-template #modalTitle>
+                                请选择更新版本
+                            </ng-template>
+                            <ng-template #modalContent>
+                                <div nz-row>
+                                    <div nz-col nzSpan="3"></div>
+                                    <div nz-col nzSpan="7" class="card_title_14_bold">可选更新版本</div>
+                                    <div nz-col nzSpan="12">
+                                        <app-dropdown
+                                            [dropDowns]= "bidDropDownModel.veriosnDropDowns"
+                                            [dropDownItemNumber]="numDropDownItem"
+                                            (selectID)="getVersionTypeId($event)"
+                                            (selectValue)="getVersionTypeName($event)">
+                                        </app-dropdown>
+                                    </div>
+                                    <div nz-col nzSpan="2"></div>
+                                </div>
+                                <br />
+                                <div nz-row style="display: none;">
+                                    <div nz-col nzSpan="4"></div>
+                                    <div nz-col nzSpan="6" class="card_title_14_bold">下载地址</div>
+                                    <div nz-col nzSpan="12">
+                                        <input class="margin_top_5" nz-input placeholder="请输入下载地址" [(ngModel)]="downloadAddress">
+                                    </div>
+                                    <div nz-col nzSpan="4"></div>
+                                </div>
+                            </ng-template>
+                            <ng-template #modalFooter>
+                                <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="updateOk($event)" [nzLoading]="isConfirmLoading">
+                                    更 新
+                                </button>
+                                <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="handleCancel($event)">
+                                    取 消
+                                </button>
+                            </ng-template>
+                        </nz-modal>
+
+                        <div nz-col [nzSpan]="24" [ngStyle]="{'height': windowHeight+'px'}">
+                            <app-table #appTable [tableInput]='firmwareListModel.tableInput'
+                                       [rowData]='firmwareManagementModel.tableData'
+                                       (cellClickEvent)="explainShow($event)"
+                                       (selectAllEvent)="selectSingRowEvent($event)"
+                            ></app-table>
+                        </div>
+
+                    </div>
+                    <div nz-row *ngIf="tab.content === '交换机'">
+                        <a class="card_title_12 padding_left_10" (click)="updateSwitchModel()">更新</a>
+                        <nz-modal [nzVisible]="isSwitchVisible"
+                                  [nzTitle]="switchModalTitle"
+                                  [nzContent]="switchModalContent"
+                                  [nzFooter]="switchModalFooter"
+                                  (nzOnCancel)="handleSwitchCancel($event)">
+                            <ng-template #switchModalTitle>
+                                请选择更新版本
+                            </ng-template>
+                            <ng-template #switchModalContent>
+                                <div nz-row>
+                                    <div nz-col nzSpan="3"></div>
+                                    <div nz-col nzSpan="7" class="card_title_14_bold">可选更新版本</div>
+                                    <div nz-col nzSpan="12">
+                                        <app-dropdown
+                                            [dropDowns]= "bidDropDownModel.switchVeriosnDropDowns"
+                                            (selectID)="getSwitchVersionTypeId($event)"
+                                            [dropDownItemNumber] ="numDropDownItem"
+                                            (selectValue)="getSwitchVersionTypeName($event)">
+                                        </app-dropdown>
+                                    </div>
+                                    <div nz-col nzSpan="2"></div>
+                                </div>
+                                <br />
+                                <div nz-row style="display: none;">
+                                    <div nz-col nzSpan="4"></div>
+                                    <div nz-col nzSpan="6" class="card_title_14_bold">下载地址</div>
+                                    <div nz-col nzSpan="12">
+                                        <input class="margin_top_5" nz-input placeholder="请输入下载地址" [(ngModel)]="switchDownloadAddress">
+                                    </div>
+                                    <div nz-col nzSpan="4"></div>
+                                </div>
+                            </ng-template>
+                            <ng-template #switchModalFooter>
+                                <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="updateSwitchOk($event)" [nzLoading]="isConfirmLoading">
+                                    更 新
+                                </button>
+                                <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="handleSwitchCancel($event)">
+                                    取 消
+                                </button>
+                            </ng-template>
+                        </nz-modal>
+
+                        <div nz-col [nzSpan]="24" [ngStyle]="{'height': windowHeight+'px'}">
+                            <app-table #switchTable [tableInput]='switchFirmwareListModel.tableInput'
+                                       [rowData]='switchFirmwareManagementModel.tableData'
+                                       (cellClickEvent)="switchExplainShow($event)"
+                                       (selectAllEvent)="switchSelectSingRowEvent($event)"
+                            ></app-table>
+                        </div>
+
+                    </div>
+                </nz-tab>
+            </nz-tabset>
+        </div>
+
+
+        <!--<div nz-row>-->
+            <!--<span class="card_title_14_bold margin_top_25">AP固件管理</span>-->
+            <!--<nz-tooltip [nzTitle]="'AP固件管理'" [nzPlacement]="'top'">-->
+                    <!--<span nz-tooltip>-->
+                        <!--<i class="icon-ACexplain1 icon_explain"></i>-->
+                    <!--</span>-->
+            <!--</nz-tooltip>-->
+            <!--<a class="card_title_12 padding_left_10" (click)="updateModel()">更新</a>-->
+            <!--<nz-modal [nzVisible]="isVisible"-->
+                      <!--[nzTitle]="modalTitle"-->
+                      <!--[nzContent]="modalContent"-->
+                      <!--[nzFooter]="modalFooter"-->
+                      <!--(nzOnCancel)="handleCancel($event)">-->
+                <!--<ng-template #modalTitle>-->
+                    <!--请选择更新版本-->
+                <!--</ng-template>-->
+                <!--<ng-template #modalContent>-->
+                    <!--<div nz-row>-->
+                        <!--<div nz-col nzSpan="6"></div>-->
+                        <!--<div nz-col nzSpan="8" class="card_title_14_bold">可选更新版本</div>-->
+                        <!--<div nz-col nzSpan="6">-->
+                            <!--<app-dropdown-->
+                                <!--[dropDowns]= "bidDropDownModel.veriosnDropDowns"-->
+                                <!--(selectID)="getVersionTypeId($event)"-->
+                                <!--(selectValue)="getVersionTypeName($event)">-->
+                            <!--</app-dropdown>-->
+                        <!--</div>-->
+                        <!--<div nz-col nzSpan="4"></div>-->
+                    <!--</div>-->
+                    <!--<br />-->
+                    <!--<div nz-row style="display: none;">-->
+                        <!--<div nz-col nzSpan="4"></div>-->
+                        <!--<div nz-col nzSpan="6" class="card_title_14_bold">下载地址</div>-->
+                        <!--<div nz-col nzSpan="12">-->
+                            <!--<input class="margin_top_5" nz-input placeholder="请输入下载地址" [(ngModel)]="downloadAddress">-->
+                        <!--</div>-->
+                        <!--<div nz-col nzSpan="4"></div>-->
+                    <!--</div>-->
+                <!--</ng-template>-->
+                <!--<ng-template #modalFooter>-->
+                    <!--<button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="updateOk($event)" [nzLoading]="isConfirmLoading">-->
+                        <!--更 新-->
+                    <!--</button>-->
+                    <!--<button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="handleCancel($event)">-->
+                        <!--取 消-->
+                    <!--</button>-->
+                <!--</ng-template>-->
+            <!--</nz-modal>-->
+
+            <!--<div nz-col [nzSpan]="24" [ngStyle]="{'height': windowHeight+'px'}">-->
+                <!--<app-table [tableInput]='firmwareListModel.tableInput'-->
+                           <!--[rowData]='firmwareManagementModel.tableData'-->
+                           <!--(cellClickEvent)="explainShow($event)"-->
+                           <!--(selectAllEvent)="selectSingRowEvent($event)"-->
+                <!--&gt;</app-table>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+    </div>
+</div>
+
+<!--<div *ngIf="verExplainShow === true">-->
+    <!--<div nz-row>-->
+        <!--<i class="icon-ACback icon_explain card_title_14_bold icon_cursor" (click)="goBackShow()"></i>-->
+    <!--</div>-->
+
+    <!--<div nz-row>-->
+        <!--{{firmwareManagementModel.versionDetails}}-->
+    <!--</div>-->
+<!--</div>-->
+
+<div *ngIf="updateShow === true">
+    <div nz-row>
+        <i class="icon-ACback icon_explain card_title_14_bold icon_cursor" (click)="goBackShow()"></i>
+    </div>
+
+    <div nz-row>
+        <div nz-col [nzSpan]="24">
+            <div style="height: 425px; width: 98%;">
+                <app-table [tableInput]='updateRecordModel.tableInput' [rowData]='firmwareManagementModel.upadteNote'></app-table>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="switchUpdateShow === true">
+    <div nz-row>
+        <i class="icon-ACback icon_explain card_title_14_bold icon_cursor" (click)="goBackShow()"></i>
+    </div>
+
+    <div nz-row>
+        <div nz-col [nzSpan]="24">
+            <div style="height: 425px; width: 98%;">
+                <app-table [tableInput]='updateRecordModel.tableInput' [rowData]='switchFirmwareManagementModel.upadteNote'></app-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

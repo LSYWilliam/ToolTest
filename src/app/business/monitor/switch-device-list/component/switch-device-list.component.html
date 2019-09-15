@@ -1,0 +1,23 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>数据控制台</nz-breadcrumb-item>
+    <nz-breadcrumb-item>企业设备概况</nz-breadcrumb-item>
+    <nz-breadcrumb-item>交换机列表</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div nz-row>
+    <app-dropdown
+        [dropDowns]= "networkList"
+        (selectID)="getDropDownNetId($event)"
+        [inDefault]="defaultNetName"
+        *ngIf="networkList"
+    >
+    </app-dropdown>
+</div>
+<div nz-row [ngStyle]="{'height': windowHeight+'px'}" class="margin_top_10">
+    <app-table
+        [tableInput]="staticDataModel.tableInput"
+        [rowData]="rowData"
+        (selectAllEvent)="selectRow($event)"
+    >
+    </app-table>
+</div>

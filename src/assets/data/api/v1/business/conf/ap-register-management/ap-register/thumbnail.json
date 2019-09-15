@@ -1,0 +1,11 @@
+{
+    "code":0,
+    "msg":"操作成功",
+    "result":[
+        {
+            "id":1,"adapterIp":"192.168.1.66","adapterName":"适配器1"
+        },{
+            "id":2,"adapterIp":"192.168.1.42","adapterName":"适配器2"
+        }
+    ]
+}

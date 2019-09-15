@@ -1,0 +1,23 @@
+@import '../../../../../../base.scss';
+.auto_height{
+    height: auto;
+    display: block;
+}
+.result_box{
+    height:105px;
+    overflow: auto;
+    line-height: 35px;
+    width: 260px;
+    border: 1px solid rgb(234,234,234);
+    border-radius: 5px;
+}
+.ant-table-wrapper{
+    display: block;height: 500px;
+}
+:host ::ng-deep .ant-input{
+    width: 200px!important;
+}
+.editable-tag ::ng-deep .ant-tag {
+    background: rgb(255, 255, 255);
+    border-style: dashed;
+}

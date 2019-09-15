@@ -1,0 +1,206 @@
+<form nz-form [formGroup]="validateForm" class="modal_con">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">名称</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)]="data.name"
+                formControlName="name"
+                [nzPlaceHolder]="'请输入服务器名称'"
+                [nzSize]="'large'"
+                input-required>
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row
+         *ngIf="this.validateForm.controls['name'].dirty&&this.validateForm.controls['name'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入2-32个字符，支持特殊字符</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">IP</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)]="data.serverIp"
+                formControlName="ipAddress"
+                [nzPlaceHolder]="'请输入如下格式的IP:255.255.255.255'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['ipAddress'].dirty&&this.validateForm.controls['ipAddress'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入正确格式的ip</div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">密钥</div>
+        <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+            <nz-input
+                [(ngModel)]="data.shareKey"
+                formControlName="secretKey"
+                [nzPlaceHolder]="'请输入密钥'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['secretKey'].dirty&&this.validateForm.controls['secretKey'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入6-32个字符，不支持特殊字符!</div>
+    </div>
+
+    <div *ngIf="type;then portal else radius"></div>
+
+    <ng-template #portal>
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">端口</div>
+            <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+                <nz-input
+                    [(ngModel)]="data.portalPort"
+                    formControlName="port"
+                    [nzPlaceHolder]="'请输入端口'"
+                    (keyup)="onKeyup($event)"
+                    (keypress)="onKeypress($event)"
+                    (blur)="onBlur($event)"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+        </div>
+
+        <div nz-form-item nz-row
+             *ngIf="this.validateForm.controls['port'].dirty&&this.validateForm.controls['port'].invalid">
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+            <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入1~65535范围内的数字！</div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">URL</div>
+
+            <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+                <nz-input
+                    [(ngModel)]="data.portalUrl"
+                    formControlName="portalUrl"
+                    [nzPlaceHolder]="'请输入以http://或https://开头的URL'"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+        </div>
+        <div nz-form-item nz-row *ngIf="this.validateForm.controls['portalUrl'].dirty&&this.validateForm.controls['portalUrl'].invalid">
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+            <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">域名至少2位，不超过128个字符的URL</div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">白名单</div>
+            <div nz-form-control nz-col [nzSpan]="18" class="card_title_14 border_style">
+                <nz-tag *ngFor="let tag of data.whiteList; let i = index;"
+                        [nzClosable]="true"
+                        (nzClose)="handleClose(tag)"
+                        style="display: block; margin-left: 5px;">
+                    {{sliceTagName(tag)}}
+                </nz-tag>
+                <button nz-button *ngIf="!inputVisible"
+                        style="margin-left: 5px;"
+                        [nzSize]="'small'" [nzType]="'dashed'"
+                        (click)="showInput()">+ 请输入需要放行的IP地址</button>
+                <input nz-input #input
+                       *ngIf="inputVisible"
+                       type="text"
+                       style="width: 162px; margin-left: 5px;"
+                       [(ngModel)]="inputValue"
+                       formControlName="whiteList"
+                       placeholder="IP格式如下:255.255.255.255"
+                       (blur)="handleInputConfirm($event)"
+                       (keydown.enter)="handleInputConfirm($event)">
+            </div>
+            <div nz-col [nzSpan]="6" *ngIf="showWhite === true" class="card_title_12 error_red"></div>
+            <div nz-col [nzSpan]="18" *ngIf="showWhite === true" class="card_title_12 error_red">请输入IP！</div>
+        </div>
+    </ng-template>
+
+
+    <ng-template #radius>
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">认证端口</div>
+
+            <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+                <nz-input
+                    [(ngModel)]="data.authPort"
+                    formControlName="authPort"
+                    (keyup)="onKeyup($event)"
+                    (keypress)="onKeypress($event)"
+                    (blur)="onBlur($event)"
+                    [nzPlaceHolder]="'请输入认证端口'"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+        </div>
+
+        <div nz-form-item nz-row
+             *ngIf="this.validateForm.controls['authPort'].dirty&&this.validateForm.controls['authPort'].invalid">
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+            <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入1~65535范围内的数字！</div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">计费端口</div>
+
+            <div nz-form-control nz-col [nzSpan]="18" class="card_title_14">
+                <nz-input
+                    [(ngModel)]="data.feePort"
+                    formControlName="feePort"
+                    (keyup)="onKeyup($event)"
+                    (keypress)="onKeypress($event)"
+                    (blur)="onBlur($event)"
+                    [nzPlaceHolder]="'请输入计费端口'"
+                    [nzSize]="'large'">
+                </nz-input>
+            </div>
+        </div>
+
+        <div nz-form-item nz-row
+             *ngIf="this.validateForm.controls['feePort'].dirty&&this.validateForm.controls['feePort'].invalid">
+            <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+            <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">请输入1~65535范围内的数字！</div>
+        </div>
+    </ng-template>
+
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold">备注</div>
+
+        <div nz-form-control nz-col [nzSpan]="18">
+            <nz-input
+                [(ngModel)]="data.remarks"
+                formControlName="note"
+                [nzType]="'textarea'"
+                [nzPlaceHolder]="'请输入备注'"
+                [nzSize]="'large'">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row *ngIf="this.validateForm.controls['note'].dirty&&this.validateForm.controls['note'].invalid">
+        <div nz-form-label nz-col [nzSpan]="6" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="18" class="card_title_12 error_red">备注长度不能超过128个字</div>
+    </div>
+</form>
+
+<span style="display: none;" #whiteListData>{{whiteListData}}</span>
+
+<div class="customize-footer">
+    <button
+        nz-button
+        [nzType]="'primary'"
+        [nzSize]="'large'"
+        (click)="handleOk()">
+        保存
+    </button>
+
+    <button
+        nz-button
+        [nzType]="'default'"
+        [nzSize]="'large'"
+        (click)="handleCancel()">
+        取消
+    </button>
+</div>

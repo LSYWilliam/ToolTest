@@ -1,0 +1,30 @@
+.img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 66px;
+    height: 66px;
+}
+.application{
+    padding-left: 77px;
+    height: 66px;
+}
+
+.application h3{
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.application p{
+    overflow: hidden;
+    white-space: nowrap;
+    color: #b3b3b3;
+    font-size: 12px;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,25 @@
+<div nz-row class="card_title_18_bold">网络列表</div>
+<div nz-row>
+    <app-three-link-list  [threeLinkData]="threeLinkData " (outData)="outData($event)"
+                          [provinceLink]="provinceLink" [cityLink]="cityLink" [areaLink]="areaLink">
+    </app-three-link-list>
+    <button nz-button nzType="primary" (click)="inquire()">查询</button>
+</div>
+<div nz-row >
+    <a (click)="create()" class="card_title_12">新增</a>
+    <a (click)="edit()" class="card_title_12 padding_left_10">编辑</a>
+    <a (click)="delete()" class="card_title_12 padding_left_10">删除</a>
+</div>
+<app-zorro-page-table
+    [dataSet]="dataSet"
+    [headData]="staticDataModel.tableInput"
+    [isCheckBox]="isCheckBox"
+    [pageSize]="pageSize"
+    [total]="total"
+    (tableOperateEvent)="tableOperateEvent($event)"
+    (clickRouteEvent)="clickRouteEvent($event)"
+    (selectAllEvent)="selectAllEvent($event)"
+    (pageIndexEvent)="pageIndexEvent($event)"
+    (searchEvent)="searchEvent($event)"
+    (sortEvent)="sortEvent($event)"
+></app-zorro-page-table>

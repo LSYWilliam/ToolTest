@@ -1,0 +1,34 @@
+<ag-grid-angular
+    #agGrid
+    style="width: 100%; height: 98%;"
+    id="myGrid"
+    class="ag-theme-fresh"
+    [ngStyle]='tableArgs.tableStyle'
+    [columnDefs]='tableArgs.tableHeaderData'
+    [rowSelection]='tableArgs.tableSelection'
+    [rowData]='rowData'
+    [enableSorting]='true'
+    [enableColResize]='true'
+    [floatingFilter]="true"
+    [rowHeight]='tableArgs.tableRowHeight'
+    [suppressMenuHide]='false'
+    [pagination]='tableArgs.paginationBool'
+    [paginationPageSize]='tableArgs.sizeEveryPage'
+    [paginationAutoPageSize]="true"
+    (paginationChanged)="onPaginationChanged($event)"
+    [localeText]="localeText"
+    [suppressContextMenu]="tableArgs.rightMenu"
+    [allowContextMenuWithControlKey]="true"
+    [getContextMenuItems]="contextMenuItems"
+    [animateRows]="true"
+    [defaultColDef]="defaultColDef"
+    (cellDoubleClicked)="cellDoubleClick($event)"
+    (rowDoubleClicked)="rowDoubleClick($event)"
+    (cellClicked)="cellClick($event)"
+    (gridReady)="onGridReady($event)"
+    (cellEditingStopped)="onCellEditingStopped($event)"
+    localeText
+></ag-grid-angular>
+
+
+

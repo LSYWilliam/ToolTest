@@ -1,0 +1,83 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>数据监控台</nz-breadcrumb-item>
+    <nz-breadcrumb-item>企业网络概况</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div nz-row>
+    <div nz-row class="margin_top_10">
+        <div nz-col [nzSpan]="5">
+            <span class="card_title_14_bold">总网概览</span>
+            <nz-tooltip [nzTitle]="networkListModel.networkOverview" [nzPlacement]="'top'">
+                    <span nz-tooltip>
+                        <i class="icon-ACexplain1 icon_explain"></i>
+                    </span>
+            </nz-tooltip>
+        </div>
+
+        <div nz-col [nzSpan]="19">
+            <span class="card_title_14_bold">重点网络</span>
+            <nz-tooltip [nzTitle]="networkListModel.focusWeb" [nzPlacement]="'top'">
+                    <span nz-tooltip>
+                        <i class="icon-ACexplain1 icon_explain"></i>
+                    </span>
+            </nz-tooltip>
+        </div>
+    </div>
+
+    <div nz-row class="margin_top_10">
+        <div nz-col [nzSpan]="5" class="height_150">
+            <div nz-row class="card_title_12 margin_top_5">
+                <span nz-col [nzSpan]="10" class="font_center">在用网络</span>
+                <span nz-col [nzSpan]="10" class="card_title_14_sum font_center"> {{ networkOverviewModel.networkOverviewInfoModel.useNet | number:'1.0-1'}}
+                    <span class="card_title_12">个</span>
+                </span>
+            </div>
+            <div nz-row class="card_title_12">
+                <span nz-col [nzSpan]="10" class="font_center">在网设备</span>
+                <span nz-col [nzSpan]="10" class="card_title_14_sum font_center"> {{networkOverviewModel.networkOverviewInfoModel.useDevice | number:'1.0-1'}}
+                    <span class="card_title_12">台</span>
+                </span>
+            </div>
+            <div nz-row class="card_title_12">
+                <span nz-col [nzSpan]="10" class="font_center">当前在线客户端</span>
+                <span nz-col [nzSpan]="10" class="card_title_14_sum font_center"> {{networkOverviewModel.networkOverviewInfoModel.currentClient | number:'1.0-1'}}
+                    <span class="card_title_12">个</span>
+                </span>
+            </div>
+            <div nz-row class="card_title_12">
+                <span nz-col [nzSpan]="10" class="font_center">今日总转发流量</span>
+                <span nz-col [nzSpan]="10" class="card_title_14_sum font_center"> {{networkOverviewModel.networkOverviewInfoModel.dayTraffic | number:'1.0-1'}}
+                    <span class="card_title_12">GB</span>
+                </span>
+            </div>
+        </div>
+        <div nz-col  [nzSpan]="19">
+            <div nz-row>
+                <div nz-col  [nzSpan]="8" *ngFor="let item of networkOverviewModel.focusWeb">
+                    <app-net-web (netWorkRoute)="getJumpRoute($event)" [netVersionType]="netVersionType" [netWebs]="item"></app-net-web>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div nz-row class="margin_top_10">
+        <div nz-col [nzSpan]="24">
+            <span class="card_title_14_bold">网络列表</span>
+            <nz-tooltip [nzTitle]="networkListModel.netList" [nzPlacement]="'top'">
+                    <span nz-tooltip>
+                        <i class="icon-ACexplain1 icon_explain"></i>
+                    </span>
+            </nz-tooltip>
+        </div>
+        <div nz-col [nzSpan]="24">
+            <div [ngStyle]="{'height': windowHeight+'px'}">
+                <app-table
+                    [tableInput]='networkListModel.tableInput'
+                    [rowData]='networkOverviewModel.tableData'
+                    (cellClickEvent)="cellClickJump($event)"
+                ></app-table>
+            </div>
+        </div>
+    </div>
+</div>
+

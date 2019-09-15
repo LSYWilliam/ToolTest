@@ -1,0 +1,33 @@
+<div nz-row>
+    <i class="icon-ACback" (click)="goBack()" ></i>
+</div>
+
+<div nz-row>
+    <span class="card_title_18_bold">{{pageName}}</span>
+</div>
+
+<div nz-row>
+    <div nz-col [nzSpan]="20" class="card_title_12">
+        <a (click)="addEvent()">新增</a>
+        <a class="padding_left_10" (click)="deleteEvent()">删除</a>
+        <a class="padding_left_10" (click)="editEvent()" >编辑</a>
+        <!--批量导入测试 开始-->
+        <a class="padding_left_10" (click)="uploadComponent()">批量导入</a>
+        <!--批量导入测试 结束-->
+        <a class="padding_left_10" (click)="templateDownload()">下载模板</a>
+    </div>
+    <div nz-col [nzSpan]="4"  class="text_right">
+        <div class="card_title_12">共<span class="card_title_14_bold">{{listCount}}</span>个</div>
+    </div>
+</div>
+
+<div  [ngStyle]="{'height': windowHeight+'px'}">
+<app-table
+    [tableInput]="staticDataModel.blackWhiteListTableInput"
+    [rowData]="initList"
+    (selectAllEvent)="selectRow($event)"
+    (rightEventDel)="rightEventDel()"
+    (rightEventEdit)="rightEventEdit()"
+    (rowDoubleClickEvent)="doubleClick($event)">
+</app-table>
+</div>

@@ -1,0 +1,50 @@
+{
+    "code":0,
+    "msg":"操作成功",
+    "result":[
+        {
+            "userMac":"a086c6454ada",
+            "userIp":"192.168.82.98",
+            "netId":null,
+            "netName":null,
+            "apSn":"ZH010025DLAB000289",
+            "apId":null,
+            "apName":null,
+            "ssid":"lsz_test",
+            "inTime":"2018-06-12 14:25:21"
+        },
+        {
+            "userMac":"907240c4c6c3",
+            "userIp":"192.168.82.40",
+            "netId":null,
+            "netName":null,
+            "apSn":"ZH010025DLAB000289",
+            "apId":null,
+            "apName":null,
+            "ssid":"lsz_test",
+            "inTime":"2018-06-12 14:08:10"
+        },
+        {
+            "userMac":"90fd61021a3d",
+            "userIp":"192.168.82.3",
+            "netId":null,
+            "netName":null,
+            "apSn":"ZH010025DLAB000289",
+            "apId":null,
+            "apName":null,
+            "ssid":"lsz_test",
+            "inTime":"2018-06-08 16:07:41"
+        },
+        {
+            "userMac":"78886d0682f8",
+            "userIp":"192.168.25.121",
+            "netId":1,
+            "netName":"默认网络",
+            "apSn":"ZH010008D175000008",
+            "apId":104552724163584,
+            "apName":"ApTest13",
+            "ssid":"Yun_liao",
+            "inTime":"2018-05-22 10:43:56"
+        }
+    ]
+}

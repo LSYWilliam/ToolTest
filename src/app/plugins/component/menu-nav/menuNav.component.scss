@@ -1,0 +1,49 @@
+@import "../../../../assets/css/style.css";
+//.menuItem{
+//  width: 100%;
+//  padding-left: 24px;
+//  display: inline-block;
+//}
+
+/*菜单样式 开始*/
+.icon-style{
+    font-size: 16px;
+    line-height: 35px;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+  background: #fff;
+}
+.ant-menu{
+    color:#666;
+}
+.ant-menu-inline .ant-menu-item:after, .ant-menu-vertical .ant-menu-item:after{
+  border: none;
+}
+
+.active {
+    background: #fff;
+}
+.anticon:before{
+    font-family: 'icomoon' !important;
+}
+//.menu_height{
+//    height:35px!important;
+//    line-height: 35px!important;
+//}
+
+.ant-menu-inline, .ant-menu-vertical{
+    border-right: none!important;
+}
+.ant-menu {
+    background: #d9dfe5!important;
+}
+:host  ::ng-deep .ant-menu-submenu > .ant-menu{
+    background: #d9dfe5!important;
+}
+.ant-menu-item-selected > a, .ant-menu-item-selected > a:hover{
+    color: #333333!important;
+}
+*{
+    font-size: 14px!important;
+}
+

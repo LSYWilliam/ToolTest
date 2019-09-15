@@ -1,0 +1,29 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>我的网络</nz-breadcrumb-item>
+    <nz-breadcrumb-item>在线客户端管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div nz-row>
+    <div class="font_center">
+        <nz-radio-group [(ngModel)]="radioValue" (ngModelChange) = "selectRadioValue($event)">
+            <label nz-radio-button [nzValue]="'authUser'">
+                <span>认证用户</span>
+            </label>
+            <label nz-radio-button [nzValue]="'associatedUser'">
+                <span>关联用户</span>
+            </label>
+        </nz-radio-group>
+    </div>
+</div>
+<div nz-row class="margin_top_10">
+    <span class="card_title_12_sum float_right">
+                {{userKind}}客户端数量:
+                <span class="card_title_14_sum">{{ userNumber | number:"1.0-1" }}</span>个
+            </span>
+</div>
+<div nz-row style="padding-top:10px;" [ngStyle]="{'height': windowHeight+'px'}">
+    <app-table
+        [tableInput]='onlineClientHeadModel.tableInput'
+        [rowData]='onlineClientManagementModel.tableData'
+        (cellClickEvent)="cellClickJump($event)"
+    ></app-table>
+</div>

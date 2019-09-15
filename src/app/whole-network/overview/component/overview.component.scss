@@ -1,0 +1,107 @@
+@import '../../../../base';
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.overview_box{
+    height: 100px;
+}
+.dark_blue{
+    background-color:#058E99;
+}
+.bg_yellow{
+    background-color:#e8b444;
+}
+.bg_green{
+    background-color:#6fa43d;
+}
+.bg_blue{
+    background-color:#108ee9;
+}
+.box{
+    &_icon{
+        //width:100px;
+        height: 100%;
+        i{
+            font-size: 6em;
+            padding-left: 10%;
+            line-height: 100px;
+            color:rgba(255,255,255,0.2);
+        }
+
+    }
+    &_con{
+        height: 80px;
+        margin-top: 10px;
+        color: #fff;
+        &_title{
+            @include title-style(30px,14px);
+        }
+        &_data{
+            @include title-style(50px,30px,bold);
+        }
+    }
+}
+.leftBtn{
+  border-radius: 4px 0px 0px 4px!important;
+  margin-right: -4px!important;
+    padding:5px 10px!important;
+
+}
+.rightBtn{
+  border-radius: 0px 4px 4px 0px!important;
+    padding:5px 10px!important;
+}
+
+
+/*滚动条样式*/
+.panel_initial::-webkit-scrollbar, .warnAp::-webkit-scrollbar {/*滚动条整体样式*/
+  width: 0px!important;     /*高宽分别对应横竖滚动条的尺寸*/
+  height: 0px!important;
+}
+.apWarn:hover, .warnAp:hover{
+  cursor: pointer;
+}
+/*MAP样式*/
+.map_style{
+    border: 1px solid #d9dfe5;
+    width:100%;
+    height: 640px;
+    overflow: hidden;
+}
+.icon_close{
+    position: absolute;
+    right: 32px;
+    top: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border:1px solid #d9d9d9;
+    padding: 10px;
+    background-color: white;
+    font-size: 14px;
+}
+.icon-close:hover{
+    color: rgb(16,142,233);
+}
+.icon-open:hover{
+    color: rgb(16,142,233);
+}
+/**面板样式*/
+.panel_initial {
+    width: 550px;
+    max-height: 620px;
+    padding:20px 20px 0px 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: rgb(255,255,255);
+    overflow: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border:1px solid #d9d9d9;
+}
+.warnAp {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  max-height: 620px;
+  overflow: auto;
+}

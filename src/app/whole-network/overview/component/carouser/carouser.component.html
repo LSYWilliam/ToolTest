@@ -1,0 +1,42 @@
+<div id="warnAp" *ngIf="!isShow">
+    <div nz-row>
+        <div nz-col [nzSpan]="22" >
+            告警信息
+        </div>
+        <div nz-col [nzSpan]="2" >
+            <i class="icon-open" *ngIf="!isShow" (click)="switchIcon()"></i>
+        </div>
+    </div>
+    <div nz-row class="warTitle">
+        <div nz-col [nzSpan]="6">
+            设备名称
+        </div>
+        <div nz-col [nzSpan]="6">
+            所属网络
+        </div>
+        <div nz-col [nzSpan]="6">
+            告警时间
+        </div>
+        <div nz-col [nzSpan]="6">
+            告警原因
+        </div>
+    </div>
+    <div nz-row *ngFor="let data of warnApData" class="apContent" (click)="routeLink(data)">
+        <div nz-col [nzSpan]="6" class="apItem" title="{{data.warnAp}}">
+            {{data.warnAp}}
+        </div>
+        <div nz-col [nzSpan]="6" class="apItem" title="{{data.allNet}}">
+            {{data.allNet}}
+        </div>
+        <div nz-col [nzSpan]="6" class="apItem" title="{{data.warnTime}}">
+            {{data.warnTime}}
+        </div>
+        <div nz-col [nzSpan]="6" class="apItem" title="{{data.warnContent}}">
+            {{data.warnContent}}
+        </div>
+    </div>
+</div>
+
+<div style="color:  #A40025;background: #F9EBEB;width: 40px; height: 40px;text-align: center; line-height: 40px;">
+    <i class="icon-close" *ngIf="isShow" (click)="switchIcon()"></i>
+</div>

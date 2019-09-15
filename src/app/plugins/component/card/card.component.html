@@ -1,0 +1,13 @@
+<nz-layout class="intructions" [ngStyle]="cardArgs.cardStyle" [ngClass]="{cardHover: cardArgs.isHovering,bordered: cardArgs.noBorderShow}">
+    <nz-header>
+        <div class="card_title plugins_left" [ngStyle]="cardArgs.cardTitleStyle">{{cardArgs.cardName}}</div>
+
+        <div class="card_tip" [ngClass]="{plugins_right: cardArgs.tipPlacement}">
+            <nz-tooltip [nzTitle]="cardArgs.cardPrompt" [nzPlacement]="'top'">
+                <a nz-tooltip><i class="anticon anticon-question-circle-o card_icon"></i></a>
+            </nz-tooltip>
+        </div>
+    </nz-header>
+
+    <nz-content class="card_content" [ngStyle]="cardArgs.cardContentStyle" [ngClass]="{bordered: cardArgs.noBorderShow}"><ng-content></ng-content></nz-content>
+</nz-layout>

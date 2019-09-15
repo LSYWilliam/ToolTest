@@ -1,0 +1,27 @@
+<nz-layout class="intructions">
+  <nz-header style="background: #fff;">
+    <div nz-row>
+      <div nz-col [nzSpan]="22">
+        <h1>组件的使用说明</h1>
+      </div>
+      <div nz-col [nzSpan]="2">
+        <a (click)="downOrUp()">More</a>
+      </div>
+    </div>
+  </nz-header>
+  <div *ngIf="isClosed">
+    <nz-content>
+      <div class="details">
+        <p *ngFor="let item of intructionUse"><span style="padding: 0px 10px;">{{item.index}}.</span>{{item.details}}</p>
+      </div>
+    </nz-content>
+    <nz-tabset>
+      <nz-tab *ngFor="let tab of tabs">
+        <ng-template #nzTabHeading>
+          {{tab.name}}
+        </ng-template>
+        <pre style="padding: 0px 18px;">{{tab.content}}</pre>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</nz-layout>

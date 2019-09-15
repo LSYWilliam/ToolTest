@@ -1,0 +1,122 @@
+<!--
+    佐罗表格用法介绍
+    1. dataSet是从表格父组件传过来的表格行数据
+    2. sort为true  表示表头字段可以排序
+    3. search为true  表示表头字段可以搜索
+    4. filter为true  表示表头字段可以重置 即过滤
+    5. filterAddressArray 表示表头字段可以依据什么重置 (即过滤)
+    6. icon为true, 即表示单元格显示的是小图标
+    7. action的值为数组, 即需要进行的编辑，删除等操作
+    8. editCell的值为boolean, true为可编辑, false为不可编辑
+    9. isCheckBox的值为boolean, true为显示复选框，false为不显示复选框
+    10. clickRoute的值为boolean, true为点击可跳转，false为点击不可跳转
+-->
+<div>
+    <nz-table #editRowTable
+              [nzAjaxData]="dataSet"
+              [nzTotal]="total"
+              [(nzPageIndex)]="current"
+              [(nzPageSize)]="pageSize"
+              (nzPageIndexChange)="indexChange()"
+              (nzPageSizeChange)="sizeChange()"
+    >
+        <!--[ngClass]="{'hide': isCheckBox}">-->
+        <thead nz-thead>
+        <tr>
+            <th nz-th nzCheckbox
+                *ngIf="isCheckBox">
+                <label nz-checkbox
+                       [(ngModel)]="allChecked"
+                       [nzIndeterminate]="indeterminate"
+                       (ngModelChange)="checkAll($event)" >
+                </label>
+            </th>
+            <th nz-th *ngFor="let item of headData">
+                {{item.headName}}
+                <!--排序-->
+                <nz-table-sort  *ngIf="item.sort" (nzValueChange)="sort($event,item.field)"></nz-table-sort>
+                <!--搜索-->
+                <nz-dropdown *ngIf="item.search" [nzTrigger]="'click'" [nzClickHide]="false">
+                    <i class="icon-menu ant-table-filter-icon" nz-dropdown></i>
+                    <div nz-dropdown-custom class="custom-filter-dropdown">
+                        <nz-input
+                            [nzType]="'search'"
+                            [nzPlaceHolder]="'请输入关键字...'"
+                            style="width: 180px;"
+                            [(ngModel)]="searchValue"
+                            (nzOnSearch)="search(item.field)"
+                        >
+                        </nz-input>
+                    </div>
+
+                </nz-dropdown>
+                <!--是否重置-->
+                <nz-dropdown *ngIf="item.filter" [nzTrigger]="'click'">
+                    <i class="anticon anticon-filter" nz-dropdown></i>
+                    <ul nz-menu>
+                        <li nz-menu-item *ngFor="let filter of resetArray">
+                            <label nz-checkbox [(ngModel)]="filter.checked">
+                                <span>{{filter.value}}</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <div nz-table-filter>
+                        <span nz-table-filter-confirm (click)="onOk()">确定</span>
+                        <span nz-table-filter-clear (click)="resetArrayChange()">重置</span>
+                    </div>
+                </nz-dropdown>
+            </th>
+        </tr>
+        </thead>
+        <tbody nz-tbody>
+            <tr nz-tbody-tr *ngFor="let data of editRowTable.data">
+                <td nz-td nzCheckbox *ngIf="isCheckBox">
+                    <label nz-checkbox [(ngModel)]="data.checked" (nzCheckedChange)="refreshStatus()">
+                    </label>
+                </td>
+                <td nz-td *ngFor="let header of headData">
+                    <!--单元格 显示 小图标-->
+                    <i *ngIf="header.icon" class={{data[header.field]}}></i>
+
+                    <!--编辑单元格 开始-->
+                    <span *ngIf="!header.icon && !header.hide && !header.editCell">
+                        <span *ngIf="!header.clickRoute">{{data[header.field]}}</span>
+                        <a *ngIf="header.clickRoute" (click)="clickRoute(header,data)">{{data[header.field]}}</a>
+                    </span>
+                    <span *ngIf="!header.icon && !header.hide &&  header.editCell">
+                        <span *ngIf="!(editCache[data.key] && editCache[data.key].edit && editColCache[header.keyCol].edit)">
+                            <!--{{data[header.field]}} <a (click)="startEdit(header, data.key, header.keyCol)">编辑</a>-->
+                            {{data[header.field]}} <i class="icon-systemEdit highlight" (click)="startEdit(header, data.key, header.keyCol)"></i>
+                        </span>
+                        <span *ngIf="editCache[data.key] && editCache[data.key].edit && editColCache[header.keyCol].edit">
+                            <input type="text"
+                                   [(ngModel)]="data[header.field]"
+                            />
+                            <!--<a (click)="save(header, data, header.keyCol, data[header.field])">保存</a>-->
+                            <i class="icon-systemSave highlight" (click)="save(header, data, header.keyCol, data[header.field])"></i>
+                        </span>
+                    </span>
+                    <!--编辑单元格 结束-->
+
+                    <!--单元格 显示 操作按钮(编辑, 删除等操作)-->
+                    <span *ngIf=" header.field === 'operate'">
+                        <span *ngFor="let operateItem of header.action">
+                            <span *ngIf="data.disabled && operateItem.disabled; then disabled else noDisabled"></span>
+                            <ng-template #disabled>
+                                <a class="operate"  disabled="true" (click)="operate(data, operateItem)">
+                                     {{operateItem.name}}
+                                 </a>
+                            </ng-template>
+                            <ng-template #noDisabled>
+                                <a class="operate"(click)="operate(data, operateItem)">
+                                     {{operateItem.name}}
+                                 </a>
+                            </ng-template>
+                        </span>
+                    </span>
+
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

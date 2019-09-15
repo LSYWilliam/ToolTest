@@ -1,0 +1,44 @@
+@import "../../../../../../base";
+.dept_header{
+    width: 220px;
+}
+/*…背景色…*/
+:host ::ng-deep .ant-layout-sider{
+    background: #fff!important;
+}
+.net_right_con{
+    background: #fff;
+    overflow: hidden;
+    margin: 0 15px;
+}
+/*…中间线条…*/
+.line_style{
+    position: absolute;
+    top:180px;
+    bottom: 0;
+    left: 420px;
+    width: 1px;
+    background: $color_grey;
+}
+/*…右侧样式…*/
+:host ::ng-deep .ant-layout-header{
+    height: 35px!important;
+    line-height: 35px!important;
+    font-size: 14px!important;
+    font-weight: bold!important;
+    margin-top: 10px!important;
+}
+:host ::ng-deep .ant-layout{
+    background-color: #fff!important;
+}
+
+.unEditable{
+    color:rgb(191, 191, 191);
+    text-decoration:underline;
+}
+
+.unDeletable{
+    padding-left: 10px;
+    color:rgb(191, 191, 191);
+    text-decoration:underline;
+}

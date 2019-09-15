@@ -1,0 +1,35 @@
+@import "../../../../base.scss";
+tr{
+    height: 35px;
+}
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+    padding: 0 8px;
+    color: #666666;
+}
+.ant-table-thead > tr > th{
+    font-weight: bold;
+    background: rgb(247,247,247);
+}
+.ant-table-tbody > tr > td{
+    border-bottom: 1px solid rgb(247,247,247);
+}
+.custom-filter-dropdown {
+    padding: 8px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+}
+
+.custom-filter-dropdown ::ng-deep nz-input {
+    width: 130px;
+    margin-right: 8px;
+}
+.operate{
+    padding-right: 20px;
+}
+.highlight{
+    color: rgba(16,142,233, 0.8);
+}
+.hide{
+    display:none;
+}

@@ -1,0 +1,16 @@
+@import '../../../../../../base.scss';
+
+.ant-table-wrapper{
+    display: block;height: 500px;
+}
+:host ::ng-deep .ant-input{
+    width: 200px!important;
+}
+
+.leftBtn{
+    border-radius: 4px 0px 0px 4px!important;
+    margin-right: -4px!important;
+}
+.rightBtn{
+    border-radius: 0px 4px 4px 0px!important;
+}

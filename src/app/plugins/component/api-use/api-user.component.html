@@ -1,0 +1,25 @@
+<h1 style="height: 40px;line-height: 40px;margin-top: 20px;">API</h1>
+<nz-table #nzTable [nzDataSource]="data" [nzPageSize]="5" nzBordered class="intructions">
+    <thead nz-thead>
+        <tr>
+            <th nz-th><span>序号</span></th>
+            <th nz-th><span>参数</span></th>
+            <th nz-th><span>是否必填</span></th>
+            <th nz-th><span>说明</span></th>
+            <th nz-th><span>类型</span></th>
+            <th nz-th><span>默认值</span></th>
+        </tr>
+    </thead>
+
+    <tbody nz-tbody>
+        <tr nz-tbody-tr *ngFor="let data of nzTable.data; index as i;">
+            <td nz-td>{{data.id}}</td>
+            <td nz-td>{{data.param}}</td>
+            <td nz-td>{{data.required}}</td>
+            <td nz-td>{{data.instructions}}</td>
+            <td nz-td>{{data.type}}</td>
+            <td nz-td>{{data.default}}</td>
+        </tr>
+    </tbody>
+</nz-table>
+

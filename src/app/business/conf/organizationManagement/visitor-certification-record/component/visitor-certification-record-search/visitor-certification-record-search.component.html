@@ -1,0 +1,47 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'start'" class="search_name_lh">
+    <div nz-col [nzSpan]="11">
+        <span class="padding_right_10">起止时间</span>
+        <nz-datepicker style="width: 40%;"
+                       [nzMode]="'day'"
+                       (ngModelChange)="_startValueChange($event)"
+                       [ngModel]="startTime"
+                       [nzDisabledDate]="_disabledStartDate" nzShowTime
+                       [nzFormat]="'YYYY-MM-DD HH:mm:ss'"
+                       [nzPlaceHolder]="'起始时间'">
+        </nz-datepicker>
+        <span class="padding_left_10 padding_right_10">-</span>
+        <nz-datepicker style="width: 40%;"
+                       [nzMode]="'day'"
+                       (ngModelChange)="_endValueChange($event)"
+                       [ngModel]="endTime"
+                       [nzDisabledDate]="_disabledEndDate"
+                       [nzShowTime]="_endTime"
+                       [nzFormat]="'YYYY-MM-DD HH:mm:ss'"
+                       [nzPlaceHolder]="'结束时间'"></nz-datepicker>
+    </div>
+
+    <div nz-col [nzSpan]="5">
+        <span class="padding_right_10">手机号</span>
+        <nz-input
+            [(ngModel)]="telephone"
+            [nzType]="'text'"
+            [nzSize]="'large'"
+            (ngModelChange)="dataChange($event,'telephone')"
+            style="width:60%">
+        </nz-input>
+    </div>
+    <div nz-col [nzSpan]="5">
+        <span class="padding_right_10">终端MAC</span>
+        <nz-input
+            [(ngModel)]="mac"
+            [nzType]="'text'"
+            [nzSize]="'large'"
+            (ngModelChange)="dataChange($event,'mac')"
+            style="width:60%">
+        </nz-input>
+    </div>
+
+    <div nz-col [nzSpan]="3" class="padding_left_25">
+        <a (click)="clear()">清空</a>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div nz-row >
+    <div nz-col [nzSpan]="6">
+        <app-dept-mgmt-info-drop-tree
+            [dataMenu]="dataMenu"
+            [dataRoot]="dataRoot"
+            (selectedItem)="menuClick($event)">
+        </app-dept-mgmt-info-drop-tree>
+    </div>
+    <div nz-col [nzSpan]="1"></div>
+    <div nz-col [nzSpan]="17">
+        <app-two-exchange-staff-table
+            [(leftTableData)]="leftTableData"
+            [(rightTableData)]="rightTableData"
+            [tableInput]="tableInput"
+            [(allChosedData)]="finalTableData"
+            (right2leftEvent)="right2left($event)"
+            (left2rightEvent)="left2right($event)"
+            (outputRightData)="getRightData($event)">
+        </app-two-exchange-staff-table>
+    </div>
+</div>
+<div nz-row >
+    <div class="customize-footer font_center">
+        <button
+            nz-button
+            [nzType]="'default'"
+            [nzSize]="'large'"
+            (click)="reset($event)">
+            关闭
+        </button>
+    </div>
+</div>

@@ -1,0 +1,254 @@
+<form nz-form [formGroup]="ssidNameValidate">
+    <div nz-row>
+        <div nz-col [nzSpan]="4" class="card_title_14_bold">
+            名称
+        </div>
+        <div nz-form-control nz-col [nzSpan]="20" class="card_title_14">
+            <nz-input
+                formControlName="ssidName"
+                [(ngModel)]="globalData.ssidName"
+                [nzPlaceHolder]="'请输入SSID的名称'"
+                (nzBlur)="blurInput('ssidName')">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row
+         *ngIf="ssidNameValidate.controls['ssidName'].dirty && ssidNameValidate.controls['ssidName'].invalid">
+        <div nz-form-label nz-col [nzSpan]="4" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="20" class="card_title_12 error_red">请输入2-64个字符！</div>
+    </div>
+</form>
+
+<div nz-row>
+    <div nz-col [nzSpan]="4" class="card_title_14_bold">
+        访问控制
+    </div>
+    <div nz-col [nzSpan]="20"></div>
+</div>
+
+<div nz-row>
+    <div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">
+        加密方式
+    </div>
+    <div nz-col [nzSpan]="20">
+        <nz-radio-group [(ngModel)]="globalData.authentication" (ngModelChange)="selectRadio()">
+            <label class="ssid_block" nz-radio [nzValue]="'1'">
+                <span class="card_title_14">免密上网(未加密，所有用户可以关联)</span>
+            </label>
+
+            <label class="ssid_block" nz-radio [nzValue]="'2'">
+                <span class="card_title_14">共享密钥(用户必须输入口令以进行关联)</span>
+
+                <div *ngIf="globalData.authentication === '2'" nz-row>
+                    <form nz-form [formGroup]="keyValidate">
+                        <div nz-form-control>
+                            <!--<app-dropdown #sharedDropDownData-->
+                            <!--[dropDowns]="sharedDropDown"-->
+                            <!--[inDefault]="globalData.saftetyCertifiedDefault"-->
+                            <!--(selectID)="selectDropDown($event)">-->
+                            <!--</app-dropdown>-->
+                            <nz-select style="width: 165px;"
+                                       [(ngModel)]="globalData.saftetyCertified"
+                                       (ngModelChange)="selectDropDown($event)"
+                                       [ngModelOptions]="{standalone: true}">
+                                <nz-option
+                                    *ngFor="let option of sharedDropDown"
+                                    [nzLabel]="option.name"
+                                    [nzValue]="option.id">
+                                </nz-option>
+                            </nz-select>
+
+                            <nz-input
+                                formControlName="key"
+                                [(ngModel)]="globalData.saftetyCertifiedKey"
+                                [nzPlaceHolder]="'请输入密钥！'"
+                                (nzBlur)="blurInput('key')">
+                            </nz-input>
+                        </div>
+                        <div
+                            *ngIf="keyValidate.controls['key'].dirty && keyValidate.controls['key'].invalid || validateKey(globalData.saftetyCertified,globalData.saftetyCertifiedKey)">
+                            <span
+                                class="card_title_12 error_red">请输入{{keyValue[globalData.saftetyCertified]}}个字符，不支持中文！</span>
+                        </div>
+                    </form>
+                </div>
+            </label>
+        </nz-radio-group>
+    </div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">
+        eWiFi
+    </div>
+    <div nz-col [nzSpan]="20">
+        <nz-switch [ngModel]="globalData.certification==1" (ngModelChange)="wifiAuthSelectSwitch($event)">
+            <span checked>启</span>
+            <span unchecked>停</span>
+        </nz-switch>
+        <span class="card_title_14">eWIFI认证(包括短信、微信、MAC等多种认证方式)</span>
+    </div>
+
+    <div nz-col [nzSpan]="20" [nzOffset]="'4'">
+        <div *ngIf="globalData.certification===1" nz-row>
+
+            <div class="chosePortalService">
+                <div nz-row>
+                    <app-dropdown
+                        [(dropDowns)]="serverModel.portalServerDropDown"
+                        (selectID)="selectServer($event,'portal')"
+                        [inDefault]="serverModel.portalDefault">
+                    </app-dropdown>
+                    <a>测试</a>
+                    <app-table [tableInput]="serverModel.portalServiceTableInput"
+                               [rowData]="serverModel.portalServerData"></app-table>
+                </div>
+
+                <div nz-row>
+                    <app-dropdown
+                        [(dropDowns)]="serverModel.radiusServerDropDown"
+                        (selectID)="selectServer($event,'radius')"
+                        [inDefault]="serverModel.radiusDefault">
+                    </app-dropdown>
+                    <a>测试</a>
+                    <app-table [tableInput]="serverModel.portalRadiusTableInput"
+                               [rowData]="serverModel.radiusServerData"></app-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div nz-row>
+    <div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">
+        客户端IP分配
+    </div>
+    <div nz-col [nzSpan]="20">
+        <nz-radio-group [(ngModel)]="globalData.ipDistribution" (ngModelChange)="selectID($event)">
+            <label class="ssid_block" nz-radio [nzValue]="'1'">
+                <span class="card_title_14">桥接模式(路由器分配)</span>
+            </label>
+
+            <!--<label class="ssid_block" nz-radio [nzValue]="'2'">-->
+            <!--<span class="card_title_14">集中器第三层漫游(AC支持)</span>-->
+            <!--</label>-->
+
+            <!--<label class="ssid_block" nz-radio [nzValue]="'3'">-->
+            <!--<span class="card_title_14">NAT模式(使用DHCP server)</span>-->
+            <!--</label>-->
+        </nz-radio-group>
+    </div>
+</div>
+<div nz-row class="card_title_14">
+    <div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">
+        射频
+    </div>
+    <div nz-col [nzSpan]="20">
+        <nz-radio-group [(ngModel)]="globalData.rf" (ngModelChange)="selectRFID($event)">
+            <label class="" nz-radio [nzValue]="0">
+                <span class="card_title_14">2G</span>
+            </label>
+            <label class="" nz-radio [nzValue]="1">
+                <span class="card_title_14">5G</span>
+            </label>
+            <label class="" nz-radio [nzValue]="2">
+                <span class="card_title_14">2G/5G</span>
+            </label>
+        </nz-radio-group>
+    </div>
+</div>
+<form nz-form [formGroup]="vlanValidate">
+    <div nz-row class="">
+        <div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">
+            VLAN ID
+        </div>
+        <div nz-col [nzSpan]="20" class="card_title_14">
+            <nz-input
+                formControlName="vlanId"
+                [(ngModel)]="globalData.vlanId"
+                style="width: 240px;"
+                [nzPlaceHolder]="'输入范围0-4094'"
+                [nzSize]="'large'"
+                (nzBlur)="blurInput('vlanId')">
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row
+         *ngIf="vlanValidate.controls['vlanId'].dirty && vlanValidate.controls['vlanId'].invalid">
+        <div nz-form-label nz-col [nzSpan]="4" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="20" class="card_title_12 error_red">请输入0-4094的数字！</div>
+    </div>
+</form>
+
+
+<!--<div nz-row class="ssid_conf_switch">-->
+<!--<div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">-->
+<!--限速-->
+<!--</div>-->
+<!--<div nz-col [nzSpan]="20" class="card_title_14">-->
+<!--<nz-input-->
+<!--[(ngModel)]="globalData.downSpeedLimit"-->
+<!--style="width: 240px;"-->
+<!--[nzType]="'number'"-->
+<!--[nzPlaceHolder]="'设置限速值，0表示不限速'"-->
+<!--(nzBlur)="blurInput('limit')">-->
+<!--</nz-input> kbps-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div nz-row class="card_title_14">-->
+<!--<div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">-->
+<!--vpn-->
+<!--</div>-->
+<!--<div nz-col [nzSpan]="20">-->
+<!--<nz-switch [(ngModel)]="globalData.vpnAllow" (ngModelChange) = "selectSwitch()">-->
+<!--<span checked>启</span>-->
+<!--<span unchecked>停</span>-->
+<!--</nz-switch>-->
+<!--</div>-->
+<!--</div>-->
+
+<form nz-form [formGroup]="aclValidate">
+    <div nz-row class="">
+        <div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">
+            ACL
+        </div>
+        <div nz-col [nzSpan]="20" class="card_title_14">
+            <nz-input
+                [(ngModel)]="globalData.acl"
+                formControlName="acl"
+                [nzPlaceHolder]="'请输入acl'"
+                (nzBlur)="blurInput('acl')"
+            >
+            </nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row
+         *ngIf="aclValidate.controls['acl'].dirty && aclValidate.controls['acl'].invalid">
+        <div nz-form-label nz-col [nzSpan]="4" class="card_title_14_bold"></div>
+        <div nz-form-label nz-col [nzSpan]="20" class="card_title_12 error_red">请输入192.168.1.xx/xx格式！</div>
+    </div>
+</form>
+<div nz-row class="card_title_14">
+    <div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">
+        隐藏SSID
+    </div>
+    <div nz-col [nzSpan]="20">
+        <nz-switch [(ngModel)]="globalData.suppressSsid" (ngModelChange)="selectSwitch()">
+            <span checked>启</span>
+            <span unchecked>停</span>
+        </nz-switch>
+    </div>
+</div>
+
+<div nz-row class="card_title_14">
+    <div nz-col [nzSpan]="4" class="card_title_14 padding_left_25">
+        Station隔离
+    </div>
+    <div nz-col [nzSpan]="20">
+        <nz-switch [(ngModel)]="globalData.stationInsulate" (ngModelChange)="selectSwitch()">
+            <span checked>启</span>
+            <span unchecked>停</span>
+        </nz-switch>
+    </div>
+</div>
+
+

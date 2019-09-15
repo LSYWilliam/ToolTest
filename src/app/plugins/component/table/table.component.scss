@@ -1,0 +1,32 @@
+/*
+
+    Name:      card.css
+    Author:    wushuang
+    syetem:    table组件
+    time:      2018/01/26
+
+*/
+:host ::ng-deep .ag-theme-fresh .ag-menu .ag-menu-list{
+    color: #666666;
+}
+:host ::ng-deep .ag-theme-fresh .ag-tab-header .ag-tab:nth-child(1),
+:host ::ng-deep .ag-theme-fresh .ag-tab-header .ag-tab:nth-child(3){
+    display: none;
+}
+:host ::ng-deep .ag-theme-fresh .ag-tab-body .ag-filter-select{
+    display: none;
+}
+:host ::ng-deep .ag-theme-fresh .ag-floating-filter-body{
+    display: none;
+}
+
+:host ::ng-deep .ag-theme-fresh .ag-body{
+    top:35px!important;
+}
+:host ::ng-deep .ag-theme-fresh .ag-header{
+    height: 35px!important;
+}
+:host ::ng-deep .ag-theme-fresh .ag-header-row:nth-child(2){
+    display: none!important;
+}
+

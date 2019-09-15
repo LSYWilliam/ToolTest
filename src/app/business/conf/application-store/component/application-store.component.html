@@ -1,0 +1,11 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>应用市场</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div nz-row [nzType]="'flex'" [nzJustify]="'start'">
+    <div nz-col [nzSpan]="6" *ngFor="let item of itemList">
+        <app-application-element
+            [item]="item"
+        >
+        </app-application-element>
+    </div>
+</div>

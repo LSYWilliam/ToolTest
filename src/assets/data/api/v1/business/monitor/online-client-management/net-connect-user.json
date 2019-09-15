@@ -1,0 +1,28 @@
+{
+    "code":0,
+    "msg":"操作成功",
+    "result":[
+        {
+            "userMac":"90fd61021a3d",
+            "userIp":"192.168.82.3",
+            "netId":null,
+            "netName":null,
+            "apSn":"ZH010025DLAB000289",
+            "apId":null,
+            "apName":null,
+            "ssid":"lsz_test",
+            "inTime":1528445261000
+        },
+        {
+            "userMac":"78886d0682f8",
+            "userIp":"192.168.25.121",
+            "netId":1,
+            "netName":"默认网络",
+            "apSn":"ZH010008D175000008",
+            "apId":104552724163584,
+            "apName":"ApTest13",
+            "ssid":"Yun_liao",
+            "inTime":1526957036000
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+@import "../../../../../../../base";
+.ant-menu-vertical .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title{
+    height: 40px;
+    line-height: 40px;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color: rgba(0,0,0,0);
+    color: rgba(0, 0, 0, 0.65);
+}
+.ant-menu-inline .ant-menu-item:after, .ant-menu-vertical .ant-menu-item:after{
+    border-right: 0px;
+}
+.custom-menu-selected{
+    color: rgb(16, 142, 233);
+}
+//.item {
+//    width: 100%;
+//    display: inline-block;
+//}
+
+.max_height{
+    max-height:100%;
+    min-height:300px;
+    overflow:auto;
+    margin-bottom: 10px;
+}
+.ant-menu{
+    background:none!important;
+}
+
+.ant-menu-submenu > .ant-menu{
+    background:none!important;
+}
+.ant-menu-vertical[_ngcontent-c11] .ant-menu-item[_ngcontent-c11], .ant-menu-inline[_ngcontent-c11] .ant-menu-item[_ngcontent-c11], .ant-menu-vertical[_ngcontent-c11] .ant-menu-submenu-title[_ngcontent-c11], .ant-menu-inline[_ngcontent-c11] .ant-menu-submenu-title[_ngcontent-c11]{
+    background-color: #f2f4f5!important;
+}
+.ant-menu-vertical .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title{
+    background-color: #f2f4f5!important;
+}
+.ant-menu-item, .ant-menu-submenu-title{
+    background-color: #f2f4f5!important;
+}
+.ant-menu-submenu{
+    background-color: #f2f4f5!important;
+}
+
+:host ::ng-deep .ant-menu-vertical .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title{
+    padding-left: 24px;
+}

@@ -1,0 +1,59 @@
+<div class="net_attention_web" *ngIf = 'isShowNetName === true'>
+    <div nz-row>
+        <div nz-col  [nzSpan]="8" class="font_center">
+            <a class="card_title_18_bold margin_top_25 padding_left_10 text_overflow"
+               style="display: block;"
+               [title]="deviceWebs.netName"
+               (click)="netNameEvent(deviceWebs)"
+            >
+                {{deviceWebs.netName}}
+            </a>
+            <i class="icon-ACweb net_icon"></i>
+        </div>
+        <div nz-col  [nzSpan]="16">
+            <div nz-row class="margin_top_25">
+                <div nz-col  [nzSpan]="14" class="font_center">
+                    <span class="card_title_12">总设备数</span>
+                </div>
+                <div nz-col  [nzSpan]="10">
+                    <span class="card_title_18_bold">{{deviceWebs.deviceSum | number:'1.0-1'}}</span>
+                    <span class="card_title_12">个</span>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col  [nzSpan]="14" class="font_center">
+                    <span class="card_title_12">转发流量</span>
+                </div>
+                <div nz-col  [nzSpan]="10">
+                    <span class="card_title_18_bold">{{deviceWebs.netDayTraffic | number:'1.0-1'}}</span>
+                    <span class="card_title_12">GB</span>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col  [nzSpan]="14" class="font_center">
+                    <span class="card_title_12">告警设备</span>
+                </div>
+                <div nz-col  [nzSpan]="10">
+                    <a class="card_title_18_bold card_title_color"
+                          (click)="apWarnEvent(deviceWebs)"
+                    >
+                        {{deviceWebs.netAlarmNum | number:'1.0-1'}}
+                    </a>
+                    <span class="card_title_12">个</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="net_attention_error" *ngIf = 'isShowNetName === false'>
+    <span (click)="closeIcon()" class="colse card_title_12">X</span>
+    <app-table
+        [tableInput]="staticDataModel.tableInput"
+        [rowData]="tableRowData"
+        (cellClickEvent)="cellClick($event)"
+    >
+    </app-table>
+
+
+</div>

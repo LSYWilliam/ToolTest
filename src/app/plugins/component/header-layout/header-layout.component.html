@@ -1,0 +1,28 @@
+<div class="box_shadow">
+<nz-header>
+    <div nz-row>
+        <div nz-col [nzSpan]="18" class="my_logo">
+            <span class="system_name">
+                <i class="icon-logo"></i>
+                <span>企业无限云</span>
+                <span class="company_line">|</span>
+                <span class="company_name">{{sysName}}</span>
+            </span>
+        </div>
+
+        <div nz-col [nzSpan]="6" class="users">
+            <span>Welcom,{{userName}}</span>
+            <span>|</span>
+            <span title="退出" class="quit">
+              <i class="icon-PFAexit2" (click)="logOut()"></i>
+            </span>
+        </div>
+    </div>
+</nz-header>
+</div>
+
+<nz-modal [nzVisible]="isVisible" [nzTitle]="'退出'" [nzContent]="logOutContent" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-template #logOutContent>
+        <p>确定需要退出？</p>
+    </ng-template>
+</nz-modal>

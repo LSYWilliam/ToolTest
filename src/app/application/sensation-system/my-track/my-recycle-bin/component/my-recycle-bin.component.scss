@@ -1,0 +1,45 @@
+@import '../../../../../../base.scss';
+.search_bg{
+    background: rgb(247,247,247);
+}
+
+.ant-table-wrapper{
+    display: block;height: 500px;
+}
+:host ::ng-deep .ant-input{
+    width: auto!important;
+    line-height: 35px;
+}
+/*时间选择输入框修改样式开始*/
+:host ::ng-deep .ant-input > .ant-calendar-range-picker-input{
+    border: 1px solid rgb(234,234,234);
+    height: 25px;
+    margin-top: 5px;
+    line-height: 25px;
+    border-radius: 5px;
+    width: 120px;
+    background: #fff;
+}
+:host ::ng-deep .ant-calendar-picker-icon:after{
+    display: none;
+}
+:host ::ng-deep .ant-calendar-range-picker-separator{
+    line-height: 35px;
+}
+/*时间选择输入框修改样式结束*/
+
+.leftBtn{
+    border-radius: 4px 0px 0px 4px!important;
+    margin-right: -4px!important;
+    padding:5px 10px;
+}
+.rightBtn{
+    border-radius: 0px 4px 4px 0px!important;
+    padding:5px 10px;
+}
+:host ::ng-deep .ant-btn-group > .ant-btn:first-child:not(:last-child){
+    background-color: #f7f7f7;
+}
+:host ::ng-deep .ant-dropdown-button.ant-btn-group > .ant-btn:last-child:not(:first-child){
+    background-color:#f7f7f7;
+}

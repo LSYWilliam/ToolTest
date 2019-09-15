@@ -1,0 +1,44 @@
+<span routerLink="{{url}}"><i class="icon-ACback icon_explain"></i></span>
+
+<div nz-row>
+    <div nz-col [nzSpan] = "box1" [@signal]="signal">
+        <app-ap-details-ap-info [setApID]="apID"></app-ap-details-ap-info>
+    </div>
+
+    <div nz-col [nzSpan] = "box2">
+        <div nz-col [nzSpan] = "1" style="cursor: pointer">
+            <div  class="border_height float_left" [ngStyle]="{'height': borderHeight + 'px'}"></div>
+            <div  class="button_style" (click)="change()">{{direction}}</div>
+        </div>
+        <div nz-col [nzSpan] = "23">
+            <div nz-row>
+                <div class="font_center">
+                    <nz-radio-group [(ngModel)]="radioValue">
+                        <label nz-radio-button [nzValue]="'A'" (click)="setAnimations()">
+                            <span>运行状况</span>
+                        </label>
+                        <label nz-radio-button [nzValue]="'B'" (click)="setAnimations()">
+                            <span>事件日志</span>
+                        </label>
+                        <label nz-radio-button [nzValue]="'C'" (click)="setAnimations()">
+                            <span>警报信息</span>
+                        </label>
+                    </nz-radio-group>
+                </div>
+            </div>
+            <div nz-row [ngSwitch] = "radioValue" class="box">
+                <div *ngSwitchCase="'A'" >
+                    <app-ap-details-summary-statistics [setApID]="apID" ></app-ap-details-summary-statistics>
+                </div>
+
+                <div *ngSwitchCase="'B'">
+                    <app-ap-details-event-logs [setApID]="apID" [setApSn]="apSn"></app-ap-details-event-logs>
+                </div>
+
+                <div *ngSwitchCase="'C'">
+                    <app-ap-details-alarm-information [setApID]="apID" [setApSn]="apSn"></app-ap-details-alarm-information>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

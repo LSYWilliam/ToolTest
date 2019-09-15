@@ -1,0 +1,24 @@
+<div nz-row class="margin_top_10 card_title_12">
+    <nz-select
+        style="width: 155px;"
+        nzAllowClear
+        [nzPlaceHolder]="''"
+        [(ngModel)]="selectedOption"
+        nzShowSearch
+        (ngModelChange) = "onSearch($event)">
+
+        <nz-option
+            *ngFor="let option of searchOptions"
+            [nzLabel]="option.label"
+            [nzValue]="option.value">
+        </nz-option>
+    </nz-select>
+</div>
+
+<div nz-row class="margin_top_10 max_height">
+    <ul nz-menu>
+        <li class="card_title_12" *ngFor="let item of searchOptions" nz-menu-item [nzSelected]="item.status" (click)="onSearch(item.value)">
+            {{item.label}}
+        </li>
+    </ul>
+</div>

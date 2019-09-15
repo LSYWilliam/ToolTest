@@ -1,0 +1,31 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>无线商情</nz-breadcrumb-item>
+    <nz-breadcrumb-item>政府政策信息</nz-breadcrumb-item>
+    <nz-breadcrumb-item>查看我的嗅探</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div nz-row>
+    <app-dropdown
+        [dropDowns]= "topicList"
+        (selectID)="getTopicID($event)"
+        [status] = "false">
+    </app-dropdown>
+</div>
+
+<div nz-row class="search_bg margin_top_10">
+    <app-query-criteria
+        [topicID]="topicID"
+        (searchPara)="search($event)"
+        (emptyPara)="empty($event)"
+    >
+    </app-query-criteria>
+</div>
+
+<div nz-row style="width: 100%; height: 600px;" class="margin_top_10">
+    <app-table
+        [tableInput]="staticDataModel.myThemeTableInput"
+        [rowData]="topicData"
+        (cellClickEvent)="delRowEvent($event)">
+    </app-table>
+</div>
+

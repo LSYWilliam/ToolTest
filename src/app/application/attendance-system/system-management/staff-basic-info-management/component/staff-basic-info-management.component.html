@@ -1,0 +1,19 @@
+<nz-breadcrumb class="my_location">
+    <nz-breadcrumb-item>考勤应用</nz-breadcrumb-item>
+    <nz-breadcrumb-item>系统管理</nz-breadcrumb-item>
+    <nz-breadcrumb-item>员工基本信息管理</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div nz-row class="header">
+    <span class="card_title_18_bold">员工信息列表</span>
+    <a (click)="addButton()" class="card_title_12 padding_left_10">添加</a>
+    <a (click)="editButton()" class="card_title_12 padding_left_10 ">编辑</a>
+    <a (click)="deleteButton()" class="card_title_12 padding_left_10">删除</a>
+    <a (click)="loadButton()" class="card_title_12 padding_left_10">导出</a>
+</div>
+<div>
+    <app-zorro-table
+        [headerData]="tableInput"
+        [srcRequestArgs]="srcRequestArgs"
+        (selectedData)="getDataSelectedFromZorroTable($event)">
+    </app-zorro-table>
+</div>
